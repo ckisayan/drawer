@@ -1,0 +1,48 @@
+<div class="mat-elevation-z8 data-table">
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+    <!-- Id Column -->
+    <ng-container matColumnDef="SubmitterID">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>SubmitterID</th>
+      <td mat-cell *matCellDef="let row">{{row.SubmitterID}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let row">{{row.Name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="State">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+      <td mat-cell *matCellDef="let row">{{row.State}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"  (click)="showDrawer(row)"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource.data.length"
+      [pageIndex]="0"
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 20]"
+      aria-label="Select page">
+  </mat-paginator>
+  
+
+
+  <mat-drawer #drawerdetail [opened]="isDrawerOpen"  mode="side" position="end"
+  
+  (openedChange)="drawerStateChanged($event)" [style.width.px]="drawerWidth">
+    <!-- Put your content for the drawer here -->
+    <h3>Selected Row Details</h3>
+    <button mat-icon-button (click)="drawerdetail.toggle()">
+      <mat-icon>{{ isDrawerOpen ? 'close' : 'menu' }}</mat-icon>
+    </button>
+    <p>Name: {{ selectedTradingPartner?.Name }}</p>
+    <p>SubmitterId: {{ selectedTradingPartner?.SubmitterID }}</p>
+    <p>State: {{ selectedTradingPartner?.State }}</p>
+    <app-tradingpartnerdetails></app-tradingpartnerdetails>
+    
+
+  </mat-drawer>
+</div>
