@@ -1,1 +1,36 @@
-<p>tab1 content goes here!</p>
+<hr>
+<div>
+
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+            <mat-label>Coordination of Benefits Type</mat-label>
+            <input matInput placeholder="(DEN-D),(HLT-C),(PPO-M)">
+            <mat-icon matSuffix>edit_mode</mat-icon>
+            <mat-hint>Enter 2300/HD03 Insurance Line Code for this trading Partner </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" >
+            <mat-select placeholder="Coverage Date Type 2000/336">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let HealthCoverageDate of HealthCoverageDateTypes"
+                    [value]="HealthCoverageDate.value">
+                    {{ HealthCoverageDate.viewValue }}
+                </mat-option>
+            </mat-select>
+            <mat-hint>Enter 2300/DTP01 Health Coverage Date Type </mat-hint>
+            
+           
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Enter Date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>Indicate date
+            </mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+    </form>
+
+</div>

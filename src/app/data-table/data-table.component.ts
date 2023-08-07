@@ -3,7 +3,7 @@ import { MatTable } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { DataTableDataSource, DataTableItem } from './data-table-datasource';
-
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-data-table',
@@ -15,15 +15,17 @@ export class DataTableComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTableItem>;
   dataSource = new DataTableDataSource();
-  
+
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['Name', 'SubmitterID', 'State'];
+  displayedColumns = ['TradingPartnerCheckBox', 'Name', 'SubmitterID', 'State', 'actions'];
   selectedTradingPartner: DataTableItem | undefined;
-  isDrawerOpen=false;
+  selection = new SelectionModel<DataTableDataSource>(true, []);
+  isDrawerOpen = false;
   drawerWidth: number = 700;
-  showDrawer(row: DataTableItem){
+  columnsToDisplay: string[] = this.displayedColumns.slice();
+  showDrawer(row: DataTableItem) {
     this.selectedTradingPartner = row;
-    this.isDrawerOpen=true;
+    this.isDrawerOpen = true;
   }
   toggleDrawer() {
     this.isDrawerOpen = !this.isDrawerOpen;
@@ -37,4 +39,40 @@ export class DataTableComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
+
+  addColumn() {
+    const randomColumn = Math.floor(Math.random() * this.displayedColumns.length);
+    console.log("adding partern: " + randomColumn);
+    this.columnsToDisplay.push(this.displayedColumns[randomColumn]);
+  }
+
+
+  removeColumn() {
+
+    if (this.columnsToDisplay.length) {
+      console.log("Removing partern");
+      this.columnsToDisplay.pop();
+    }
+  }
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select());
+  }
+
+  logSelection() {
+    this.selection.selected.forEach(s => console.log(s.data));
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    //this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
+

@@ -19,6 +19,14 @@ import { TradingPartnerDetailsComponent } from './trading.partner.details/tradin
 import { Tab1Component } from './tab1/tab1.component';
 import { Tab2Component } from './tab2/tab2.component';
 import { Tab3Component } from './tab3/tab3.component';
+import {MatInputModule} from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgIf, JsonPipe} from '@angular/common';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,8 +44,15 @@ import { Tab3Component } from './tab3/tab3.component';
     MatPaginatorModule,
     MatSortModule,
     MatSidenavModule,
-    MatFormFieldModule, MatSelectModule, MatButtonModule,MatIconModule,MatTabsModule    
-    
+    MatFormFieldModule, MatSelectModule, MatButtonModule,MatIconModule,MatTabsModule,
+    FormsModule, MatFormFieldModule, MatInputModule, MatIconModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgIf,
+    JsonPipe,
+    MatNativeDateModule,MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

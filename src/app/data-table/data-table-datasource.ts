@@ -6,19 +6,21 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface DataTableItem {
+  TradingPartnerCheckBox: string;
   Name: string;
   SubmitterID: string;
   State: string;
+  Actions: string;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: DataTableItem[] = [
-  {Name: "Anthem Blue Cross - 88248", SubmitterID: '444', State: "KY"},
-  {Name: "Pinnacle BSI - 30065", SubmitterID: '00234', State: "AR, LA, ML"}, 
-  {Name: "Anthem Blue Cross - 88227", SubmitterID: '00160', State: "MI"}, 
-  {Name: "Anthem Blue Cross - 88228", SubmitterID: '00161', State: "CA"}, 
-  {Name: "Anthem Blue Cross - 88229", SubmitterID: '00162', State: "NY"}, 
-  {Name: "Anthem Blue Cross - 88230", SubmitterID: '00163', State: "FL"}, 
+  {TradingPartnerCheckBox: "123",Name: "Anthem Blue Cross - 88248", SubmitterID: '444', State: "KY", Actions:''},
+  {TradingPartnerCheckBox: "123",Name: "Pinnacle BSI - 30065", SubmitterID: '00234', State: "AR, LA, ML", Actions:''}, 
+  {TradingPartnerCheckBox: "123",Name: "Anthem Blue Cross - 88227", SubmitterID: '00160', State: "MI", Actions:''}, 
+  {TradingPartnerCheckBox: "123",Name: "Anthem Blue Cross - 88228", SubmitterID: '00161', State: "CA", Actions:''}, 
+  {TradingPartnerCheckBox: "123",Name: "Anthem Blue Cross - 88229", SubmitterID: '00162', State: "NY", Actions:''}, 
+  {TradingPartnerCheckBox: "123",Name: "Anthem Blue Cross - 88230", SubmitterID: '00163', State: "FL", Actions:''},
 ];
 
 /**

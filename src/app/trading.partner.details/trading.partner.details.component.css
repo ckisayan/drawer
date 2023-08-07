@@ -1,3 +1,9 @@
 .example-tab-icon {
     margin-right: 8px;
   }
+.firstTab{
+   border-width: 9px;
+   border-style: solid;
+   border-color: orange;
+   background-color: gray;
+}
