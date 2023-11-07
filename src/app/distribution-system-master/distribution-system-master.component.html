@@ -1,0 +1,39 @@
+test
+<table>
+    <tr>
+        <td style="width: 20%;">
+            <div>
+                <cdk-accordion class="example-accordion">
+                    <cdk-accordion-item
+                      *ngFor="let item of items; let index = index;"
+                      #accordionItem="cdkAccordionItem"
+                      class="example-accordion-item"
+                      role="button"
+                      tabindex="0"
+                      [attr.id]="'accordion-header-' + index"
+                      [attr.aria-expanded]="accordionItem.expanded"
+                      [attr.aria-controls]="'accordion-body-' + index">
+                      <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
+                        {{ item }}
+                        <span class="example-accordion-item-description">
+                          Click to {{ accordionItem.expanded ? 'collapse' : 'see more options' }}
+                        </span>
+                      </div>
+                      <div
+                        class="example-accordion-item-body"
+                        role="region"
+                        [style.display]="accordionItem.expanded ? '' : 'none'"
+                        [attr.id]="'accordion-body-' + index"
+                        [attr.aria-labelledby]="'accordion-header-' + index">
+                            &nbsp; &nbsp; Vendor Master
+                      </div>
+                    </cdk-accordion-item>
+                  </cdk-accordion>
+            </div>
+        </td>
+        <td>
+            <app-vendor-details></app-vendor-details>
+        </td>
+    </tr>
+
+</table>

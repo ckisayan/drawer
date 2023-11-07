@@ -25,8 +25,18 @@ import {NgIf, JsonPipe} from '@angular/common';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { VendorDetailsComponent } from './vendor-details/vendor-details.component';
+import { DistributionSystemMasterComponent } from './distribution-system-master/distribution-system-master.component';
+import {CdkAccordionModule} from '@angular/cdk/accordion';
+import { Routes,RouterModule } from '@angular/router';
+import { BsbcComponent } from './bsbc/bsbc.component';
 
 
+const appRoutes: Routes = [
+  {    path: '', component: AppComponent },
+  {    path: 'bsbc', component: BsbcComponent },
+  {    path: 'app-distribution-system-master', component: DistributionSystemMasterComponent  }
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +44,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     TradingPartnerDetailsComponent,
     Tab1Component,
     Tab2Component,
-    Tab3Component
+    Tab3Component,
+    VendorDetailsComponent,
+    DistributionSystemMasterComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +64,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     ReactiveFormsModule,
     NgIf,
     JsonPipe,
-    MatNativeDateModule,MatTooltipModule
+    MatNativeDateModule,MatTooltipModule, CdkAccordionModule, RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
