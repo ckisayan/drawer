@@ -20,7 +20,7 @@ import { Tab1Component } from './tab1/tab1.component';
 import { Tab2Component } from './tab2/tab2.component';
 import { Tab3Component } from './tab3/tab3.component';
 import {MatInputModule} from '@angular/material/input';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgIf, JsonPipe} from '@angular/common';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
@@ -30,12 +30,18 @@ import { DistributionSystemMasterComponent } from './distribution-system-master/
 import {CdkAccordionModule} from '@angular/cdk/accordion';
 import { Routes,RouterModule } from '@angular/router';
 import { BsbcComponent } from './bsbc/bsbc.component';
-
+import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
+import { VendorAttribComponent } from './vendor-info/vendor-attrib/vendor-attrib.component';
+import { VendorActiveOrdersComponent } from './vendor-info/vendor-active-orders/vendor-active-orders.component';
+import { VendorOrderHistoryComponent } from './vendor-info/vendor-order-history/vendor-order-history.component';
+import { NewPurchaseOrderComponent } from './purchase/new-purchase-order/new-purchase-order.component';
 
 const appRoutes: Routes = [
   {    path: '', component: AppComponent },
   {    path: 'bsbc', component: BsbcComponent },
-  {    path: 'app-distribution-system-master', component: DistributionSystemMasterComponent  }
+  {    path: 'app-distribution-system-master/:id/:accesstoken', component: DistributionSystemMasterComponent  },
+  {    path: 'system-master/:id/:accesstoken', component: DistributionSystemMasterComponent  }
 ]
 @NgModule({
   declarations: [
@@ -46,10 +52,14 @@ const appRoutes: Routes = [
     Tab2Component,
     Tab3Component,
     VendorDetailsComponent,
-    DistributionSystemMasterComponent
+    DistributionSystemMasterComponent,
+    VendorAttribComponent,
+    VendorActiveOrdersComponent,
+    VendorOrderHistoryComponent,
+    NewPurchaseOrderComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,    
     BrowserAnimationsModule,
     MatCheckboxModule,        
     MatTableModule,
@@ -57,10 +67,9 @@ const appRoutes: Routes = [
     MatSortModule,
     MatSidenavModule,
     MatFormFieldModule, MatSelectModule, MatButtonModule,MatIconModule,MatTabsModule,
-    FormsModule, MatFormFieldModule, MatInputModule, MatIconModule,
+    FormsModule, MatFormFieldModule, MatInputModule, MatIconModule,MatExpansionModule,MatListModule,
     MatFormFieldModule,
-    MatDatepickerModule,
-    FormsModule,
+    MatDatepickerModule,    
     ReactiveFormsModule,
     NgIf,
     JsonPipe,

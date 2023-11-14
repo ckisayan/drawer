@@ -1,8 +1,56 @@
-<p>vendor-details works!</p>
+<mat-tab-group>
+    <mat-tab label="First">
 
-1. Vendor details
-    name, city state tel# 
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">home</mat-icon>
+            Vendor Attributes
+        </ng-template>
 
-2. Vendor active orders
-3. Vendor closed orders
+        <app-vendor-attrib></app-vendor-attrib>
+    </mat-tab>
+    <mat-tab label="Second">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+            Active Orders
+        </ng-template>
 
+        <app-vendor-active-orders></app-vendor-active-orders>
+    </mat-tab>
+    <mat-tab label="Third">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">archive</mat-icon>
+            Order History
+        </ng-template>
+        <app-vendor-order-history></app-vendor-order-history>
+    </mat-tab>
+</mat-tab-group>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div hidden>
+    <hr>
+    <br>
+    <a [routerLink]="['/system-master', vendor.id, vendor.accesstoken]">get vendorid1 data</a>
+    <br>
+    <form class="example-form" name="frmmain">
+        vendorid :
+        <input type="text" name="vendorid" value="{{vendor.id}}" (change)="onVendoridChange($event)" #vendorId />
+        <input type="text" name="accesstoken" [(ngModel)]="vendor.accesstoken" (change)="onAccessTokenChange($event)"
+            #accesstoken />
+        <button (click)="onclick()">getdata</button>
+    </form>
+</div>
