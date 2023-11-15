@@ -36,6 +36,8 @@ import { VendorAttribComponent } from './vendor-info/vendor-attrib/vendor-attrib
 import { VendorActiveOrdersComponent } from './vendor-info/vendor-active-orders/vendor-active-orders.component';
 import { VendorOrderHistoryComponent } from './vendor-info/vendor-order-history/vendor-order-history.component';
 import { NewPurchaseOrderComponent } from './purchase/new-purchase-order/new-purchase-order.component';
+import { ChatAssistComponent } from './chat/chat-assist/chat-assist.component';
+
 
 const appRoutes: Routes = [
   {    path: '', component: AppComponent },
@@ -56,7 +58,8 @@ const appRoutes: Routes = [
     VendorAttribComponent,
     VendorActiveOrdersComponent,
     VendorOrderHistoryComponent,
-    NewPurchaseOrderComponent
+    NewPurchaseOrderComponent,
+    ChatAssistComponent
   ],
   imports: [
     BrowserModule,    

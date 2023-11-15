@@ -1,17 +1,44 @@
-<table border="0">
+<table border="0" width="100%"  >
   <tr>
-    <td colspan="2">
-      <table width="100%">
-        <tr >
-          <td>bunzl icon</td>
-          <td>configurable items</td>
-          <td align="right">user info</td>
+    <td colspan="3">
+      <table width="100%" border="0" style="background: lightgray;">
+        <tr>
+          <td><img src="..//../assets/images/logo.svg"></td>
+
+          <td align="right" style="vertical-align: bottom ">
+            <table>
+              <tr>
+                <td>
+                  <mat-icon matTooltip="export to CSV">download</mat-icon> &nbsp; &nbsp;
+                  <mat-icon matTooltip="customize current view">tune</mat-icon> &nbsp; &nbsp;
+                  <mat-icon matTooltip="refresh">refresh</mat-icon> &nbsp; &nbsp;
+                  <mat-icon matTooltip="Help for this screen">help</mat-icon> &nbsp; &nbsp;
+                  <mat-icon matTooltip="Default settings for this page">beenhere</mat-icon> &nbsp; &nbsp;
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td align="right">
+            <table>
+
+              <tr>
+                <td align="center">Chris Isayan</td>
+              <tr>
+                <td align="center">Super-User</td>
+              <tr>
+                <td align="center"><mat-icon matTooltip="customize current view">account_circle</mat-icon></td>
+              </tr>
+            </table>
+
+          </td>
         </tr>
       </table>
     </td>
   </tr>
   <tr>
-    <td colspan="2"><hr></td>
+    <td colspan="3">
+      <hr>
+    </td>
   </tr>
   <tr>
     <td style="width: 20%;">
@@ -48,7 +75,7 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-nav-list>
-              <a mat-list-item class="mat-list-item">Enter New Order</a>              
+              <a mat-list-item class="mat-list-item">Enter New Order</a>
               <a mat-list-item><span style="font-size:12px"> Change Existing P.O.</span></a>
               <a mat-list-item class="cancel-link">Cancel P.O.</a>
               <a mat-list-item>Close P.O.</a>
@@ -83,6 +110,34 @@
           <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
+                Warehouse
+              </mat-panel-title>
+              <mat-panel-description>
+                *
+                <mat-icon>warehouse</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+              <a mat-list-item>Search an Item</a>
+            </mat-nav-list>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Transportation
+              </mat-panel-title>
+              <mat-panel-description>
+                *
+                <mat-icon>local_shipping</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+              <a mat-list-item>Trace Shipment</a>
+            </mat-nav-list>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
                 Finance
               </mat-panel-title>
               <mat-panel-description>
@@ -106,7 +161,7 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-nav-list>
-              <a mat-list-item>Search PO Vendor</a>              
+              <a mat-list-item>Search PO Vendor</a>
             </mat-nav-list>
           </mat-expansion-panel>
           <mat-expansion-panel>
@@ -120,7 +175,7 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-nav-list>
-              <a mat-list-item>Search Setup</a>              
+              <a mat-list-item>Search Setup</a>
             </mat-nav-list>
           </mat-expansion-panel>
         </mat-accordion>
@@ -128,6 +183,9 @@
     </td>
     <td>
       <app-vendor-details></app-vendor-details>
+    </td>
+    <td align="right">
+      <app-chat-assist></app-chat-assist>
     </td>
   </tr>
 
