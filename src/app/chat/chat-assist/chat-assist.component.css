@@ -6,3 +6,6 @@
 .full-width .mat-icon {
     cursor: pointer;
 }
+.conversations .mat-list-item {
+    cursor: pointer;
+}

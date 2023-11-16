@@ -1,11 +1,11 @@
 <table border="0" width="100%"  >
   <tr>
-    <td colspan="3">
+    <td colspan="4">
       <table width="100%" border="0" style="background: lightgray;">
         <tr>
           <td><img src="..//../assets/images/logo.svg"></td>
-
-          <td align="right" style="vertical-align: bottom ">
+          <td align="center"> Purchase order screen (screen being displayed now)</td>
+          <td align="center" style="vertical-align: bottom ">
             <table>
               <tr>
                 <td>
@@ -36,18 +36,19 @@
     </td>
   </tr>
   <tr>
-    <td colspan="3">
+    <td colspan="4">
       <hr>
     </td>
   </tr>
   <tr>
     <td style="width: 20%;">
       <div>
-
+<!--
         <div class="example-action-buttons">
           <button mat-button (click)="accordion.openAll()">Expand All</button>
           <button mat-button (click)="accordion.closeAll()">Collapse All</button>
         </div>
+        -->
         <mat-accordion class="example-headers-align" multi>
           <mat-expansion-panel>
             <mat-expansion-panel-header>
@@ -60,6 +61,7 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-nav-list>
+              <a mat-list-item>App Overview</a>
               <a mat-list-item>My Orders</a>
               <a mat-list-item>My Customers</a>
             </mat-nav-list>
@@ -74,10 +76,11 @@
                 <mat-icon>account_circle</mat-icon>
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <mat-nav-list>
-              <a mat-list-item class="mat-list-item">Enter New Order</a>
-              <a mat-list-item><span style="font-size:12px"> Change Existing P.O.</span></a>
-              <a mat-list-item class="cancel-link">Cancel P.O.</a>
+            <mat-nav-list routerLinkActive="active">
+              <a mat-list-item  [routerLink]="['/system-master/purchase-order']">Enter New Order</a>
+              
+              <a mat-list-item> Change Existing P.O.</a>
+              <a mat-list-item >Cancel P.O.</a>
               <a mat-list-item>Close P.O.</a>
             </mat-nav-list>
           </mat-expansion-panel>
@@ -161,7 +164,7 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-nav-list>
-              <a mat-list-item>Search PO Vendor</a>
+              <a mat-list-item [routerLink]="['/system-master/vendor-details']">Search PO Vendor</a>              
             </mat-nav-list>
           </mat-expansion-panel>
           <mat-expansion-panel>
@@ -181,10 +184,11 @@
         </mat-accordion>
       </div>
     </td>
-    <td>
-      <app-vendor-details></app-vendor-details>
+    <td colspan="2">
+      <!--<app-vendor-details></app-vendor-details>-->
+      <router-outlet></router-outlet>
     </td>
-    <td align="right">
+    <td align="right" width="25%">
       <app-chat-assist></app-chat-assist>
     </td>
   </tr>
