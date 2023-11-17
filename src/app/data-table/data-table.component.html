@@ -4,9 +4,7 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. trading partner name" #input>
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
-
   <table mat-table class="full-width-table" matSort aria-label="Elements">
-
     <ng-container matColumnDef="TradingPartnerCheckBox">
       <th mat-header-cell *matHeaderCellDef>
         <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
@@ -52,9 +50,16 @@
 
 
 
-  <mat-drawer #drawerdetail [opened]="isDrawerOpen" mode="side" position="end"
-    (openedChange)="drawerStateChanged($event)" [style.width.px]="drawerWidth">
+  <mat-drawer #drawerdetail  [mode]="'side'" 
+    [opened]="isDrawerOpen"  
+    (openedChange)="drawerStateChanged($event)" 
+    position="end"
+    [style.width.px]="drawerWidth">
+  
+  
+  
     <!-- Put your content for the drawer here -->
+    
     <h3>Selected Trading partner details</h3>
     <div style="align-content: right;">
       <button mat-icon-button (click)="drawerdetail.toggle()">

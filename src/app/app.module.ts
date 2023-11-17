@@ -37,11 +37,14 @@ import { VendorActiveOrdersComponent } from './vendor-info/vendor-active-orders/
 import { VendorOrderHistoryComponent } from './vendor-info/vendor-order-history/vendor-order-history.component';
 import { NewPurchaseOrderComponent } from './purchase/new-purchase-order/new-purchase-order.component';
 import { ChatAssistComponent } from './chat/chat-assist/chat-assist.component';
-
+import {MatStepperModule} from '@angular/material/stepper';
+import { TradingPartnerConfigComponent } from './bsbc/trading-partner-config/trading-partner-config.component';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent, pathMatch: 'full' },
   { path: 'bsbc', component: BsbcComponent },
+  { path: 'trading-partner1', component: DataTableComponent },
+  { path: 'trading-partner', component: TradingPartnerConfigComponent },
   {
     path: 'app-distribution-system-master/:id/:accesstoken', component: DistributionSystemMasterComponent
 
@@ -70,7 +73,8 @@ const appRoutes: Routes = [
     VendorActiveOrdersComponent,
     VendorOrderHistoryComponent,
     NewPurchaseOrderComponent,
-    ChatAssistComponent
+    ChatAssistComponent,
+    TradingPartnerConfigComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +86,7 @@ const appRoutes: Routes = [
     MatSidenavModule,
     MatFormFieldModule, MatSelectModule, MatButtonModule, MatIconModule, MatTabsModule,
     FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatExpansionModule, MatListModule,
-    MatFormFieldModule,
+    MatFormFieldModule,MatStepperModule,
     MatDatepickerModule,
     ReactiveFormsModule,
     NgIf,

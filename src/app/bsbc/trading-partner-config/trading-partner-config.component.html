@@ -1,0 +1,71 @@
+<mat-drawer-container class="example-container" >
+    <mat-drawer #drawerdetail [mode]="'side'" position="end" [style.width.px]="drawerWidth" [opened]="isDrawerOpen"  
+    (openedChange)="drawerStateChanged($event)" >
+    <h3>Selected Trading partner details</h3>
+    <div style="align-content: right;">
+      <button mat-icon-button (click)="drawerdetail.toggle()">
+        <mat-icon>{{ isDrawerOpen ? 'close' : 'menu' }}</mat-icon>
+      </button>
+    </div>
+    <table style="width: 100%;">
+      <tr>
+        <td>Trading Partner: {{ selectedTradingPartner?.Name }}</td>
+        <td>SubmitterId: {{ selectedTradingPartner?.SubmitterID }}</td>
+      </tr>
+      <tr>
+        <td>State: {{ selectedTradingPartner?.State }}</td>
+      </tr>
+    </table>
+    <hr>
+        <app-tradingpartnerdetails></app-tradingpartnerdetails>
+    </mat-drawer>
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. trading partner name" #input>
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+        <table mat-table class="full-width-table" matSort aria-label="Elements">
+            <ng-container matColumnDef="TradingPartnerCheckBox">
+              <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()">All
+                </mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                  [checked]="selection.isSelected(row)">
+                </mat-checkbox>
+              </td>
+            </ng-container>
+        
+            <!-- Id Column -->
+            <ng-container matColumnDef="SubmitterID">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>SubmitterID</th>
+              <td mat-cell *matCellDef="let row">{{row.SubmitterID}}</td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="Name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+              <td mat-cell *matCellDef="let row">{{row.Name}}</td>
+            </ng-container>
+            <ng-container matColumnDef="State">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+              <td mat-cell *matCellDef="let row">{{row.State}}</td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element">
+                <mat-icon class="example-tab-icon">more_vert</mat-icon>
+              </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showDrawer(row)"></tr>
+          </table>
+        
+    
+  <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
+</mat-paginator>
+  </mat-drawer-container>

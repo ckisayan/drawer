@@ -1,1 +1,66 @@
-<p>new-purchase-order works!</p>
+<table bgColor="lightgray">
+    <tr>
+        <td>
+            <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                <mat-step [stepControl]="firstFormGroup">
+                    <form [formGroup]="firstFormGroup">
+                        <ng-template matStepLabel>Identify Supplier</ng-template>
+                        <mat-form-field>
+                            <input matInput placeholder="Vendor Name" formControlName="firstCtrl" required>
+                            
+                        </mat-form-field>
+                        <div><button mat-button>Search</button></div>
+                        <div class="aligned-div">
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup">
+                    <form [formGroup]="secondFormGroup">
+                        <ng-template matStepLabel>Prepare Purchase Order</ng-template>
+                        <mat-form-field>
+                            <div>
+                                <div>
+                                    Vendor Number: 162000
+                                </div>
+                                <div>
+                                    Vendor Name: Pactiv Corporation</div>
+                                <input matInput placeholder="Item Name" formControlName="secondCtrl" required>
+                                <input matInput placeholder="Item Quantity" formControlName="secondCtrl1" required>
+                            </div>
+                        </mat-form-field>
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="thirdFormGroup">
+                    <form [formGroup]="thirdFormGroup">
+                        <ng-template matStepLabel>Send Purcashe Order</ng-template>
+                        <mat-form-field>
+                            <input matInput placeholder="Transmit" formControlName="thirdCtrl" required>
+                        </mat-form-field>
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Done</ng-template>
+                    You are now done.
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button (click)="stepper.reset()">Reset</button>
+                    </div>
+                </mat-step>
+            </mat-horizontal-stepper>
+        </td>
+    </tr>
+</table>
+<!--
+<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button>
+-->
