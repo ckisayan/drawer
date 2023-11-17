@@ -41,9 +41,9 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { TradingPartnerConfigComponent } from './bsbc/trading-partner-config/trading-partner-config.component';
 
 const appRoutes: Routes = [
-  { path: '', component: AppComponent, pathMatch: 'full' },
-  { path: 'bsbc', component: BsbcComponent },
-  { path: 'trading-partner1', component: DataTableComponent },
+  //{ path: '', component: AppComponent, pathMatch: 'full' },
+  { path: '', component: DistributionSystemMasterComponent },
+  { path: 'bsbc', component: BsbcComponent },  
   { path: 'trading-partner', component: TradingPartnerConfigComponent },
   {
     path: 'app-distribution-system-master/:id/:accesstoken', component: DistributionSystemMasterComponent
