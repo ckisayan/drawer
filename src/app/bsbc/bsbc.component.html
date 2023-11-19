@@ -1,12 +1,144 @@
-
-
-
-<!--<app-data-table></app-data-table>
-<div style="visibility: hidden;">
-  <mat-drawer-container class="example-container">
-    <mat-drawer #drawer mode="side" opened="true" position="end">drawer</mat-drawer>
-    <mat-drawer-content>
-      <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button>
-    </mat-drawer-content>
-  </mat-drawer-container>
-</div>-->
+<table border="0" width="100%">
+  <tr>
+    <td colspan="4">
+      <table width="100%" border="0" style="background: lightgray;">
+        <tr>
+          <td><img src="..//../assets/images/bsbc.png"></td>
+          <td align="center"> Work Area: System Functionality</td>
+          <td align="center" style="vertical-align: bottom ">
+            <table>
+              <tr>
+                <td>
+                  <mat-icon matTooltip="set favoriate">star_empty</mat-icon> &nbsp; &nbsp;
+                  <mat-icon matTooltip="export current view">download</mat-icon> &nbsp; &nbsp;
+                  <mat-icon matTooltip="customize current view">tune</mat-icon> &nbsp; &nbsp;
+                  <mat-icon matTooltip="refresh">refresh</mat-icon> &nbsp; &nbsp;
+                  <mat-icon matTooltip="Help for this screen">help</mat-icon> &nbsp; &nbsp;
+                  <mat-icon matTooltip="Default settings for this page">beenhere</mat-icon> &nbsp; &nbsp;
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td align="right">
+            <table>
+              <tr>
+                <td align="center">Chris Isayan</td>
+              <tr>
+                <td align="center">Super-User</td>
+              <tr>
+                <td align="center"><mat-icon matTooltip="User Information">account_circle</mat-icon></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4">
+      <hr>
+    </td>
+  </tr>
+  <tr>
+    <td width="16%" style="vertical-align: top;">
+      <div>
+        <mat-accordion class="example-headers-align" multi>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Favorites
+              </mat-panel-title>
+              <mat-panel-description>
+                &nbsp;
+                <mat-icon>favorites</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-nav-list routerLinkActive="active">
+              <a mat-list-item [routerLink]="['/bsbc']">App Overview</a>
+              <a mat-list-item>My Recent Searches</a>
+            </mat-nav-list>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                All Transactions
+              </mat-panel-title>
+              <mat-panel-description>
+                &nbsp;
+                <mat-icon>search</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-nav-list routerLinkActive="active">
+              <a mat-list-item [routerLink]="['/bsbc/transmissions']">Transmission</a>
+              
+            </mat-nav-list>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Claim Status (276/7)
+              </mat-panel-title>
+              <mat-panel-description>   
+                &nbsp;             
+                <mat-icon>check</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-nav-list routerLinkActive="active">
+              <a mat-list-item [routerLink]="['/bsbc/request276']">Request (276)</a>              
+              <a mat-list-item [routerLink]="['/bsbc/response277']">Response (277)</a>
+              <a mat-list-item [routerLink]="['/bsbc/req-res-276-7']">Previously Saved Searches</a>
+            </mat-nav-list>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Eligibility & Benefits (270/1)
+              </mat-panel-title>
+              <mat-panel-description>
+                &nbsp;
+                <mat-icon>rule</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-nav-list routerLinkActive="active">
+              <a mat-list-item [routerLink]="['/bsbc/request276']">Request (270)</a>              
+              <a mat-list-item [routerLink]="['/bsbc/response277']">Response (271)</a>
+              <a mat-list-item [routerLink]="['/bsbc/req-res-276-7']">Previously Saved Searches</a>
+            </mat-nav-list>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Service Review (278-11-13)
+              </mat-panel-title>
+              <mat-panel-description>
+                &nbsp;
+                <mat-icon>security</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>           
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Settings
+              </mat-panel-title>
+              <mat-panel-description>
+                &nbsp;
+                <mat-icon>settings</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>     
+            <mat-nav-list routerLinkActive="active">
+              <a mat-list-item [routerLink]="['/bsbc/trading-partner']">Trading Partner</a>                         
+            </mat-nav-list>      
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      
+    </td>
+    <td colspan="2" style="vertical-align: top;"  width="50%">
+      <router-outlet></router-outlet>
+    </td>
+    <td align="right" width="20%">
+      <app-chat-assist></app-chat-assist>
+    </td>
+  </tr>
+</table>

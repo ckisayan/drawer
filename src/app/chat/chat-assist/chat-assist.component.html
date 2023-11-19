@@ -7,14 +7,16 @@
     </div>
 </section>
 <section>
-    <mat-list class="conversations">
-        <mat-list-item *ngFor="let conversation of conversations" >
-            {{conversation.title}}
-            <mat-icon matListIcon>forum</mat-icon>          
-            <br>
+    <mat-list class="conversations" >
+        <mat-list-item *ngFor="let conversation of conversations" style="height: 100px;">            
+                <mat-icon matListIcon>forum</mat-icon>
+                <textarea type="text" value="{{conversation.title}}" cols="40" rows="3" ></textarea>
+                
+            
+            
             <div style="font-size:12px"> {{conversation.content}}</div>
         </mat-list-item>
-        
-        
-      </mat-list>
+
+
+    </mat-list>
 </section>

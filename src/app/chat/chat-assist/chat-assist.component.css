@@ -7,5 +7,7 @@
     cursor: pointer;
 }
 .conversations .mat-list-item {
-    cursor: pointer;
+    cursor: pointer; 
+    white-space: normal;
+       
 }

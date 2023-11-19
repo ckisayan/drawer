@@ -1,0 +1,38 @@
+<h3>Overview</h3>
+
+    <div style="margin: 30px; font-size: 120%;">
+    In the healthcare EDI landscape involving payors, providers, subscribers, and trading partners, 
+    challenges may arise in transactions like EDI 270/271, 276/277, and 278 ( 11 and 13). 
+    Issues could include discrepancies in eligibility and benefits responses (271) or claim status inquiries (276/277). 
+    Troubleshooting involves meticulous examination of transaction data for inaccuracies or missing information. 
+    Collaboration is key, aligning interpretations of standards and guidelines between payors and providers. 
+    Ensuring consistent adherence to the same X12 standard version and thorough testing are vital.
+    Detailed logs, audit trails, and regular system updates contribute to effective issue resolution. 
+    Engaging with EDI solution providers can provide valuable support in navigating and resolving complex challenges efficiently.
+    <br>
+    <br>
+    Common steps include Search, identify, drill down to detail, look for discrepancies, recommend a fix.
+
+    <mat-horizontal-stepper  #stepper>
+        <mat-step >            
+                <ng-template matStepLabel>Search Category</ng-template>                           
+                you can search by identifier, date range, provider, etc
+        </mat-step>
+        <mat-step >            
+                <ng-template matStepLabel>Apply Filters</ng-template>                                
+        </mat-step>
+        <mat-step >            
+            <ng-template matStepLabel>Drill Down to details</ng-template>                                
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Discripencies</ng-template>            
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Recommend Fix</ng-template>            
+            <div>                
+                <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>
+

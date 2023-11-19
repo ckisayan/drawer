@@ -1,0 +1,20 @@
+.aligned-custom {
+    text-align: center;
+    align-items:center;
+    display: grid;
+    background: blue;
+    color:white;
+    
+    
+}
+.button-custom{
+    background: blue;
+    color: whitesmoke;
+    padding: 12px;
+}
+.aligned-action-buttons {
+    text-align: center;
+}
+.form-custom{
+    width: 600px;
+}

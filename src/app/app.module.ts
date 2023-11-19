@@ -37,27 +37,50 @@ import { VendorActiveOrdersComponent } from './vendor-info/vendor-active-orders/
 import { VendorOrderHistoryComponent } from './vendor-info/vendor-order-history/vendor-order-history.component';
 import { NewPurchaseOrderComponent } from './purchase/new-purchase-order/new-purchase-order.component';
 import { ChatAssistComponent } from './chat/chat-assist/chat-assist.component';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 import { TradingPartnerConfigComponent } from './bsbc/trading-partner-config/trading-partner-config.component';
-
+import { ScOverviewComponent } from './supply-chain/sc-overview/sc-overview.component';
+import { BsOverviewComponent } from './bsbc/bs-overview/bs-overview.component';
+import { BsRequest276Component } from './bsbc/bs-request276/bs-request276.component';
+import { BsResponse277Component } from './bsbc/bs-response277/bs-response277.component';
+import { BsRr276277Component } from './bsbc/bs-rr276277/bs-rr276277.component';
+import { BsAllTransactonsComponent } from './bsbc/bs-all-transactons/bs-all-transactons.component';
+import { BsAdvanceSearchComponent } from './bsbc/bs-advance-search/bs-advance-search.component';
 const appRoutes: Routes = [
   //{ path: '', component: AppComponent, pathMatch: 'full' },
-  { path: '', component: DistributionSystemMasterComponent },
-  { path: 'bsbc', component: BsbcComponent },  
+  {
+    path: '', component: DistributionSystemMasterComponent,
+    children: [
+      { path: '', component: ScOverviewComponent },
+    ]
+  },
+  {
+    path: 'bsbc', component: BsbcComponent,
+    children: [
+      { path: '', component: BsOverviewComponent },
+      { path: 'transmissions', component: BsAllTransactonsComponent },
+      { path: 'request276', component: BsRequest276Component },
+      { path: 'response277', component: BsResponse277Component },
+      { path: 'req-res-276-7', component: BsRr276277Component },
+      { path: 'trading-partner', component: TradingPartnerConfigComponent },
+    ]
+  },
   { path: 'trading-partner', component: TradingPartnerConfigComponent },
   {
     path: 'app-distribution-system-master/:id/:accesstoken', component: DistributionSystemMasterComponent
 
   },
   {
-    path: 'system-master', component: DistributionSystemMasterComponent,
+    path: 'supply-chain', component: DistributionSystemMasterComponent,
     children: [
+      { path: '', component: ScOverviewComponent },
       { path: 'purchase-order', component: NewPurchaseOrderComponent },
       { path: 'vendor-details', component: VendorDetailsComponent },
     ]
   },
   { path: 'system-master/:id/:accesstoken', component: DistributionSystemMasterComponent },
-    
+  { path: 'supply-chain/:id/:accesstoken', component: DistributionSystemMasterComponent },
+
 ]
 @NgModule({
   declarations: [
@@ -74,7 +97,7 @@ const appRoutes: Routes = [
     VendorOrderHistoryComponent,
     NewPurchaseOrderComponent,
     ChatAssistComponent,
-    TradingPartnerConfigComponent
+    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +109,7 @@ const appRoutes: Routes = [
     MatSidenavModule,
     MatFormFieldModule, MatSelectModule, MatButtonModule, MatIconModule, MatTabsModule,
     FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatExpansionModule, MatListModule,
-    MatFormFieldModule,MatStepperModule,
+    MatFormFieldModule, MatStepperModule,
     MatDatepickerModule,
     ReactiveFormsModule,
     NgIf,

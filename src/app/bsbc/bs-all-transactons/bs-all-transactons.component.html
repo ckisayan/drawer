@@ -1,0 +1,62 @@
+<form >
+    <table border="0" >    
+  
+        <tr>
+            <td colspan="3" >
+                <div >  
+                    <mat-drawer-container>
+                        <mat-drawer #drawerdetail [mode]="'side'" position="end" [style.width.px]="drawerWidth"
+                            [opened]="isDrawerOpen" (openedChange)="drawerStateChanged($event)">
+                            <div >Advanced Filters</div>
+                            <div style="align-content: right;">
+                                <button mat-icon-button (click)="drawerdetail.toggle()">
+                                  <mat-icon>{{ isDrawerOpen ? 'close' : 'menu' }}</mat-icon>
+                                </button>
+                              </div>
+                        </mat-drawer>
+                        
+                        <table border="0" style="width: 500px;">
+                            <tr><td>Search</td></tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td>
+                                    <input placeholder="System ID" />
+                                </td>
+                                <td bgcolor="white">&nbsp; &nbsp;</td>
+                                <td style="text-align: right;"><input placeholder="Trace ID"> </td>
+                            </tr>
+                            <tr (click)="showDrawer()" >
+                                <td colspan="3" style="text-align: right; " >+Advanced Filters</td>
+                            </tr>
+                        </table>
+                        <div>
+                            <mat-accordion class="example-headers-align" multi>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title class="aligned-custom">
+                                            Search
+                                        </mat-panel-title>
+                                        <mat-panel-description>
+                                            &nbsp;
+                                            <mat-icon></mat-icon>
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+                                    <img src="..//../assets/images/Trans-SearchGrid.png" width="900px">
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </mat-drawer-container>
+                </div>              
+            </td>
+        </tr>
+
+        <!--<tr>
+            <td colspan="3" class="aligned-div">
+                <button class="button-custom">Search</button>
+            </td>
+        </tr>
+    -->
+    
+    </table>
+
+</form>

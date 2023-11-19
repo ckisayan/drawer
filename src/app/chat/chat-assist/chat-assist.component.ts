@@ -7,8 +7,10 @@ import { Component , OnInit} from '@angular/core';
 })
 export class ChatAssistComponent implements OnInit {
   conversations: Array<{ title: string, content: string }> = [
-    { title: 'Conversation 1', content: 'Content for Conversation 1' },
-    { title: 'Conversation 2', content: 'Content for Conversation 2' },
+    { title: 'Provider sent prior authorization but have not received  a response.  Where do I start?', 
+      content: 'Try to get TRN02 or BHT03 number.' },
+    { title: 'Got it!  What should I do next?', 
+    content: 'Navigate to 278 workspace & view txn logs...' },
     // Add more conversations as needed
   ];
   ngOnInit() {
