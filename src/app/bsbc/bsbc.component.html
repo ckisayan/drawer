@@ -4,7 +4,14 @@
       <table width="100%" border="0" style="background: lightgray;">
         <tr>
           <td><img src="..//../assets/images/bsbc.png"></td>
-          <td align="center"> Work Area: System Functionality</td>
+          <td align="center">
+            <table><tr><td>
+              <app-bs-breadcrumb></app-bs-breadcrumb>
+            </td></tr>
+              <tr><td>Work Area: System Functionality</td></tr>
+             
+            </table>
+            </td>
           <td align="center" style="vertical-align: bottom ">
             <table>
               <tr>
@@ -61,7 +68,7 @@
           <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
-                All Transactions
+                All Transmission
               </mat-panel-title>
               <mat-panel-description>
                 &nbsp;
@@ -69,7 +76,7 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-nav-list routerLinkActive="active">
-              <a mat-list-item [routerLink]="['/bsbc/transmissions']">Transmission</a>
+              <a mat-list-item [routerLink]="['/bsbc/transmissions']">Transaction</a>
               
             </mat-nav-list>
           </mat-expansion-panel>
@@ -115,6 +122,22 @@
                 <mat-icon>security</mat-icon>
               </mat-panel-description>
             </mat-expansion-panel-header>           
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Acknowledgement
+              </mat-panel-title>
+              <mat-panel-description>
+                &nbsp;
+                <mat-icon>information</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>           
+            <mat-nav-list routerLinkActive="active">
+              <a mat-list-item >997</a>
+              <a mat-list-item >999</a>
+              <a mat-list-item >TA1</a>
+            </mat-nav-list>
           </mat-expansion-panel>
           <mat-expansion-panel>
             <mat-expansion-panel-header>

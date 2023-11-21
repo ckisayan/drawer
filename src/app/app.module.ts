@@ -46,6 +46,14 @@ import { BsResponse277Component } from './bsbc/bs-response277/bs-response277.com
 import { BsRr276277Component } from './bsbc/bs-rr276277/bs-rr276277.component';
 import { BsAllTransactonsComponent } from './bsbc/bs-all-transactons/bs-all-transactons.component';
 import { BsAdvanceSearchComponent } from './bsbc/bs-advance-search/bs-advance-search.component';
+import { BsFilterOptionsComponent } from './bsbc/bs-filter-options/bs-filter-options.component';
+import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/material/tree';
+import { BsFilterOptionsFlatComponent } from './bsbc/bs-filter-options-flat/bs-filter-options-flat.component';
+import { BsGenericResGridComponent } from './bsbc/bs-generic-res-grid/bs-generic-res-grid.component';
+import { ScChatComponent } from './supply-chain/sc-chat/sc-chat.component';
+import { BsBreadcrumbComponent } from './bsbc/bs-breadcrumb/bs-breadcrumb.component';
+import { ScBreadcrumbComponent } from './supply-chain/sc-breadcrumb/sc-breadcrumb.component';
+
 const appRoutes: Routes = [
   //{ path: '', component: AppComponent, pathMatch: 'full' },
   {
@@ -58,7 +66,10 @@ const appRoutes: Routes = [
     path: 'bsbc', component: BsbcComponent,
     children: [
       { path: '', component: BsOverviewComponent },
-      { path: 'transmissions', component: BsAllTransactonsComponent },
+      { path: 'transmissions', component: BsAllTransactonsComponent,
+        children:[
+          {path:'grid', component: BsGenericResGridComponent} 
+      ]},
       { path: 'request276', component: BsRequest276Component },
       { path: 'response277', component: BsResponse277Component },
       { path: 'req-res-276-7', component: BsRr276277Component },
@@ -74,6 +85,7 @@ const appRoutes: Routes = [
     path: 'supply-chain', component: DistributionSystemMasterComponent,
     children: [
       { path: '', component: ScOverviewComponent },
+      { path: 'overview', component: ScOverviewComponent },
       { path: 'purchase-order', component: NewPurchaseOrderComponent },
       { path: 'vendor-details', component: VendorDetailsComponent },
     ]
@@ -97,7 +109,7 @@ const appRoutes: Routes = [
     VendorOrderHistoryComponent,
     NewPurchaseOrderComponent,
     ChatAssistComponent,
-    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent
+    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent
   ],
   imports: [
     BrowserModule,
@@ -110,6 +122,7 @@ const appRoutes: Routes = [
     MatFormFieldModule, MatSelectModule, MatButtonModule, MatIconModule, MatTabsModule,
     FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatExpansionModule, MatListModule,
     MatFormFieldModule, MatStepperModule,
+    MatTreeModule, MatButtonModule, MatIconModule,
     MatDatepickerModule,
     ReactiveFormsModule,
     NgIf,

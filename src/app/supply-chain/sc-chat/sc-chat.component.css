@@ -1,0 +1,13 @@
+
+.full-width {
+    width: 100%;
+}
+
+.full-width .mat-icon {
+    cursor: pointer;
+}
+.conversations .mat-list-item {
+    cursor: pointer; 
+    white-space: normal;
+       
+}

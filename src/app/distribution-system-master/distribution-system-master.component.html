@@ -1,16 +1,28 @@
-<table border="0" width="100%"  >
+<table border="0" width="100%">
   <tr>
     <td colspan="4">
       <table width="100%" border="0" style="background: lightgray;">
         <tr>
           <td><img src="..//../assets/images/logo.svg"></td>
-          <td align="center"> Purchase order screen (screen being displayed now)</td>
+          <td align="center">
+            <table>
+              <tr>
+                <td>
+                  <app-sc-breadcrumb></app-sc-breadcrumb>
+                </td>
+              </tr>
+              <tr>
+                <td>Work Area: System Functionality</td>
+              </tr>
+            </table>
+          </td>
           <td align="center" style="vertical-align: bottom ">
             <table>
               <tr>
                 <td>
-                  <mat-icon matTooltip="export to CSV">download</mat-icon> &nbsp; &nbsp;
-                  <mat-icon matTooltip="customize current view">tune</mat-icon> &nbsp; &nbsp;
+                  <mat-icon matTooltip="set favoriate">star_empty</mat-icon> &nbsp; &nbsp;
+                  <mat-icon matTooltip="download current screen">download</mat-icon> &nbsp; &nbsp;
+                  <mat-icon matTooltip="customize current screen">tune</mat-icon> &nbsp; &nbsp;
                   <mat-icon matTooltip="refresh">refresh</mat-icon> &nbsp; &nbsp;
                   <mat-icon matTooltip="Help for this screen">help</mat-icon> &nbsp; &nbsp;
                   <mat-icon matTooltip="Default settings for this page">beenhere</mat-icon> &nbsp; &nbsp;
@@ -41,9 +53,9 @@
     </td>
   </tr>
   <tr>
-    <td style="width: 20%;">
+    <td style="width: 15%;">
       <div>
-<!--
+        <!--
         <div class="example-action-buttons">
           <button mat-button (click)="accordion.openAll()">Expand All</button>
           <button mat-button (click)="accordion.closeAll()">Collapse All</button>
@@ -60,8 +72,8 @@
                 <mat-icon>favorites</mat-icon>
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <mat-nav-list>
-              <a mat-list-item>App Overview</a>
+            <mat-nav-list routerLinkActive="true">
+              <a mat-list-item [routerLink]="['/supply-chain/overview']">App Overview</a>
               <a mat-list-item>My Orders</a>
               <a mat-list-item>My Customers</a>
             </mat-nav-list>
@@ -77,9 +89,10 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-nav-list routerLinkActive="active">
-              <a mat-list-item  [routerLink]="['/supply-chain/purchase-order']">Enter New Order</a>              
+              <a mat-list-item [routerLink]="['/supply-chain/purchase-order']" class="font_size_small">Enter New
+                Order</a>
               <a mat-list-item> Change Existing P.O.</a>
-              <a mat-list-item >Cancel P.O.</a>
+              <a mat-list-item>Cancel P.O.</a>
               <a mat-list-item>Close P.O.</a>
             </mat-nav-list>
           </mat-expansion-panel>
@@ -163,7 +176,7 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-nav-list>
-              <a mat-list-item [routerLink]="['/supply-chain/vendor-details']">Search PO Vendor</a>              
+              <a mat-list-item [routerLink]="['/supply-chain/vendor-details']">Search PO Vendor</a>
             </mat-nav-list>
           </mat-expansion-panel>
           <mat-expansion-panel>
@@ -183,12 +196,12 @@
         </mat-accordion>
       </div>
     </td>
-    <td colspan="2" >
+    <td colspan="2" style="width: 40%;">
       <!--<app-vendor-details></app-vendor-details>-->
       <router-outlet></router-outlet>
     </td>
-    <td align="right" width="25%">
-      <app-chat-assist></app-chat-assist>
+    <td align="right" width="20%">
+      <app-sc-chat></app-sc-chat>
     </td>
   </tr>
 

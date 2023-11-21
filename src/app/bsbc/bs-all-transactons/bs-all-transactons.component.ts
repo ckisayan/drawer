@@ -7,7 +7,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class BsAllTransactonsComponent  implements OnInit, AfterViewInit{
   isDrawerOpen = false;
-  drawerWidth: number = 300;
+  drawerWidth: number = 400;
   constructor(){}
   ngOnInit() {
    

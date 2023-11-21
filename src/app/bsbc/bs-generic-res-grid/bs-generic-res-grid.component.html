@@ -1,0 +1,54 @@
+<mat-drawer-container class="example-container">
+    <mat-form-field style="width: 80%;">
+        <mat-label>Filter below grid futher</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="search by anything" #input>
+        <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <span >        
+        &nbsp;
+        <mat-icon matTooltip="export to CSV">download</mat-icon> &nbsp; &nbsp;      
+        <mat-icon matTooltip="add column">add</mat-icon> &nbsp; &nbsp;
+    </span>
+    
+    <table mat-table class="full-width-table" matSort aria-label="Elements">
+
+        <!-- Id Column -->
+        <ng-container matColumnDef="SystemID">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>SystemID</th>
+            <td mat-cell *matCellDef="let row">{{row.SystemID}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let row">{{row.Name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Msg">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Message</th>
+            <td mat-cell *matCellDef="let row">{{row.Msg}}</td>
+        </ng-container>
+        <ng-container matColumnDef="ValidationStatus">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+            <td mat-cell *matCellDef="let row">{{row.ValidationStatus}}</td>
+        </ng-container>
+        <ng-container matColumnDef="TransactionType">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+            <td mat-cell *matCellDef="let row">{{row.TransactionType}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-icon class="example-tab-icon">more_vert</mat-icon>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+    <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
+    </mat-paginator>
+</mat-drawer-container>

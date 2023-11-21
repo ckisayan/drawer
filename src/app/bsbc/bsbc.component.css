@@ -97,4 +97,6 @@ td {
     font-size: 10px !important;
   }
   
-  
+  .mat-mdc-list-base{
+    --mdc-list-list-item-label-text-size:12px
+  }

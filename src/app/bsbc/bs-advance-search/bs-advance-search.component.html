@@ -1,1 +1,20 @@
-<p>bs-advance-search works!</p>
+
+<p>Advance Search</p>
+
+<mat-tab-group>
+    <mat-tab label="FlatView">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+            Flat View
+        </ng-template>
+        <app-bs-filter-options-flat></app-bs-filter-options-flat>
+    </mat-tab>
+    <mat-tab label="Second">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">home</mat-icon>
+            X12 View
+        </ng-template>
+
+        <app-bs-filter-options></app-bs-filter-options>
+    </mat-tab>
+</mat-tab-group>
