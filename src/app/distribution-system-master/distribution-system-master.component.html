@@ -89,11 +89,12 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-nav-list routerLinkActive="active">
-              <a mat-list-item [routerLink]="['/supply-chain/purchase-order']" class="font_size_small">Enter New
+              <a mat-list-item [routerLink]="['/supply-chain/purchase-order']" >Enter New
                 Order</a>
               <a mat-list-item> Change Existing P.O.</a>
               <a mat-list-item>Cancel P.O.</a>
               <a mat-list-item>Close P.O.</a>
+              <a mat-list-item [routerLink]="['/supply-chain/existing-po']" >View Existing P.O. </a>
             </mat-nav-list>
           </mat-expansion-panel>
           <mat-expansion-panel>

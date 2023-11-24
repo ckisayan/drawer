@@ -1,0 +1,35 @@
+<h3>Search Purchase Order</h3>
+<table>
+    <tr>
+        <td >
+            Enter P.O
+        </td>
+        <td>
+            <input type="text">
+        </td>
+        <td>
+            <button style="background-color: blue; color: white;"
+                [routerLink]="['/supply-chain/existing-po/grid']">Search</button>
+        </td>
+        <td>
+            <button style="background-color: blue; color: white;" (click)="updateMessage()">Advance Search</button>
+            <button style="background-color: blue; color: white;" (click)="nexttab()">Advance Search</button>
+            
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <table>
+                <tr>
+                    <td>
+                        <!--<router-outlet></router-outlet>-->
+                        <app-sc-existing-po-grid (nexttab)="nexttab()"></app-sc-existing-po-grid>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>

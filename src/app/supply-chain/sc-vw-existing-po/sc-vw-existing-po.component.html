@@ -1,0 +1,25 @@
+<mat-tab-group [(selectedIndex)]="selectedIndex" (selectedTabChange)="tabChanged($event)">
+    <mat-tab label="Search P.O.">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">search</mat-icon>
+            Search
+        </ng-template>
+        <app-sc-existing-po-search (nexttab)="nexttab()" ></app-sc-existing-po-search>
+  
+        <button (click)="nexttab()">Next</button>
+    </mat-tab>
+    <mat-tab label="ViewGeneral">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">general</mat-icon>
+            General View
+        </ng-template>
+        <app-sc-existing-po-generalview></app-sc-existing-po-generalview>
+    </mat-tab>
+    <mat-tab label="Audit">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">audit</mat-icon>
+            Audit View
+        </ng-template>
+        <app-bs-filter-options></app-bs-filter-options>
+    </mat-tab>
+</mat-tab-group>

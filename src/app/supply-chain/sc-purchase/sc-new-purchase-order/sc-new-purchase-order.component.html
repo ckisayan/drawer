@@ -1,0 +1,52 @@
+<table bgColor="">
+    <tr>
+        <td>
+            <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                <mat-step [stepControl]="firstFormGroup">
+                    <form [formGroup]="firstFormGroup">
+                        <ng-template matStepLabel>Identify Supplier</ng-template>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup">
+                    <form [formGroup]="secondFormGroup">
+                        <ng-template matStepLabel>Add Items</ng-template>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="thirdFormGroup">
+                    <form [formGroup]="thirdFormGroup">
+                        <ng-template matStepLabel>Send Purcashe Order</ng-template>
+
+                    </form>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Done</ng-template>
+
+                </mat-step>
+            </mat-horizontal-stepper>
+        </td>
+    </tr>
+</table>
+
+<div>
+    <table>
+        <tr>
+            <td class="fromcolumn">
+                Vendor Name
+            </td>
+            <td class="fromcolumn"> <input type="text"> <mat-icon (click)="showvendors()">more_horiz</mat-icon></td>
+            <td class="fromcolumn">
+                Vendor Contact
+            </td>
+            <td class="fromcolumn"><input type="text" disabled="true"></td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div (click)="showvendordetails()" class="show-more-link">{{ getVendorShowMoreText() }}</div>
+            </td>
+        </tr>
+        <tr [ngClass]="{'hidden-row': hideVendorRow}">
+            <td>vendor details</td>
+        </tr>
+    </table>
+</div>
+{{vendorSelected.VendorName}}

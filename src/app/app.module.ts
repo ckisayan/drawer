@@ -47,12 +47,33 @@ import { BsRr276277Component } from './bsbc/bs-rr276277/bs-rr276277.component';
 import { BsAllTransactonsComponent } from './bsbc/bs-all-transactons/bs-all-transactons.component';
 import { BsAdvanceSearchComponent } from './bsbc/bs-advance-search/bs-advance-search.component';
 import { BsFilterOptionsComponent } from './bsbc/bs-filter-options/bs-filter-options.component';
-import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/material/tree';
+import { MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule } from '@angular/material/tree';
 import { BsFilterOptionsFlatComponent } from './bsbc/bs-filter-options-flat/bs-filter-options-flat.component';
 import { BsGenericResGridComponent } from './bsbc/bs-generic-res-grid/bs-generic-res-grid.component';
 import { ScChatComponent } from './supply-chain/sc-chat/sc-chat.component';
 import { BsBreadcrumbComponent } from './bsbc/bs-breadcrumb/bs-breadcrumb.component';
 import { ScBreadcrumbComponent } from './supply-chain/sc-breadcrumb/sc-breadcrumb.component';
+import { ScVwExistingPoComponent } from './supply-chain/sc-vw-existing-po/sc-vw-existing-po.component';
+import { ScExistingPoSearchComponent } from './supply-chain/sc-existing-po-search/sc-existing-po-search.component';
+import { ScExistingPoGeneralviewComponent } from './supply-chain/sc-existing-po-generalview/sc-existing-po-generalview.component';
+import { ScExistingPoGridComponent } from './supply-chain/sc-existing-po-grid/sc-existing-po-grid.component';
+import { BsVwGeneralComponent } from './bsbc/bs-vw-general/bs-vw-general.component';
+import { ScNewPurchaseOrderComponent } from './supply-chain/sc-purchase/sc-new-purchase-order/sc-new-purchase-order.component';
+import { ScVendorListComponent } from './supply-chain/sc-vendor/sc-vendor-list/sc-vendor-list.component';
+
+import {
+  MatDialog,
+   
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogModule
+} from '@angular/material/dialog';
+
+
 
 const appRoutes: Routes = [
   //{ path: '', component: AppComponent, pathMatch: 'full' },
@@ -66,10 +87,12 @@ const appRoutes: Routes = [
     path: 'bsbc', component: BsbcComponent,
     children: [
       { path: '', component: BsOverviewComponent },
-      { path: 'transmissions', component: BsAllTransactonsComponent,
-        children:[
-          {path:'grid', component: BsGenericResGridComponent} 
-      ]},
+      {
+        path: 'transmissions', component: BsAllTransactonsComponent,
+        children: [
+          { path: 'grid', component: BsGenericResGridComponent }
+        ]
+      },
       { path: 'request276', component: BsRequest276Component },
       { path: 'response277', component: BsResponse277Component },
       { path: 'req-res-276-7', component: BsRr276277Component },
@@ -86,8 +109,16 @@ const appRoutes: Routes = [
     children: [
       { path: '', component: ScOverviewComponent },
       { path: 'overview', component: ScOverviewComponent },
-      { path: 'purchase-order', component: NewPurchaseOrderComponent },
+      { path: 'purchase-order', component: ScNewPurchaseOrderComponent },
       { path: 'vendor-details', component: VendorDetailsComponent },
+      {
+        path: 'existing-po', component: ScVwExistingPoComponent,
+        children: [
+          { path: 'grid', component: ScExistingPoGridComponent, }
+        ]
+      },
+      { path: 'existing-po/:id', component: ScVwExistingPoComponent },
+      { path: 'existing-po/:id/:accesstoken', component: ScVwExistingPoComponent },
     ]
   },
   { path: 'system-master/:id/:accesstoken', component: DistributionSystemMasterComponent },
@@ -109,7 +140,7 @@ const appRoutes: Routes = [
     VendorOrderHistoryComponent,
     NewPurchaseOrderComponent,
     ChatAssistComponent,
-    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent
+    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, BsVwGeneralComponent, ScNewPurchaseOrderComponent, ScVendorListComponent
   ],
   imports: [
     BrowserModule,
@@ -123,11 +154,21 @@ const appRoutes: Routes = [
     FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatExpansionModule, MatListModule,
     MatFormFieldModule, MatStepperModule,
     MatTreeModule, MatButtonModule, MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,    
     MatDatepickerModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,    
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,    
     NgIf,
     JsonPipe,
+    MatDialogModule,
     MatNativeDateModule, MatTooltipModule, CdkAccordionModule, RouterModule.forRoot(appRoutes)
+
   ],
   providers: [],
   bootstrap: [AppComponent]

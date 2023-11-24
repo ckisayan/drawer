@@ -1,0 +1,22 @@
+.break-lines {
+    word-wrap: break-word;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.fromcolumn {
+    width: 20%;
+    ;
+}
+
+.hidden-row {
+    display: none;
+}
+
+.show-more-link {
+    cursor: pointer;
+    color: blue;
+    text-align: right;
+}
