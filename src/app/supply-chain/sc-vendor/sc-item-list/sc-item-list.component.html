@@ -1,0 +1,38 @@
+<h2>Items for this Vendor</h2>
+<button  (click)="loadItems()" class="demo-button">
+    Load Items
+</button>
+<mat-drawer-container class="example-container">    
+    
+    <table mat-table class="full-width-table" [dataSource]="dataSource.data" matSort aria-label="Elements"> 
+        <ng-container matColumnDef="ItemNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Item Number</th>
+            <td mat-cell *matCellDef="let row">{{row.ItemNumber}}</td>
+        </ng-container>
+        <ng-container matColumnDef="ItemShortDesc">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+            <td mat-cell *matCellDef="let row">{{row.ItemShortDesc}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="UnitPriceAmt">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Unit Price Amt</th>
+            <td mat-cell *matCellDef="let row">{{row.UnitPriceAmt}}</td>
+        </ng-container>     
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-icon class="example-tab-icon">more_vert</mat-icon>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <div mat-dialog-actions>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" [mat-dialog-close]="row"  ></tr>
+        </div>
+    </table>
+
+
+    <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
+    </mat-paginator>
+</mat-drawer-container>

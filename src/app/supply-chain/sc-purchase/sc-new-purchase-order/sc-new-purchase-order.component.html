@@ -26,18 +26,18 @@
         </td>
     </tr>
 </table>
-
 <div>
     <table>
         <tr>
             <td class="fromcolumn">
                 Vendor Name
             </td>
-            <td class="fromcolumn"> <input type="text"> <mat-icon (click)="showvendors()">more_horiz</mat-icon></td>
+            <td class="fromcolumn"> <input matInput [(ngModel)]="vendorSelected.VendorName" disabled="true"> <mat-icon
+                    (click)="showvendors()">more_vert</mat-icon></td>
             <td class="fromcolumn">
-                Vendor Contact
+                Vendor Number
             </td>
-            <td class="fromcolumn"><input type="text" disabled="true"></td>
+            <td class="fromcolumn"><input matInput [(ngModel)]="vendorSelected.VendorNumber" disabled="true"></td>
         </tr>
         <tr>
             <td colspan="4">
@@ -45,8 +45,108 @@
             </td>
         </tr>
         <tr [ngClass]="{'hidden-row': hideVendorRow}">
-            <td>vendor details</td>
+            <td class="fromcolumn">
+                Vendor Address
+            </td>
+            <td class="fromcolumn"><input matInput [(ngModel)]="vendorSelected.VendorAddress" disabled="true"></td>
+            <td class="fromcolumn">
+                Vendor City
+            </td>
+            <td class="fromcolumn"><input matInput [(ngModel)]="vendorSelected.VendorCity" disabled="true"></td>
+        </tr>
+        <tr [ngClass]="{'hidden-row': hideVendorRow}">
+            <td class="fromcolumn">
+                Vendor Contact
+            </td>
+            <td class="fromcolumn"><input matInput [(ngModel)]="vendorSelected.VendorContact" disabled="true"></td>
+            <td class="fromcolumn">
+                Vendor Phone
+            </td>
+            <td class="fromcolumn"><input matInput [(ngModel)]="vendorSelected.VendorTelNumber" disabled="true"></td>
+        </tr>
+        <tr>
+            <td class="fromcolumn">
+                Purchase Order Date
+            </td>
+            <td class="fromcolumn"> <input matInput [(ngModel)]="purchaseOrder.PODate" disabled="true"></td>
+            <td class="fromcolumn">
+                Purchase Order Status
+            </td>
+            <td class="fromcolumn">
+                <mat-select [(ngModel)]="purchaseOrder.OrderStatus">
+                    <mat-option [value]="'New'">New</mat-option>
+                    <mat-option [value]="'Pending'">Pending</mat-option>
+                    <mat-option [value]="'In Progress'">In Progress</mat-option>
+                    <mat-option [value]="'Shipped'">Shipped</mat-option>
+                </mat-select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <hr>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="1"><button  (click)="addItem()" class="demo-button">
+                    Add Item
+                </button></td>
+            <td colspan="1"><button  [disabled]="!dataItemSource.length" (click)="removeItem()"
+                    class="demo-button">
+                    Remove data
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <table mat-table [dataSource]="dataItemSource" class="mat-elevation-z8 demo-table">
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="ItemNumber">
+                        <th mat-header-cell *matHeaderCellDef>No.</th>
+                        <td mat-cell *matCellDef="let element">{{element.ItemNumber}}</td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="ItemShortDesc">
+                        <th mat-header-cell *matHeaderCellDef>Description</th>
+                        <td mat-cell *matCellDef="let element">{{element.ItemShortDesc}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="UnitPriceAmt">
+                        <th mat-header-cell *matHeaderCellDef>Unit Price</th>
+                        <td mat-cell *matCellDef="let element">{{element.UnitPriceAmt}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="ItemQuanity">
+                        <th mat-header-cell *matHeaderCellDef>Quantity</th>
+                        <td mat-cell *matCellDef="let element">{{element.ItemQuanity}}</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="itemDisplayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: itemDisplayedColumns;"></tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <hr>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+            <td><button  (click)="saveDraft()" class="secondary-action-button">Save Draft
+                
+            </button></td>
+            <td><button  (click)="saveTransmit()" class="primary-action-button">Save & Transmit
+                
+            </button></td>
         </tr>
     </table>
 </div>
-{{vendorSelected.VendorName}}

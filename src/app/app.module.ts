@@ -3,13 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatTableModule } from '@angular/material/table';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { AppComponent } from './app.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { DataTableComponent } from './data-table/data-table.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
+import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -69,9 +69,10 @@ import {
   MatDialogTitle,
   MatDialogContent,
   MatDialogActions,
-  MatDialogClose,
+  MatDialogClose,  
   MatDialogModule
 } from '@angular/material/dialog';
+import { ScItemListComponent } from './supply-chain/sc-vendor/sc-item-list/sc-item-list.component';
 
 
 
@@ -140,10 +141,12 @@ const appRoutes: Routes = [
     VendorOrderHistoryComponent,
     NewPurchaseOrderComponent,
     ChatAssistComponent,
-    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, BsVwGeneralComponent, ScNewPurchaseOrderComponent, ScVendorListComponent
+    
+    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, BsVwGeneralComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent
   ],
   imports: [
     BrowserModule,
+    
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatTableModule,
@@ -163,7 +166,7 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatButtonModule,    
+    MatButtonModule, HttpClientModule,   
     NgIf,
     JsonPipe,
     MatDialogModule,

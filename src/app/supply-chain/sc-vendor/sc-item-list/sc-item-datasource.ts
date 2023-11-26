@@ -3,13 +3,14 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { VendorData } from './vendordata';
+import { PurchaseItem } from '../sc-vendor-list/purchaseitem';
+
 import {MatTableDataSource} from '@angular/material/table';
 // TODO: replace this with real data from your application
-const VENTOR_EXAMPLE_DATA: VendorData[] = [
-    {VendorNumber: "V123", VendorName: "ABC Supplies 1", VendorAddress: "123 Main Street",  VendorCity: "Glendale", VendorState: "CA", VendorZip: "91202",  VendorContact: "John Doe", VendorTelNumber: "818-555-1234"},
-    {VendorNumber: "V124", VendorName: "ABC Supplies 2", VendorAddress: "456 Main Street",  VendorCity: "New York", VendorState: "NY", VendorZip: "10001",  VendorContact: "John Doe", VendorTelNumber: "702-555-1234"}
-
+const ITEM_EXAMPLE_DATA: PurchaseItem[] = [    
+    { ItemNumber: '111', ItemShortDesc: 'Widget A', UnitPriceAmt: '20.00', ItemQuanity: "",VendorNumber: 'V001' },
+    { ItemNumber: '112', ItemShortDesc: 'Gadget B', UnitPriceAmt: '15.50', ItemQuanity: "",VendorNumber: 'V002' },
+    { ItemNumber: '113', ItemShortDesc: 'Tool C', UnitPriceAmt: '30.75', ItemQuanity: "",VendorNumber: 'V003' },
 ];
 
 /**
@@ -17,22 +18,23 @@ const VENTOR_EXAMPLE_DATA: VendorData[] = [
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class ScVendorDataSource extends DataSource<VendorData> {
-  data: VendorData[] = VENTOR_EXAMPLE_DATA;
-  //data = new MatTableDataSource(VENTOR_EXAMPLE_DATA)
+export class ScItemDataSource extends DataSource<PurchaseItem> {
+  data: PurchaseItem[] = [...ITEM_EXAMPLE_DATA];
+  //data =new MatTableDataSource(ITEM_EXAMPLE_DATA);
+  
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
   constructor() {
     super();
   }
-
+  
   /**
    * Connect this data source to the table. The table will only update when
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<VendorData[]> {
+  connect(): Observable<PurchaseItem[]> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
@@ -55,7 +57,7 @@ export class ScVendorDataSource extends DataSource<VendorData> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: VendorData[]): VendorData[] {
+  private getPagedData(data: PurchaseItem[]): PurchaseItem[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -68,7 +70,7 @@ export class ScVendorDataSource extends DataSource<VendorData> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: VendorData[]): VendorData[] {
+  private getSortedData(data: PurchaseItem[]): PurchaseItem[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -76,9 +78,9 @@ export class ScVendorDataSource extends DataSource<VendorData> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'VendorName': return compare(a.VendorName, b.VendorName, isAsc);
-        case 'VendorNumber': return compare(+a.VendorNumber, +b.VendorNumber, isAsc);
-        case 'VendorContact': return compare(+a.VendorContact, +b.VendorContact, isAsc);
+        case 'ItemShortDesc': return compare(a.ItemShortDesc, b.ItemShortDesc, isAsc);
+        case 'ItemNumber': return compare(+a.ItemNumber, +b.ItemNumber, isAsc);
+        case 'UnitPriceAmt': return compare(+a.UnitPriceAmt, +b.UnitPriceAmt, isAsc);
         default: return 0;
       }
     });

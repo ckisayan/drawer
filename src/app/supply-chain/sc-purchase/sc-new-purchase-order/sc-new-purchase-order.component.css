@@ -20,3 +20,29 @@
     color: blue;
     text-align: right;
 }
+
+.demo-table {
+    width: 100%;
+  }
+  
+  .demo-button-container {
+    padding-bottom: 16px;
+  }
+  
+  .demo-button + .demo-button {
+    margin-left: 8px;
+    font-size: 8px;
+  }
+
+  .mat-raised-button{
+    --mdc-typography-button-font-size:12px
+  }
+
+  .primary-action-button {
+    background-color: blue;
+    color: white;
+  }
+  .secondary-action-button {
+    background-color: gray;
+    color: white;
+  }

@@ -6,5 +6,5 @@ export interface VendorData {
     VendorState: string;
     VendorZip: string;
     VendorContact: string;
-    VentorTelNumber: string;    
+    VendorTelNumber: string;    
   }
