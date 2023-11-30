@@ -39,6 +39,29 @@
                                 <td bgcolor="white">&nbsp; &nbsp;</td>
                                 <td style="text-align:;"><input placeholder="field 4"> </td>
                             </tr>
+                            <tr [ngClass]="{'hidden-row': hideOrigFilterRow}">
+                                <td>
+                                    <input placeholder="Originator Transaction identifier" >
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" >
+                                    <div (click)="showdoctypes()" class="show-more-link">{{ getDocTypeShowMoreText() }}</div>
+                                </td>
+                            </tr>
+                        
+                            <tr [ngClass]="{'hidden-row': hideDocumentTypeRow}">    
+                                <td colspan="3" class="fromcolumn">
+                                    ALL<input type="checkbox" value="ALL">
+                                    270<input type="checkbox" value="276">
+                                    271<input type="checkbox" value="276">
+                                    276<input type="checkbox" value="276">
+                                    277<input type="checkbox" value="276">
+                                    278<input type="checkbox" value="276">
+                                    999<input type="checkbox" value="276">
+                                    TA1<input type="checkbox" value="276">
+                                </td>
+                            </tr>    
                             <tr >
                                 <td colspan="3" style="text-align: right; ">                                    
                                     <span (click)="showDrawer()">+Advanced Filters</span>

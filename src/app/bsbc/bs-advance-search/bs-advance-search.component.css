@@ -1,0 +1,10 @@
+
+.hidden-row {
+    display: none;
+}
+
+.show-more-link {
+    cursor: pointer;
+    color: blue;
+    
+}

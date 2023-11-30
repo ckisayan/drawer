@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BsAdvFilterService } from '../bs-services/bs-adv-filter-service';
 
 
 @Component({
@@ -7,15 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bs-advance-search.component.css']
 })
 export class BsAdvanceSearchComponent implements OnInit {
-  
-  constructor() {
+  hideOrigFilterRow: boolean = false;  
+  constructor(
+    private advFilterService: BsAdvFilterService
+  ) {
     console.log("advance search activated:constructor");
+    this.advFilterService.getShowOrigTransId.subscribe(origfilt => this.hideOrigFilterRow = origfilt)
     
   }
   ngOnInit(): void {
     console.log("advance search activated:on init");
   }
-
-
+  showOrigFilter(){
+    this.hideOrigFilterRow = !this.hideOrigFilterRow
+    this.advFilterService.setShowOrigTransId(this.hideOrigFilterRow);
+    console.log(this.hideOrigFilterRow );
+  }
+  getOrigFilterText() {
+    return this.hideOrigFilterRow ? 'add' : 'remove';
+  }
 
 }

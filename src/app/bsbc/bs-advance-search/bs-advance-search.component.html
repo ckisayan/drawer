@@ -1,19 +1,56 @@
 
-<p>Advance Search</p>
+<H1>Advance Filters</H1>
 
-<mat-tab-group>
-    <mat-tab label="FlatView">
-        <ng-template mat-tab-label>
-            <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-            Flat View
-        </ng-template>
-        <app-bs-filter-options-flat></app-bs-filter-options-flat>
-    </mat-tab>
-    <mat-tab label="Second">
-        <ng-template mat-tab-label>
-            <mat-icon class="example-tab-icon">home</mat-icon>
-            X12 View
-        </ng-template>
-        <app-bs-filter-options></app-bs-filter-options>
-    </mat-tab>
-</mat-tab-group>
+<div>
+    <table>
+        
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="white-space: nowrap;">
+                
+                
+                    <input placeholder="Originator Transaction identifier" style="width: 250px;">    
+                
+                
+            </td>
+            <td>    <div style="white-space: nowrap;" (click)="showOrigFilter()" class="show-more-link">{{ getOrigFilterText() }}</div></td>
+        </tr>
+        
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                <input placeholder="Trading Partner" style="width: 250px;"> 
+            </td>
+            <td><div style="white-space: nowrap;" class="show-more-link">add</div></td>
+        </tr>
+        
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                <input placeholder="Member Name" style="width: 250px;"> 
+            </td>
+            <td><div style="white-space: nowrap;" class="show-more-link">add</div></td>
+        </tr>
+        
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                <hr>
+            </td>
+        </tr>
+        <tr>
+            <td><button name="applyfilters" style="background-color: blue; color: white;">Apply</button></td>
+        </tr>
+
+    </table>
+
+
+</div>

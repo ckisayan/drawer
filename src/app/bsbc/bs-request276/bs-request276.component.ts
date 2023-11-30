@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./bs-request276.component.css']
 })
 export class BsRequest276Component {
-
+  hideDocumentTypeRow: boolean = true;
+  showdoctypes(){
+    this.hideDocumentTypeRow = !this.hideDocumentTypeRow
+  }
+  getDocTypeShowMoreText(){
+    return this.hideDocumentTypeRow ? 'DocType More' : 'DocType Less';
+  }
+  
 }
