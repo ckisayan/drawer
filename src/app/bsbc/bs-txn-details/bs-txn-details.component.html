@@ -1,0 +1,40 @@
+<mat-tab-group>
+    <mat-tab label="General">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">home</mat-icon>
+            General View
+        </ng-template>
+        <app-bs-general-vw></app-bs-general-vw>
+    </mat-tab>
+    <mat-tab label="EDI">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">X</mat-icon>
+            EDI View
+        </ng-template>
+        <app-bs-edi-vw></app-bs-edi-vw>
+    </mat-tab>
+    <mat-tab label="Related">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">read_more</mat-icon>
+            Related Items
+        </ng-template>
+        <app-bs-related-vw></app-bs-related-vw>
+    </mat-tab>
+    <mat-tab label="Audit">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">event_note</mat-icon>
+            Audit
+        </ng-template>
+        
+        <app-bs-audit-event-vw></app-bs-audit-event-vw>
+    </mat-tab>
+    <mat-tab label="Errors">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">errors</mat-icon>
+            Errors
+        </ng-template>
+        <app-bs-error-vw></app-bs-error-vw>
+    </mat-tab>
+
+
+</mat-tab-group>

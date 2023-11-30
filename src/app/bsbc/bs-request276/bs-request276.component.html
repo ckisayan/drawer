@@ -1,1 +1,27 @@
-<p>bs-request276 works!</p>
+<table>
+    <tr>
+        <td>
+            <input placeholder="System ID" />
+        </td>
+        <td bgcolor="white">&nbsp; &nbsp;</td>
+        <td ><input placeholder="Trace ID"> </td>
+    </tr>
+    <tr>
+        <td>
+            <input placeholder="field 3" />
+        </td>
+        <td bgcolor="white">&nbsp; &nbsp;</td>
+        <td ><input placeholder="field 4"> </td>
+    </tr>
+    <tr >
+        <td colspan="3" style="text-align: right; ">                                    
+            &nbsp; &nbsp;
+            <button style="background-color: blue; color: white;" [routerLink]="['/bsbc/request276/grid']">Search </button>
+        </td>
+    </tr>   
+    <tr>
+        <td colspan="3"  style="width: 100%;">
+            <router-outlet></router-outlet>         
+        </td>
+    </tr>
+</table>

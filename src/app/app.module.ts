@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { AppComponent } from './app.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -63,16 +63,24 @@ import { ScVendorListComponent } from './supply-chain/sc-vendor/sc-vendor-list/s
 
 import {
   MatDialog,
-   
+
   MAT_DIALOG_DATA,
   MatDialogRef,
   MatDialogTitle,
   MatDialogContent,
   MatDialogActions,
-  MatDialogClose,  
+  MatDialogClose,
   MatDialogModule
 } from '@angular/material/dialog';
 import { ScItemListComponent } from './supply-chain/sc-vendor/sc-item-list/sc-item-list.component';
+import { BsSearch276resultsGridComponent } from './bsbc/bs-search276results-grid/bs-search276results-grid.component';
+import { BsTxnDetailsComponent } from './bsbc/bs-txn-details/bs-txn-details.component';
+import { BsGeneralVwComponent } from './bsbc/txn-details/bs-general-vw/bs-general-vw.component';
+import { BsEdiVwComponent } from './bsbc/txn-details/bs-edi-vw/bs-edi-vw.component';
+import { BsRelatedVwComponent } from './bsbc/txn-details/bs-related-vw/bs-related-vw.component';
+import { BsAuditEventVwComponent } from './bsbc/txn-details/bs-audit-event-vw/bs-audit-event-vw.component';
+import { BsErrorVwComponent } from './bsbc/txn-details/bs-error-vw/bs-error-vw.component';
+
 
 
 
@@ -94,12 +102,20 @@ const appRoutes: Routes = [
           { path: 'grid', component: BsGenericResGridComponent }
         ]
       },
-      { path: 'request276', component: BsRequest276Component },
+      {path: "txn-details", component: BsTxnDetailsComponent},
+      {
+        path: 'request276', component: BsRequest276Component,
+        children: [
+          {path: "grid", component: BsSearch276resultsGridComponent}
+          
+        ]
+      },
       { path: 'response277', component: BsResponse277Component },
       { path: 'req-res-276-7', component: BsRr276277Component },
       { path: 'trading-partner', component: TradingPartnerConfigComponent },
     ]
   },
+  
   { path: 'trading-partner', component: TradingPartnerConfigComponent },
   {
     path: 'app-distribution-system-master/:id/:accesstoken', component: DistributionSystemMasterComponent
@@ -141,12 +157,12 @@ const appRoutes: Routes = [
     VendorOrderHistoryComponent,
     NewPurchaseOrderComponent,
     ChatAssistComponent,
-    
-    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, BsVwGeneralComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent
+
+    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, BsVwGeneralComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent
   ],
   imports: [
     BrowserModule,
-    
+
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatTableModule,
@@ -160,13 +176,13 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatButtonModule,    
+    MatButtonModule,
     MatDatepickerModule,
-    ReactiveFormsModule,    
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatButtonModule, HttpClientModule,   
+    MatButtonModule, HttpClientModule,
     NgIf,
     JsonPipe,
     MatDialogModule,
