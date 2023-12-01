@@ -1,0 +1,27 @@
+.table_format {
+    width: 100%;
+    border: 1px solid darkgray
+}
+
+.table_header_style {
+    font-weight: bold;
+    background-color: rgba(211, 211, 211, 0.747);
+
+}
+
+.column_format_value {
+    text-align: left;
+    border: 1px solid gray;
+}
+
+table {
+    border-collapse: collapse;    
+    width: 100%;
+}
+
+th,
+td {
+    
+    text-align: left;
+    padding: 8px;
+}

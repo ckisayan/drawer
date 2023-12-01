@@ -1,1 +1,66 @@
-all the audit and events go here, column for attachments
+&nbsp;
+<br>
+&nbsp;
+<table class="table_format">
+    <tr>
+        <td colspan="1" class="table_header_style">Date/Time Created</td>
+        <td colspan="1" class="table_header_style">Doc Type</td>
+        <td colspan="1" class="table_header_style">Source Component</td>
+        <td colspan="1" class="table_header_style">Short Desription</td>        
+        <td colspan="1" class="table_header_style">Event Category</td>
+        <td colspan="1" class="table_header_style">Status</td>
+        <td colspan="1" class="table_header_style">File Name</td>
+    </tr>
+    <tr>
+        <td colspan="1" class="column_format_value"><a >Nov.25.2023 17:04:05:333</a></td>
+        <td colspan="1" class="column_format_value">270</td>
+        <td colspan="1" class="column_format_value">Request 270 Processor</td>
+        <td colspan="1" class="column_format_value">Request Picked up</td>        
+        <td colspan="1" class="column_format_value">Processor</td>
+        <td colspan="1" class="column_format_value">Successful</td>
+        <td colspan="1" class="column_format_value"><a href="">somefilename.dat</a></td>
+    </tr>
+    <tr>
+        <td colspan="1" class="column_format_value"><a >Nov.25.2023 17:04:06:333</a></td>
+        <td colspan="1" class="column_format_value">270</td>
+        <td colspan="1" class="column_format_value">Orchestrator</td>
+        <td colspan="1" class="column_format_value">Request Sent to Facet</td>        
+        <td colspan="1" class="column_format_value">Pass Through</td>
+        <td colspan="1" class="column_format_value">Successful</td>
+        <td colspan="1" class="column_format_value"><a href="">someOtherfilename.dat</a></td>
+    </tr>
+    <tr>
+        <td colspan="1" class="column_format_value"><a >Nov.25.2023 17:04:07:333</a></td>
+        <td colspan="1" class="column_format_value">270</td>
+        <td colspan="1" class="column_format_value">Orchestrator</td>
+        <td colspan="1" class="column_format_value">Response Receiver from Facets</td>        
+        <td colspan="1" class="column_format_value">Pass Through</td>
+        <td colspan="1" class="column_format_value">Successful</td>
+        <td colspan="1" class="column_format_value"><a href="">somefilename2.dat</a></td>
+    </tr>
+</table>
+<br>
+<br>
+
+<mat-horizontal-stepper  #stepper>
+    <mat-step >            
+            <ng-template matStepLabel>Request Received </ng-template>                           
+            Nov.25.2023 17:04.03.300
+    </mat-step>
+    <mat-step >            
+            <ng-template matStepLabel>Sent to Facets</ng-template>                                
+            Nov.25.2023 17:04.03.500 (elapse time 200ms)
+    </mat-step>
+    <mat-step >            
+        <ng-template matStepLabel>Response Sent Back</ng-template>
+        Nov.25.2023 17:04.04.500 (elapse time 1000ms)
+    </mat-step>
+    
+    <mat-step>
+        <ng-template matStepLabel>Responded to TP</ng-template>            
+        Nov.25.2023 17:04.04.900 (elapse time 400ms)
+        <div>                
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>

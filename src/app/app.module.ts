@@ -57,7 +57,7 @@ import { ScVwExistingPoComponent } from './supply-chain/sc-vw-existing-po/sc-vw-
 import { ScExistingPoSearchComponent } from './supply-chain/sc-existing-po-search/sc-existing-po-search.component';
 import { ScExistingPoGeneralviewComponent } from './supply-chain/sc-existing-po-generalview/sc-existing-po-generalview.component';
 import { ScExistingPoGridComponent } from './supply-chain/sc-existing-po-grid/sc-existing-po-grid.component';
-import { BsVwGeneralComponent } from './bsbc/bs-vw-general/bs-vw-general.component';
+//import { BsVwGeneralComponent } from './bsbc/bs-vw-general/bs-vw-general.component';
 import { ScNewPurchaseOrderComponent } from './supply-chain/sc-purchase/sc-new-purchase-order/sc-new-purchase-order.component';
 import { ScVendorListComponent } from './supply-chain/sc-vendor/sc-vendor-list/sc-vendor-list.component';
 
@@ -158,7 +158,7 @@ const appRoutes: Routes = [
     NewPurchaseOrderComponent,
     ChatAssistComponent,
 
-    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, BsVwGeneralComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent
+    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent
   ],
   imports: [
     BrowserModule,

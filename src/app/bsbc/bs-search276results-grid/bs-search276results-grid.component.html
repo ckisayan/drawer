@@ -5,7 +5,9 @@
     <table mat-table class="full-width-table" [dataSource]="dataSource.data" matSort aria-label="Elements"> 
         <ng-container matColumnDef="SystemId">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>SystemId</th>
-            <td mat-cell *matCellDef="let row">{{row.SystemId}}</td>
+            <td mat-cell *matCellDef="let row">
+                <a [routerLink]="['/bsbc/txn-details']">{{row.SystemId}}</a>
+            </td>
         </ng-container>
         <ng-container matColumnDef="TraceNumber">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>TraceNumber</th>
