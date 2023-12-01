@@ -18,7 +18,21 @@
                 <td>
                   <mat-icon matTooltip="set favoriate">star_empty</mat-icon> &nbsp; &nbsp;
                   <mat-icon matTooltip="export current view">download</mat-icon> &nbsp; &nbsp;
-                  <mat-icon matTooltip="customize current view">tune</mat-icon> &nbsp; &nbsp;
+                  <mat-icon matTooltip="customize current view" [routerLink]="['/bsbc/customsearch']">tune</mat-icon> &nbsp; &nbsp;
+                  <button mat-icon-button [matMenuTriggerFor]="menu" >
+                    <mat-icon matTooltip="previously Saved Searches">search</mat-icon>
+                  </button>              
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item>                      
+                      <span>Custom Search 1</span>
+                    </button>
+                    <button mat-menu-item >                      
+                      <span>Custom Search 2</span>
+                    </button>
+                    <button mat-menu-item>                      
+                      <span>Custom Search 3</span>
+                    </button>
+                  </mat-menu>
                   <mat-icon matTooltip="refresh">refresh</mat-icon> &nbsp; &nbsp;
                   <mat-icon matTooltip="Help for this screen">help</mat-icon> &nbsp; &nbsp;
                   <mat-icon matTooltip="Default settings for this page">beenhere</mat-icon> &nbsp; &nbsp;

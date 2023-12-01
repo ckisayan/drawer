@@ -60,6 +60,7 @@ import { ScExistingPoGridComponent } from './supply-chain/sc-existing-po-grid/sc
 //import { BsVwGeneralComponent } from './bsbc/bs-vw-general/bs-vw-general.component';
 import { ScNewPurchaseOrderComponent } from './supply-chain/sc-purchase/sc-new-purchase-order/sc-new-purchase-order.component';
 import { ScVendorListComponent } from './supply-chain/sc-vendor/sc-vendor-list/sc-vendor-list.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 import {
   MatDialog,
@@ -80,6 +81,7 @@ import { BsEdiVwComponent } from './bsbc/txn-details/bs-edi-vw/bs-edi-vw.compone
 import { BsRelatedVwComponent } from './bsbc/txn-details/bs-related-vw/bs-related-vw.component';
 import { BsAuditEventVwComponent } from './bsbc/txn-details/bs-audit-event-vw/bs-audit-event-vw.component';
 import { BsErrorVwComponent } from './bsbc/txn-details/bs-error-vw/bs-error-vw.component';
+import { BsCustomSearchEditComponent } from './bsbc/bs-custom-search-edit/bs-custom-search-edit.component';
 
 
 
@@ -103,6 +105,8 @@ const appRoutes: Routes = [
         ]
       },
       {path: "txn-details", component: BsTxnDetailsComponent},
+      {path: "customsearch", component: BsCustomSearchEditComponent},
+      
       {
         path: 'request276', component: BsRequest276Component,
         children: [
@@ -158,7 +162,7 @@ const appRoutes: Routes = [
     NewPurchaseOrderComponent,
     ChatAssistComponent,
 
-    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent
+    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent, BsCustomSearchEditComponent
   ],
   imports: [
     BrowserModule,
@@ -172,7 +176,7 @@ const appRoutes: Routes = [
     MatFormFieldModule, MatSelectModule, MatButtonModule, MatIconModule, MatTabsModule,
     FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatExpansionModule, MatListModule,
     MatFormFieldModule, MatStepperModule,
-    MatTreeModule, MatButtonModule, MatIconModule,
+    MatTreeModule, MatButtonModule, MatIconModule,MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
