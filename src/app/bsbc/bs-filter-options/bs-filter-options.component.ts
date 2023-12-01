@@ -67,7 +67,6 @@ export class BsFilterOptionsComponent implements OnInit {
   ngOnInit(): void {
     console.log("advance search activated:on init");
   }
-
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 
 }

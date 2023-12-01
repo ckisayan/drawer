@@ -1,5 +1,5 @@
 <form>
-    <table border="0" >
+    <table border="0">
 
         <tr>
             <td colspan="3" style="vertical-align: top; width: 900px;">
@@ -16,7 +16,7 @@
                             <div>
                                 <app-bs-advance-search></app-bs-advance-search>
                             </div>
-                        </mat-drawer>
+                        </mat-drawer>                     
 
                         <table style="width: 100%;">
                             <tr>
@@ -29,28 +29,29 @@
                                 <td>
                                     <input placeholder="System ID" />
                                 </td>
-                                <td >&nbsp; &nbsp;</td>
-                                <td ><input placeholder="Trace ID"> </td>
+                                <td>&nbsp; &nbsp;</td>
+                                <td><input placeholder="Trace ID"> </td>
                             </tr>
                             <tr>
                                 <td>
                                     <input placeholder="field 3" />
                                 </td>
-                                <td >&nbsp; &nbsp;</td>
-                                <td ><input placeholder="field 4"> </td>
+                                <td>&nbsp; &nbsp;</td>
+                                <td><input placeholder="field 4"> </td>
                             </tr>
                             <tr [ngClass]="{'hidden-row': hideOrigFilterRow}">
                                 <td>
-                                    <input placeholder="Originator Transaction identifier" >
+                                    <input placeholder="Originator Transaction identifier">
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3" >
-                                    <div (click)="showdoctypes()" class="show-more-link">{{ getDocTypeShowMoreText() }}</div>
+                                <td colspan="3">
+                                    <div (click)="showdoctypes()" class="show-more-link">{{ getDocTypeShowMoreText() }}
+                                    </div>
                                 </td>
                             </tr>
-                        
-                            <tr [ngClass]="{'hidden-row': hideDocumentTypeRow}">    
+
+                            <tr [ngClass]="{'hidden-row': hideDocumentTypeRow}">
                                 <td colspan="3" class="fromcolumn">
                                     ALL<input type="checkbox" value="ALL">
                                     270<input type="checkbox" value="276">
@@ -61,16 +62,17 @@
                                     999<input type="checkbox" value="276">
                                     TA1<input type="checkbox" value="276">
                                 </td>
-                            </tr>    
-                            <tr >
-                                <td colspan="3" style="text-align: right; ">                                    
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="text-align: right; ">
                                     <span (click)="showDrawer()">+Advanced Filters</span>
                                     &nbsp; &nbsp;
-                                    <button style="background-color: blue; color: white;" [routerLink]="['/bsbc/transmissions/grid']">Search </button>
+                                    <button style="background-color: blue; color: white;"
+                                        [routerLink]="['/bsbc/transmissions/grid']">Search </button>
                                 </td>
-                            </tr>                            
+                            </tr>
                             <tr>
-                                <td colspan="3"  style="width: 100%;">
+                                <td colspan="3" style="width: 100%;">
                                     <router-outlet></router-outlet>
                                     <!--<app-bs-generic-res-grid></app-bs-generic-res-grid>-->
                                 </td>
@@ -81,7 +83,7 @@
             </td>
         </tr>
 
-  
+
 
 
     </table>

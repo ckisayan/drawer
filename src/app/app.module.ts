@@ -82,6 +82,8 @@ import { BsRelatedVwComponent } from './bsbc/txn-details/bs-related-vw/bs-relate
 import { BsAuditEventVwComponent } from './bsbc/txn-details/bs-audit-event-vw/bs-audit-event-vw.component';
 import { BsErrorVwComponent } from './bsbc/txn-details/bs-error-vw/bs-error-vw.component';
 import { BsCustomSearchEditComponent } from './bsbc/bs-custom-search-edit/bs-custom-search-edit.component';
+import { BsOneErrorDetailsComponent } from './bsbc/txn-details/bs-one-error-details/bs-one-error-details.component';
+import { BsAddCustomColumnComponent } from './bsbc/bs-add-custom-column/bs-add-custom-column.component';
 
 
 
@@ -105,6 +107,7 @@ const appRoutes: Routes = [
         ]
       },
       {path: "txn-details", component: BsTxnDetailsComponent},
+      {path: "errordetails", component: BsOneErrorDetailsComponent},
       {path: "customsearch", component: BsCustomSearchEditComponent},
       
       {
@@ -162,7 +165,7 @@ const appRoutes: Routes = [
     NewPurchaseOrderComponent,
     ChatAssistComponent,
 
-    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent, BsCustomSearchEditComponent
+    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent, BsCustomSearchEditComponent, BsOneErrorDetailsComponent, BsAddCustomColumnComponent
   ],
   imports: [
     BrowserModule,

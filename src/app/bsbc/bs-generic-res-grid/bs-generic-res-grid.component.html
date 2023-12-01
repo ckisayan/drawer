@@ -1,13 +1,16 @@
 <mat-drawer-container class="example-container">
     <mat-form-field style="width: 80%;">
+        
         <mat-label>Filter below grid futher</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="search by anything" #input>
+        
         <mat-icon matSuffix>search</mat-icon>
+        
     </mat-form-field>
     <span>
         &nbsp;
         <mat-icon matTooltip="export to CSV">download</mat-icon> &nbsp; &nbsp;
-        <mat-icon matTooltip="add column">add</mat-icon> &nbsp; &nbsp;
+        <mat-icon matTooltip="add column" (click)="showcolumns()">add</mat-icon> &nbsp; &nbsp;
     </span>
 
     <table mat-table class="full-width-table" matSort aria-label="Elements">
@@ -52,3 +55,4 @@
         [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
     </mat-paginator>
 </mat-drawer-container>
+

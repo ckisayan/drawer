@@ -4,6 +4,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { DataSourceGen, DataTableItemGen } from '..//bs-generic-res-grid/bs-datasource-gen';
 import { SelectionModel } from '@angular/cdk/collections';
+import { BsFilterOptionsComponent } from '../bs-filter-options/bs-filter-options.component';
+import { MatDialog } from '@angular/material/dialog';
+import { BsAddCustomColumnComponent } from '../bs-add-custom-column/bs-add-custom-column.component';
 
 @Component({
   selector: 'app-bs-generic-res-grid',
@@ -22,6 +25,10 @@ export class BsGenericResGridComponent implements AfterViewInit {
   isDrawerOpen = false;
   drawerWidth: number = 700;
   columnsToDisplay: string[] = this.displayedColumns.slice();
+  edidoctype="270";
+  constructor( public dialog: MatDialog) {
+    
+  }
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
@@ -30,5 +37,15 @@ export class BsGenericResGridComponent implements AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     //this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  showcolumns(): void {
+    this.openDialog('0ms', '0ms')
+  }
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(BsAddCustomColumnComponent, {
+      width: '450px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
   }
 }
