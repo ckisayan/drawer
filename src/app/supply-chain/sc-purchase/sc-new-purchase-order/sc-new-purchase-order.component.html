@@ -73,11 +73,25 @@
                 Purchase Order Status
             </td>
             <td class="fromcolumn">
-                <mat-select [(ngModel)]="purchaseOrder.OrderStatus">
+                <mat-select [(ngModel)]="purchaseOrder.OrderStatus" placeholder="select status" class="selectformat">
                     <mat-option [value]="'New'">New</mat-option>
                     <mat-option [value]="'Pending'">Pending</mat-option>
                     <mat-option [value]="'In Progress'">In Progress</mat-option>
                     <mat-option [value]="'Shipped'">Shipped</mat-option>
+                </mat-select>
+            </td>
+        </tr>
+        <tr>
+            <td class="fromcolumn">
+                Order by (behalf)
+            </td>
+            <td class="fromcolumn">
+                <mat-select [(ngModel)]="purchaseOrder.UserIdOrdered"  placeholder="select user" class="selectformat">
+                    <mat-option [value]="'Chris'">Chris</mat-option> 
+                    <mat-option [value]="'Stacy'">Stacy</mat-option>
+                    <mat-option [value]="'Crhistina'">Crhistina</mat-option>                    
+                    <mat-option [value]="'Bob'">Bob</mat-option>
+                    <mat-option [value]="'Scott'">Scott</mat-option>
                 </mat-select>
             </td>
         </tr>
@@ -123,7 +137,10 @@
                     </ng-container>
                     <ng-container matColumnDef="ItemQuanity">
                         <th mat-header-cell *matHeaderCellDef>Quantity</th>
-                        <td mat-cell *matCellDef="let element">{{element.ItemQuanity}}</td>
+                        <td mat-cell *matCellDef="let element">
+                            <input matInput [(ngModel)]="element.ItemQuanity" placeholder="Enter Quantity" style="width: 100px;"/>
+                        </td>
+
                     </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="itemDisplayedColumns"></tr>
@@ -141,10 +158,10 @@
         </tr>
         <tr>
             <td colspan="2"></td>
-            <td><button  (click)="saveDraft()" class="secondary-action-button">Save Draft
+            <td><button (click)="saveDraft()" class="secondary-action-button">Save Draft
                 
             </button></td>
-            <td><button  (click)="saveTransmit()" class="primary-action-button">Save & Transmit
+            <td><button (click)="saveTransmit()" class="primary-action-button mybutton">Save & Transmit
                 
             </button></td>
         </tr>

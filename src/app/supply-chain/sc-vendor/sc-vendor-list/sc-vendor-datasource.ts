@@ -7,8 +7,8 @@ import { VendorData } from './vendordata';
 import {MatTableDataSource} from '@angular/material/table';
 // TODO: replace this with real data from your application
 const VENTOR_EXAMPLE_DATA: VendorData[] = [
-    {VendorNumber: "V123", VendorName: "ABC Supplies 1", VendorAddress: "123 Main Street",  VendorCity: "Glendale", VendorState: "CA", VendorZip: "91202",  VendorContact: "John Doe", VendorTelNumber: "818-555-1234"},
-    {VendorNumber: "V124", VendorName: "ABC Supplies 2", VendorAddress: "456 Main Street",  VendorCity: "New York", VendorState: "NY", VendorZip: "10001",  VendorContact: "John Doe", VendorTelNumber: "702-555-1234"}
+    {VendorNumber: "123", VendorName: "ABC Supplies 1", VendorAddress: "123 Main Street",  VendorCity: "Glendale", VendorState: "CA", VendorZip: "91202",  VendorContact: "John Doe", VendorTelNumber: "818-555-1234"},
+    {VendorNumber: "124", VendorName: "ABC Supplies 2", VendorAddress: "456 Main Street",  VendorCity: "New York", VendorState: "NY", VendorZip: "10001",  VendorContact: "John Doe", VendorTelNumber: "702-555-1234"}
 
 ];
 

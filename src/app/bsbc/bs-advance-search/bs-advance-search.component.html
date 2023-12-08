@@ -1,75 +1,115 @@
-
 <H1>Advance Filters</H1>
 <h3>These filter operate against the databse</h3>
 <div>
     <table>
-        
+
         <tr>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td style="white-space: nowrap;">
-                
-                
-                    <input placeholder="Originator Transaction identifier" style="width: 250px;">    
-                
-                
+                <input placeholder="Originator Transaction identifier">
             </td>
-            <td>    <div style="white-space: nowrap;" (click)="showOrigFilter()" class="show-more-link">{{ getOrigFilterText() }}</div></td>
+            <td>
+                <div style="white-space: nowrap;" (click)="showOrigFilter()" class="show-more-link">{{
+                    getOrigFilterText() }}</div>
+            </td>
         </tr>
-        
+
         <tr>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td>
-                <input placeholder="Trading Partner" style="width: 250px;"> 
+                <input placeholder="Trading Partner">
             </td>
-            <td><div style="white-space: nowrap;" class="show-more-link">add</div></td>
+            <td>
+                <div style="white-space: nowrap;" class="show-more-link">add</div>
+            </td>
         </tr>
-        
+
         <tr>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td>
-                <input placeholder="Member Name" style="width: 250px;"> 
+                <input placeholder="Member Name">
             </td>
-            <td><div style="white-space: nowrap;" class="show-more-link">add</div></td>
-        </tr>
-        
-        <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>These attributes filter the resultset (not database)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>-Attribute list can also be filtered from here</td>
-        </tr>
-        <tr>
-            <td>&nbsp; &nbsp;   -Attribute lists are applied to resultset</td>
-        </tr>
-        <tr>
-            <td>&nbsp; &nbsp;   -Will be provided in the excel</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>-Error Code filtering can be done  from here</td>
-        </tr>
-        <tr>
-            <td>&nbsp; &nbsp;  -Error codes are aslo applied to the resultset</td>
-        </tr>
-        <tr>
-            <td>&nbsp; &nbsp;  -attributess: Error Message, ID, Location, Severity, Snip Level, Status, Categry</td>
-        </tr>
-        <tr>
             <td>
+                <div style="white-space: nowrap;" class="show-more-link">add</div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="3"><b>These attributes filter the resultset (not database)</b></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr >
+            <td colspan="3">Attribute Filter List, you can add >1</td>
+        </tr>
+        <tr>
+            <td><select>
+                    <option>ActivityStateModifiedDate
+                    </option>
+                    <option>DestinationPartyName
+                    </option>
+                    <option>EligInfoReceiverName</option>
+                    <option>ExternalCorrelationId
+                    </option>
+                    <option>Acknoledgement id
+                    </option>
+                </select>
+            </td>
+            <td>
+                <select>
+                    <option>Starts with</option>
+                    <option>Contains</option>
+                    <option>Not Contain</option>
+                    <option>=</option>
+                    <option>!=</option>
+                </select>
+            </td>
+            <td>
+                <input type="text">
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr >
+            <td colspan="3">Error Filter List, you can add >1</td>
+        </tr>
+        <tr>
+            <td><select>
+                    <option>Error ID</option>
+                    <option>Error Message</option>
+                    <option>Error Location</option>
+                    <option>Error Severity</option>
+                    <option>Error Snip Level</option>
+                    <option>Error Status</option>
+                    <option>ErrorCategory</option>
+                </select>
+            </td>
+            <td>
+                <select>
+                    <option>Starts with</option>
+                    <option>Contains</option>
+                    <option>Not Contain</option>
+                    <option>=</option>
+                    <option>!=</option>
+                </select>
+            </td>
+            <td>
+                <input type="text">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
                 <hr>
             </td>
         </tr>

@@ -4,4 +4,5 @@ export interface PurchaseItem {
     UnitPriceAmt: string;    
     VendorNumber: string;
     ItemQuanity: string;    
+    PONumber: string;
 }

@@ -8,9 +8,9 @@ import { PurchaseItem } from '../sc-vendor-list/purchaseitem';
 import {MatTableDataSource} from '@angular/material/table';
 // TODO: replace this with real data from your application
 const ITEM_EXAMPLE_DATA: PurchaseItem[] = [    
-    { ItemNumber: '111', ItemShortDesc: 'Widget A', UnitPriceAmt: '20.00', ItemQuanity: "",VendorNumber: 'V001' },
-    { ItemNumber: '112', ItemShortDesc: 'Gadget B', UnitPriceAmt: '15.50', ItemQuanity: "",VendorNumber: 'V002' },
-    { ItemNumber: '113', ItemShortDesc: 'Tool C', UnitPriceAmt: '30.75', ItemQuanity: "",VendorNumber: 'V003' },
+    { ItemNumber: '111', ItemShortDesc: 'Widget A', UnitPriceAmt: '20.00', ItemQuanity: "",VendorNumber: '1', PONumber: "5" },
+    { ItemNumber: '112', ItemShortDesc: 'Gadget B', UnitPriceAmt: '15.50', ItemQuanity: "",VendorNumber: '2' , PONumber: "5"},
+    { ItemNumber: '113', ItemShortDesc: 'Tool C', UnitPriceAmt: '30.75', ItemQuanity: "",VendorNumber: '3' , PONumber: "5"},
 ];
 
 /**

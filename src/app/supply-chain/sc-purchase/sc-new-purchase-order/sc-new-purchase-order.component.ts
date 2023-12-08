@@ -20,9 +20,11 @@ import { PurchaseOrder } from '../../sc-vendor/sc-vendor-list/purchaseorder';
 import { PurchaseItem } from '../../sc-vendor/sc-vendor-list/purchaseitem';
 import { MatTable } from '@angular/material/table';
 import { ScItemListComponent } from '../../sc-vendor/sc-item-list/sc-item-list.component';
+import { ScGlobalService } from '../../sc-globalservices';
+import { HttpClient } from '@angular/common/http';
 
 const PurchaseItem_Data: PurchaseItem[] = [
-  { ItemNumber: '', ItemShortDesc: '', UnitPriceAmt: '', VendorNumber: '', ItemQuanity: "" },
+  { ItemNumber: '', ItemShortDesc: '', UnitPriceAmt: '', VendorNumber: '', ItemQuanity: "" , PONumber: ""},
 ]
 @Component({
   selector: 'app-sc-new-purchase-order',
@@ -41,7 +43,7 @@ export class ScNewPurchaseOrderComponent implements OnInit {
   POStatus = "Pending";
   vendorSelected: VendorData =
     { VendorNumber: "", VendorName: "", VendorAddress: "", VendorCity: "", VendorState: "", VendorZip: "", VendorContact: "", VendorTelNumber: "" };
-  purchaseOrder: PurchaseOrder = { PONumber: "", PODate: new Date().toLocaleDateString(), OrderStatus: "New", UserIdOrdered: "", VendorNumber: "" };
+  purchaseOrder: PurchaseOrder = { PONumber: "", PODate: new Date().toLocaleDateString(), OrderStatus: "New", UserIdOrdered: "Chris", VendorNumber: "" };
   itemDisplayedColumns: string[] = ['ItemNumber', 'ItemShortDesc', 'UnitPriceAmt', 'ItemQuanity'];
   dataItemSource = [...PurchaseItem_Data];
   @ViewChild(MatTable) table!: MatTable<PurchaseItem>;
@@ -49,7 +51,8 @@ export class ScNewPurchaseOrderComponent implements OnInit {
   itemSelected =
     { PONumber: "", PODate: new Date().toLocaleDateString(), OrderStatus: "New", UserIdOrdered: "", VendorNumber: "" };
 
-  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog) {
+  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
+    private http: HttpClient) {
     this.dataItemSource = this.dataItemSource.filter(item => item.ItemNumber !== '');
   }
 
@@ -108,5 +111,84 @@ export class ScNewPurchaseOrderComponent implements OnInit {
   }
 
   saveDraft() { }
-  saveTransmit() { }
+  saveTransmit() { 
+    var validData = "";
+    if (this.vendorSelected.VendorNumber.length<=0){
+      validData = "Vendor is not selected.\n";
+      
+    }
+    if(this.dataItemSource.length<=0){
+      validData += "You must select at least one item.\n";
+    }
+    this.dataItemSource.forEach(element => {
+      //alert(element.ItemQuanity);
+      if (typeof element.ItemQuanity === 'undefined' || element.ItemQuanity === undefined || element.ItemQuanity?.length<=0){
+        validData += "Enter Quantity for Item: '" + element.ItemShortDesc +  "' being ordered.\n";      
+      }
+    });
+    if (validData.length>0){
+      alert(validData);
+      return;
+      
+    }
+    const orderData = {
+      orderStatus: this.purchaseOrder.OrderStatus,
+      userIdOrdered: this.purchaseOrder.UserIdOrdered,
+      vendorNumber: this.vendorSelected.VendorNumber,
+    };
+    const endpoint = ScGlobalService.as400endpoint + "putpurchaseorder";   
+    fetch(endpoint, {
+      method: 'POST',
+      body: JSON.stringify(orderData),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Error fetching data');
+      }
+    }).then((results) => {
+      console.log('Results:', results);
+      console.log( results);
+      // Process the received data (e.g., display results)
+      var poNumber = results[0]['PONUMBER'];
+      //console.log(results[0]['PONUMBER']);
+      this.saveItems(poNumber);
+
+      alert("This is your new Purchase order number: " + poNumber);
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
+  saveItems(PONumber:any){
+
+    this.dataItemSource.forEach(element => {
+      element.VendorNumber = this.vendorSelected.VendorNumber;
+      element.PONumber = PONumber;      
+    }) ;
+    console.log (this.dataItemSource);
+
+    const endpoint = ScGlobalService.as400endpoint + "putitemorder";   
+    fetch(endpoint, {
+      method: 'POST',
+      body: JSON.stringify(this.dataItemSource),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Error fetching data');
+      }
+    }).then((results) => {
+      console.log('Results:', results);
+      console.log( results);      
+      
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
 }

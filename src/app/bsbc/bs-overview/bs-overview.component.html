@@ -2,7 +2,7 @@
 
     <div style="margin: 30px; font-size: 120%;">
     In the healthcare EDI landscape involving payors, providers, subscribers, and trading partners, 
-    challenges may arise in transactions like EDI 270/271, 276/277, and 278 ( 11 and 13). 
+    challenges may arise in transactions like EDI 270/271, 276/277, and 278 ( 13 and 11). 
     Issues could include discrepancies in eligibility and benefits responses (271) or claim status inquiries (276/277). 
     Troubleshooting involves meticulous examination of transaction data for inaccuracies or missing information. 
     Collaboration is key, aligning interpretations of standards and guidelines between payors and providers. 
@@ -10,9 +10,21 @@
     Detailed logs, audit trails, and regular system updates contribute to effective issue resolution. 
     Engaging with EDI solution providers can provide valuable support in navigating and resolving complex challenges efficiently.
     <br>
+    <ul>
+        <li>270-271 - Eligibility & Benefits Inquiry</li>
+        <li>276-277 - Claim Status Inquiry</li>
+        <li>278-13-11 - Service Review (pre-auth for medical procedure)</li>
+        <li>999 - Acknowledgement Document (File Rcvd)</li>
+        <li>TA1 - Evnelope ONLY Acknowledgement</li>
+      </ul>
+
+
     <br>
     Common steps include Search, identify, drill down to detail, look for discrepancies, recommend a fix.
+    <br>
 
+
+    <mat-divider></mat-divider>
     <mat-horizontal-stepper  #stepper>
         <mat-step >            
                 <ng-template matStepLabel>Search Category</ng-template>                           
