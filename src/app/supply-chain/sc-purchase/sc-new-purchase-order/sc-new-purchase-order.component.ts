@@ -111,7 +111,16 @@ export class ScNewPurchaseOrderComponent implements OnInit {
   }
 
   saveDraft() { }
-  saveTransmit() { 
+  saveTransmit(){
+    try{
+      this.saveData();
+    }catch (err){
+      console.log("Error saving data");
+      console.log(err);
+
+    }
+  }
+  saveData() { 
     var validData = "";
     if (this.vendorSelected.VendorNumber.length<=0){
       validData = "Vendor is not selected.\n";
@@ -162,6 +171,7 @@ export class ScNewPurchaseOrderComponent implements OnInit {
       console.error(error);
     });
   }
+
   saveItems(PONumber:any){
 
     this.dataItemSource.forEach(element => {
