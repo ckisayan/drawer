@@ -24,6 +24,30 @@ app.get("/", (req, res) => {
 
 require("./app/routes/supplychain.routes.js")(app);
 
+function getpurchaseordersql(vendorNumber, ponumber){
+
+    let sql = "SELECT PONUMBER, ORDERSTATUS, v.VENDORNUMBER, VendorName, VARCHAR_FORMAT(PODate, 'YYYY-MM-DD HH:MM:SS') as PODate, UserIdOrdered , ";    
+    sql += " VARCHAR_FORMAT(add_hours(poDate, -8), 'YYYY-MM-DD HH24:MI:SS') as POdatePDT, "
+    sql += "( select ";
+	sql += "VARCHAR_FORMAT(sum( io.Quantity * i.UnitPriceAmt),'999,999.99') "
+	sql += "from ckisayan1.itemOrd io "
+	sql += "inner join ckisayan1.item i on io.ItemNumber = i.itemnumber	"
+	sql += "where io.PONumber = p.PONumber "
+	sql += "group by io.PONumber "
+	sql += ") as OrderAmt "
+    sql += "FROM ckisayan1.purchorder p "
+    sql += "inner join ckisayan1.vendor v on v.vendorNumber = p.VENDORNUMBER "
+    sql += "where 1 = 1 "
+    if (vendorNumber.length>0){
+        sql += " and v.VENDORNUMBER = '" +vendorNumber + "' ";
+    }
+    if (ponumber.length>0){
+        sql += " and PONUMBER = '" +ponumber + "' ";
+    }
+    sql += " order by p.podate desc "
+    sql += " FETCH FIRST 15 ROWS ONLY WITH UR; "
+    return sql;
+}
 
 app.get("/api/supplychain/allitems", (req, res) => {
     //res.json({ message: "Welcome to REST API application." });
@@ -81,31 +105,16 @@ app.get("/api/supplychain/allitems", (req, res) => {
    
   });
 
-  app.get("/api/supplychain/allpurchaseorders", (req, res) => {
+  app.post("/api/supplychain/allpurchaseorders", (req, res) => {
     //res.json({ message: "Welcome to REST API application." });
     var db2i = require("idb-connector");
     var dbconn = new db2i.dbconn();
     dbconn.conn('*LOCAL');
-    var stm = new db2i.dbstmt(dbconn);           
-    let sql = "SELECT PONUMBER, ORDERSTATUS, v.VENDORNUMBER, VendorName, VARCHAR_FORMAT(PODate, 'YYYY-MM-DD HH:MM:SS') as PODate, UserIdOrdered , ";
-    //sql += " convert_timezone('America/New_York', 'UTC', PODate) as POESTDate, "
-    //sql += " DATE(PODate + Current TIMEZONE) AS DATE,  ";
-    //sql += " TIME(PODate + Current TIMEZONE) AS TIMESTAMP,";
-    sql += " VARCHAR_FORMAT(add_hours(poDate, -8), 'YYYY-MM-DD HH24:MI:SS') as POdatePDT, "
-    sql += "( select ";
-	sql += "sum( io.Quantity * i.UnitPriceAmt) "
-	sql += "from ckisayan1.itemOrd io "
-	sql += "inner join ckisayan1.item i on io.ItemNumber = i.itemnumber	"
-	sql += "where io.PONumber = p.PONumber "
-	sql += "group by io.PONumber "
-	sql += ") as OrderAmt "
-    sql += "FROM ckisayan1.purchorder p "
-    sql += "inner join ckisayan1.vendor v on v.vendorNumber = p.VENDORNUMBER "
-    sql += "order by p.podate desc "
-    sql += "FETCH FIRST 15 ROWS ONLY WITH UR; "
+    var stm = new db2i.dbstmt(dbconn);        
 
+    let sql = getpurchaseordersql( req.body.vendornumber,req.body.ponumber);
 
-
+    console.log (sql);
 
     const jsonData = [];
     stm.exec(sql, (results, err) => {

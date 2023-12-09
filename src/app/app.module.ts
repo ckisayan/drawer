@@ -60,7 +60,8 @@ import { ScExistingPoGridComponent } from './supply-chain/sc-existing-po-grid/sc
 //import { BsVwGeneralComponent } from './bsbc/bs-vw-general/bs-vw-general.component';
 import { ScNewPurchaseOrderComponent } from './supply-chain/sc-purchase/sc-new-purchase-order/sc-new-purchase-order.component';
 import { ScVendorListComponent } from './supply-chain/sc-vendor/sc-vendor-list/sc-vendor-list.component';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 import {
   MatDialog,
@@ -106,15 +107,15 @@ const appRoutes: Routes = [
           { path: 'grid', component: BsGenericResGridComponent }
         ]
       },
-      {path: "txn-details", component: BsTxnDetailsComponent},
-      {path: "errordetails", component: BsOneErrorDetailsComponent},
-      {path: "customsearch", component: BsCustomSearchEditComponent},
-      
+      { path: "txn-details", component: BsTxnDetailsComponent },
+      { path: "errordetails", component: BsOneErrorDetailsComponent },
+      { path: "customsearch", component: BsCustomSearchEditComponent },
+
       {
         path: 'request276', component: BsRequest276Component,
         children: [
-          {path: "grid", component: BsSearch276resultsGridComponent}
-          
+          { path: "grid", component: BsSearch276resultsGridComponent }
+
         ]
       },
       { path: 'response277', component: BsResponse277Component },
@@ -122,7 +123,7 @@ const appRoutes: Routes = [
       { path: 'trading-partner', component: TradingPartnerConfigComponent },
     ]
   },
-  
+
   { path: 'trading-partner', component: TradingPartnerConfigComponent },
   {
     path: 'app-distribution-system-master/:id/:accesstoken', component: DistributionSystemMasterComponent
@@ -133,7 +134,14 @@ const appRoutes: Routes = [
     children: [
       { path: '', component: ScOverviewComponent },
       { path: 'overview', component: ScOverviewComponent },
-      { path: 'purchase-order', component: ScNewPurchaseOrderComponent },
+      {
+        path: 'purchase-order', component: ScNewPurchaseOrderComponent,
+        children: [
+          { path: 'grid', component: ScExistingPoGridComponent, },
+          { path: 'grid/:vendornumber', component: ScExistingPoGridComponent, }
+        ]
+
+      },
       { path: 'vendor-details', component: VendorDetailsComponent },
       {
         path: 'existing-po', component: ScVwExistingPoComponent,
@@ -151,7 +159,7 @@ const appRoutes: Routes = [
 ]
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent,    
     DataTableComponent,
     TradingPartnerDetailsComponent,
     Tab1Component,
@@ -168,8 +176,7 @@ const appRoutes: Routes = [
     TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent, BsCustomSearchEditComponent, BsOneErrorDetailsComponent, BsAddCustomColumnComponent
   ],
   imports: [
-    BrowserModule,
-
+    BrowserModule,    
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatTableModule,
@@ -179,7 +186,7 @@ const appRoutes: Routes = [
     MatFormFieldModule, MatSelectModule, MatButtonModule, MatIconModule, MatTabsModule,
     FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatExpansionModule, MatListModule,
     MatFormFieldModule, MatStepperModule,
-    MatTreeModule, MatButtonModule, MatIconModule,MatMenuModule,
+    MatTreeModule, MatButtonModule, MatIconModule, MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,

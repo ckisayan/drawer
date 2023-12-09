@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   MatDialog,
@@ -22,6 +22,9 @@ import { MatTable } from '@angular/material/table';
 import { ScItemListComponent } from '../../sc-vendor/sc-item-list/sc-item-list.component';
 import { ScGlobalService } from '../../sc-globalservices';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { ScExistingPoGridComponent } from '../../sc-existing-po-grid/sc-existing-po-grid.component';
+import { PurchaseService } from '../../sc-services/purchase.service';
 
 const PurchaseItem_Data: PurchaseItem[] = [
   { ItemNumber: '', ItemShortDesc: '', UnitPriceAmt: '', VendorNumber: '', ItemQuanity: "" , PONumber: ""},
@@ -47,12 +50,28 @@ export class ScNewPurchaseOrderComponent implements OnInit {
   itemDisplayedColumns: string[] = ['ItemNumber', 'ItemShortDesc', 'UnitPriceAmt', 'ItemQuanity'];
   dataItemSource = [...PurchaseItem_Data];
   @ViewChild(MatTable) table!: MatTable<PurchaseItem>;
+  @HostListener('document:keydown.alt.s', ['$event'])
+  onShortcutKey(event: KeyboardEvent) {
+    
+    this.showvendordetails();
+    console.log('Shortcut alt.s triggered!');
+  }
+  
+  @HostListener('document:keydown.alt.a', ['$event'])
+  onShortcut2(event: KeyboardEvent) {
+    this.showvendors();
+    console.log('Shortcut alt.a triggered!');
+  }
 
   itemSelected =
     { PONumber: "", PODate: new Date().toLocaleDateString(), OrderStatus: "New", UserIdOrdered: "", VendorNumber: "" };
 
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
-    private http: HttpClient) {
+    private http: HttpClient,
+    private router: Router,
+    private purchaseService:PurchaseService
+    
+    ) {
     this.dataItemSource = this.dataItemSource.filter(item => item.ItemNumber !== '');
   }
 
@@ -72,7 +91,7 @@ export class ScNewPurchaseOrderComponent implements OnInit {
     this.hideVendorRow = !this.hideVendorRow
   }
   getVendorShowMoreText() {
-    return this.hideVendorRow ? 'Show more' : 'Show less';
+    return this.hideVendorRow ? 'Show more (alt-s)' : 'Show less (alt-s)';
   }
   addItem() {
     //   const randomElementIndex = Math.floor(Math.random() * PurchaseItem_Data.length);
@@ -107,6 +126,21 @@ export class ScNewPurchaseOrderComponent implements OnInit {
         this.vendorSelected = result;
         console.log(this.vendorSelected.VendorName);
       }
+    });
+  }
+
+  showactiveOrders(): void {
+    this.purchaseService.setVendorNumber(this.vendorSelected.VendorNumber);
+    const dialogRef = this.dialog.open(ScExistingPoGridComponent, {      
+      data: { name: this.vendorNumber, animal: this.vendorname },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      //if (result?.VendorName.length > 0) {
+      //  this.vendorSelected = result;
+      //  console.log(this.vendorSelected.VendorName);
+      //}
     });
   }
 
@@ -167,6 +201,8 @@ export class ScNewPurchaseOrderComponent implements OnInit {
       this.saveItems(poNumber);
 
       alert("This is your new Purchase order number: " + poNumber);
+      this.purchaseService.setPurchaseOrderNumber(poNumber);
+      this.router.navigate(['/supply-chain/existing-po/grid'])
     }).catch((error) => {
       console.error(error);
     });

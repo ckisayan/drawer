@@ -10,23 +10,23 @@ export interface DataTableExistingPO {
   OrderDate: string;
   OrderAmt: string
   POStatus: string;
-  VendorNubmer: string;
+  VendorNumber: string;
   VendorName: string;
 }
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: DataTableExistingPO[] = [
+const EXAMPLE_PO_DATA: DataTableExistingPO[] = [
   
-  { PONumber: 'PO123', OrderDate: '2023-01-01', OrderAmt: '5000.00', POStatus: 'Open', VendorNubmer: 'V123', VendorName: 'Vendor A' },
-  { PONumber: 'PO456', OrderDate: '2023-02-15', OrderAmt: '8000.00', POStatus: 'Closed', VendorNubmer: 'V456', VendorName: 'Vendor B' },
-  { PONumber: 'PO789', OrderDate: '2023-03-20', OrderAmt: '12000.00', POStatus: 'Open', VendorNubmer: 'V789', VendorName: 'Vendor C' },
-  { PONumber: 'PO101', OrderDate: '2023-04-05', OrderAmt: '3500.00', POStatus: 'Pending', VendorNubmer: 'V101', VendorName: 'Vendor D' },
-  { PONumber: 'PO202', OrderDate: '2023-05-12', OrderAmt: '6000.00', POStatus: 'Closed', VendorNubmer: 'V202', VendorName: 'Vendor E' },
-  { PONumber: 'PO303', OrderDate: '2023-06-25', OrderAmt: '9000.00', POStatus: 'Open', VendorNubmer: 'V303', VendorName: 'Vendor F' },
-  { PONumber: 'PO404', OrderDate: '2023-07-08', OrderAmt: '4800.00', POStatus: 'Pending', VendorNubmer: 'V404', VendorName: 'Vendor G' },
-  { PONumber: 'PO505', OrderDate: '2023-08-14', OrderAmt: '7500.00', POStatus: 'Closed', VendorNubmer: 'V505', VendorName: 'Vendor H' },
-  { PONumber: 'PO606', OrderDate: '2023-09-21', OrderAmt: '3000.00', POStatus: 'Open', VendorNubmer: 'V606', VendorName: 'Vendor I' },
-  { PONumber: 'PO707', OrderDate: '2023-10-30', OrderAmt: '4200.00', POStatus: 'Closed', VendorNubmer: 'V707', VendorName: 'Vendor J' }
+  { PONumber: 'PO123', OrderDate: '2023-01-01', OrderAmt: '5000.00', POStatus: 'Open', VendorNumber: 'V123', VendorName: 'Vendor A' },
+  { PONumber: 'PO456', OrderDate: '2023-02-15', OrderAmt: '8000.00', POStatus: 'Closed', VendorNumber: 'V456', VendorName: 'Vendor B' },
+  { PONumber: 'PO789', OrderDate: '2023-03-20', OrderAmt: '12000.00', POStatus: 'Open', VendorNumber: 'V789', VendorName: 'Vendor C' },
+  { PONumber: 'PO101', OrderDate: '2023-04-05', OrderAmt: '3500.00', POStatus: 'Pending', VendorNumber: 'V101', VendorName: 'Vendor D' },
+  { PONumber: 'PO202', OrderDate: '2023-05-12', OrderAmt: '6000.00', POStatus: 'Closed', VendorNumber: 'V202', VendorName: 'Vendor E' },
+  { PONumber: 'PO303', OrderDate: '2023-06-25', OrderAmt: '9000.00', POStatus: 'Open', VendorNumber: 'V303', VendorName: 'Vendor F' },
+  { PONumber: 'PO404', OrderDate: '2023-07-08', OrderAmt: '4800.00', POStatus: 'Pending', VendorNumber: 'V404', VendorName: 'Vendor G' },
+  { PONumber: 'PO505', OrderDate: '2023-08-14', OrderAmt: '7500.00', POStatus: 'Closed', VendorNumber: 'V505', VendorName: 'Vendor H' },
+  { PONumber: 'PO606', OrderDate: '2023-09-21', OrderAmt: '3000.00', POStatus: 'Open', VendorNumber: 'V606', VendorName: 'Vendor I' },
+  { PONumber: 'PO707', OrderDate: '2023-10-30', OrderAmt: '4200.00', POStatus: 'Closed', VendorNumber: 'V707', VendorName: 'Vendor J' }
 
 ];
 
@@ -36,7 +36,7 @@ const EXAMPLE_DATA: DataTableExistingPO[] = [
  * (including sorting, pagination, and filtering).
  */
 export class ScExistingPoDataSource extends DataSource<DataTableExistingPO> {
-  data: DataTableExistingPO[] = EXAMPLE_DATA;
+  data: DataTableExistingPO[] = EXAMPLE_PO_DATA;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 

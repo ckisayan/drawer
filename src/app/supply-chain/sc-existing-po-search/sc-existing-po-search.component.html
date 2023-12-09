@@ -5,23 +5,30 @@
             Enter P.O
         </td>
         <td>
-            <input type="text">
+            <input matInput [(ngModel)]="ponumber">
         </td>
         <td>
             <button style="background-color: blue; color: white;"
-                [routerLink]="['/supply-chain/existing-po/grid']">Search</button>
+                [routerLink]="['/supply-chain/existing-po/grid']" (click)="SearchPO()">Search</button>
+        </td>
+        <td>            
+            <button style="background-color: blue; color: white;" (click)="nexttab()">Advance Search</button>            
+        </td>
+    </tr>
+    <tr>
+        <td>
+
         </td>
         <td>
-            <button style="background-color: blue; color: white;" (click)="updateMessage()">Advance Search</button>
-            <button style="background-color: blue; color: white;" (click)="nexttab()">Advance Search</button>
-            
+
         </td>
+        <td>(alt-s)</td>
     </tr>
     <tr>
         <td colspan="4">&nbsp;</td>
     </tr>
-    <tr>
-        <td colspan="4">
+    <tr >
+        <td colspan="4" >
             <table>
                 <tr>
                     <td>

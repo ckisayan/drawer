@@ -4,7 +4,7 @@
             <mat-horizontal-stepper [linear]="isLinear" #stepper>
                 <mat-step [stepControl]="firstFormGroup">
                     <form [formGroup]="firstFormGroup">
-                        <ng-template matStepLabel>Identify Supplier</ng-template>
+                        <ng-template matStepLabel>Identify Supplier/Vendor</ng-template>
                     </form>
                 </mat-step>
                 <mat-step [stepControl]="secondFormGroup">
@@ -40,9 +40,15 @@
             <td class="fromcolumn"><input matInput [(ngModel)]="vendorSelected.VendorNumber" disabled="true"></td>
         </tr>
         <tr>
-            <td colspan="4">
+            <td></td>
+            <td class="fromcolumn">hotkey alt-a</td>
+            <td></td>
+            <td class="fromcolumn">
                 <div (click)="showvendordetails()" class="show-more-link">{{ getVendorShowMoreText() }}</div>
             </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
         </tr>
         <tr [ngClass]="{'hidden-row': hideVendorRow}">
             <td class="fromcolumn">
@@ -63,6 +69,22 @@
                 Vendor Phone
             </td>
             <td class="fromcolumn"><input matInput [(ngModel)]="vendorSelected.VendorTelNumber" disabled="true"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr [ngClass]="{'hidden-row': hideVendorRow}">
+            <td class="fromcolumn">
+                
+            </td>
+            <td class="fromcolumn"></td>
+            <td class="fromcolumn">
+                
+            </td>
+            <td class="fromcolumn"><a (click)="showactiveOrders()">View Actuve Orders</a></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
         </tr>
         <tr>
             <td class="fromcolumn">
@@ -167,3 +189,4 @@
         </tr>
     </table>
 </div>
+
