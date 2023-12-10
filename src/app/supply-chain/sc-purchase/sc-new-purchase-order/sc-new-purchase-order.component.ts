@@ -62,6 +62,12 @@ export class ScNewPurchaseOrderComponent implements OnInit {
     this.showvendors();
     console.log('Shortcut alt.a triggered!');
   }
+  @HostListener('document:keydown.control.s', ['$event'])
+  onShortcut3(event: KeyboardEvent) {
+    event.preventDefault();
+    this.saveTransmit();
+    console.log('Shortcut ctlr+s triggered!');
+  }
 
   itemSelected =
     { PONumber: "", PODate: new Date().toLocaleDateString(), OrderStatus: "New", UserIdOrdered: "", VendorNumber: "" };
@@ -91,7 +97,7 @@ export class ScNewPurchaseOrderComponent implements OnInit {
     this.hideVendorRow = !this.hideVendorRow
   }
   getVendorShowMoreText() {
-    return this.hideVendorRow ? 'Show more (alt-s)' : 'Show less (alt-s)';
+    return this.hideVendorRow ? 'Show more (alt+s)' : 'Show less (alt+s)';
   }
   addItem() {
     //   const randomElementIndex = Math.floor(Math.random() * PurchaseItem_Data.length);

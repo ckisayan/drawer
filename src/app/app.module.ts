@@ -85,6 +85,11 @@ import { BsErrorVwComponent } from './bsbc/txn-details/bs-error-vw/bs-error-vw.c
 import { BsCustomSearchEditComponent } from './bsbc/bs-custom-search-edit/bs-custom-search-edit.component';
 import { BsOneErrorDetailsComponent } from './bsbc/txn-details/bs-one-error-details/bs-one-error-details.component';
 import { BsAddCustomColumnComponent } from './bsbc/bs-add-custom-column/bs-add-custom-column.component';
+import { BsbcTpRelationshipComponent } from './bsbc/trading-partner/bsbc-tp-relationship/bsbc-tp-relationship.component';
+import { BsbcTpGenInfoComponent } from './bsbc/trading-partner/bsbc-tp-gen-info/bsbc-tp-gen-info.component';
+import { BsbcTpDoctypeDetailsComponent } from './bsbc/trading-partner/bsbc-tp-doctype-details/bsbc-tp-doctype-details.component';
+import { BsbcTpDoctypeGenVwComponent } from './bsbc/trading-partner/bsbc-tp-doctype-gen-vw/bsbc-tp-doctype-gen-vw.component';
+import { BsbcTpDoctypeEdiInfoComponent } from './bsbc/trading-partner/bsbc-tp-doctype-edi-info/bsbc-tp-doctype-edi-info.component';
 
 
 
@@ -115,16 +120,17 @@ const appRoutes: Routes = [
         path: 'request276', component: BsRequest276Component,
         children: [
           { path: "grid", component: BsSearch276resultsGridComponent }
-
         ]
       },
       { path: 'response277', component: BsResponse277Component },
       { path: 'req-res-276-7', component: BsRr276277Component },
-      { path: 'trading-partner', component: TradingPartnerConfigComponent },
+      {path: 'trading-partner', component: TradingPartnerConfigComponent},
+      { path: 'trading-partner-details', component:  TradingPartnerDetailsComponent},
+      { path: 'tp-doctype-details', component:  BsbcTpDoctypeDetailsComponent},
     ]
   },
 
-  { path: 'trading-partner', component: TradingPartnerConfigComponent },
+
   {
     path: 'app-distribution-system-master/:id/:accesstoken', component: DistributionSystemMasterComponent
 
@@ -159,7 +165,7 @@ const appRoutes: Routes = [
 ]
 @NgModule({
   declarations: [
-    AppComponent,    
+    AppComponent,
     DataTableComponent,
     TradingPartnerDetailsComponent,
     Tab1Component,
@@ -173,10 +179,10 @@ const appRoutes: Routes = [
     NewPurchaseOrderComponent,
     ChatAssistComponent,
 
-    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent, BsCustomSearchEditComponent, BsOneErrorDetailsComponent, BsAddCustomColumnComponent
+    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent, BsCustomSearchEditComponent, BsOneErrorDetailsComponent, BsAddCustomColumnComponent, BsbcTpRelationshipComponent, BsbcTpGenInfoComponent, BsbcTpDoctypeDetailsComponent, BsbcTpDoctypeGenVwComponent, BsbcTpDoctypeEdiInfoComponent
   ],
   imports: [
-    BrowserModule,    
+    BrowserModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatTableModule,

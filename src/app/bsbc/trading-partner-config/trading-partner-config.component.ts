@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { DataTableDataSource, DataTableItem } from '..//..//data-table/data-table-datasource';
 import { SelectionModel } from '@angular/cdk/collections';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -24,9 +25,15 @@ export class TradingPartnerConfigComponent implements AfterViewInit {
   isDrawerOpen = false;
   drawerWidth: number = 700;
   columnsToDisplay: string[] = this.displayedColumns.slice();
+  constructor(private router: Router) {}
   showDrawer(row: DataTableItem) {
-    this.selectedTradingPartner = row;
-    this.isDrawerOpen = true;
+    //if you want to open a drawer
+    //this.selectedTradingPartner = row;
+    //this.isDrawerOpen = true;
+    console.log("navigating to trading partner details");
+    this.router.navigate(['/bsbc/trading-partner-details'])
+    
+
   }
   toggleDrawer() {
     this.isDrawerOpen = !this.isDrawerOpen;
