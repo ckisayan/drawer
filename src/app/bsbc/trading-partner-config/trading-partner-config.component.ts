@@ -1,11 +1,20 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatTable } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { DataTableDataSource, DataTableItem } from '..//..//data-table/data-table-datasource';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 
+const EXAMPLE_TP_DATA: DataTableItem[] = [
+  {TradingPartnerCheckBox: "123",Name: "Anthem Blue Cross - 88248", SubmitterID: '444', State: "Created",DaysInCommunity: "1001",BusinessRole: "TPA", LastAccessDate: "Nov-15-2023",  Actions:''},
+  {TradingPartnerCheckBox: "124",Name: "Pinnacle BSI - 30065", SubmitterID: '00234', State: "Invited", DaysInCommunity: "22",BusinessRole: "Employer", LastAccessDate: "Nov-15-2023",Actions:''}, 
+  {TradingPartnerCheckBox: "125",Name: "837 OB SA Delta Health", SubmitterID: '00160', State: "Active", DaysInCommunity: "456",BusinessRole: "Employer", LastAccessDate: "Nov-15-2023",Actions:''}, 
+  {TradingPartnerCheckBox: "126",Name: "834 LA county", SubmitterID: '00161', State: "Deactivated",DaysInCommunity: "1469",BusinessRole: "TPA", LastAccessDate: "Jan-15-2023", Actions:''}, 
+  {TradingPartnerCheckBox: "127",Name: "837 OB SA Direct_AC", SubmitterID: '00162', State: "Not Responding", DaysInCommunity: "2738",BusinessRole: "Employer", LastAccessDate: "Nov-15-2023",Actions:''}, 
+  {TradingPartnerCheckBox: "129",Name: "PassportHTTPS", SubmitterID: '54560', State: "Active", DaysInCommunity: "2865",BusinessRole: "Clearinghouse", LastAccessDate: "Dec-15-2023",Actions:''}, 
+  {TradingPartnerCheckBox: "128",Name: "837 OB SA Health Group", SubmitterID: '00163', State: "No Activity", DaysInCommunity: "99",BusinessRole: "Provider", LastAccessDate: "Nov-15-2023",Actions:''},
+];
 
 @Component({
   selector: 'app-trading-partner-config',
@@ -16,10 +25,12 @@ export class TradingPartnerConfigComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTableItem>;
-  dataSource = new DataTableDataSource();
+  //dataSource = new DataTableDataSource();
+  dataSource = new MatTableDataSource(EXAMPLE_TP_DATA);
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['TradingPartnerCheckBox', 'Name', 'SubmitterID', 'State', 'actions'];
+  displayedColumns = [ 'Name', 'State', 'DaysInCommunity','BusinessRole', 'LastAccessDate'];
+  
   selectedTradingPartner: DataTableItem | undefined;
   selection = new SelectionModel<DataTableDataSource>(true, []);
   isDrawerOpen = false;
@@ -80,6 +91,6 @@ export class TradingPartnerConfigComponent implements AfterViewInit {
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    //this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

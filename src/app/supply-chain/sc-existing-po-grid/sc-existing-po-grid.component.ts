@@ -56,12 +56,14 @@ export class ScExistingPoGridComponent implements AfterViewInit,OnInit  {
     this.purchaseService.getnavigate.subscribe(nav=> this.navigate = nav);
     this.purchaseService.getPurchaseOrderNumber.subscribe(ponumber=> this.purchaseOrderNumber = ponumber);
     this.purchaseService.getVendorNumber.subscribe(vendorNumber=> this.vendorNumber = vendorNumber);
+    
   }
   ngOnInit(): void {
     try{
       // let vn = this.activatedRoute.snapshot.paramMap.get('id')?.toString();
       // if (vn !== undefined)
       //   this.vendorNumber = vn;
+          
       this.getSupplyChainPurchOrders()
     }catch(err){
       console.log ("error Loading from db, will display hard coded values");
@@ -113,8 +115,13 @@ export class ScExistingPoGridComponent implements AfterViewInit,OnInit  {
       ponumber: ponumber,      
       vendornumber: vendornumber
     };
+    const headers = {
+      'Access-Control-Allow-Origin': '*', // Include desired origin or list of origins
+      'Access-Control-Allow-Methods': 'POST', // Specify allowed methods
+      'Access-Control-Allow-Headers': 'Content-Type', // Allow necessary headers
+    };
     
-    this.http.post<any>(endpoint, posearch).subscribe(data => {
+    this.http.post<any>(endpoint, posearch, {headers}).subscribe(data => {
       let httpdata = data.map((purchorders: any) => this.convertToPascalCase(purchorders));
       if (httpdata.length > 0) {    
         

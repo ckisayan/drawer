@@ -87,7 +87,8 @@ export class ScVendorListComponent implements OnInit, AfterViewInit {
     this.dialogRef.close();
   }
   getSupplyChainVendors() {
-    const endpoint = ScGlobalService.as400endpoint + "allvendors";
+    const endpoint = ScGlobalService.as400endpoint + "allvendors/";
+    console.log("endpoint is:" + endpoint)
     //'http://pub400.com:9123/api/supplychain/allitems';
     console.log("before calling "+endpoint);
 

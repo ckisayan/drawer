@@ -1,6 +1,6 @@
 <table bgColor="lightgray">
     <tr>
-        <td>
+        <td >
             <mat-horizontal-stepper [linear]="isLinear" #stepper>
                 <mat-step [stepControl]="firstFormGroup">
                     <form [formGroup]="firstFormGroup">
@@ -37,7 +37,7 @@
                 </mat-step>
                 <mat-step [stepControl]="thirdFormGroup">
                     <form [formGroup]="thirdFormGroup">
-                        <ng-template matStepLabel>Send Purcashe Order</ng-template>
+                        <ng-template matStepLabel>Send Purchase Order</ng-template>
                         <mat-form-field>
                             <input matInput placeholder="Transmit" formControlName="thirdCtrl" required>
                         </mat-form-field>

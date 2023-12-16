@@ -10,17 +10,20 @@ export interface DataTableItem {
   Name: string;
   SubmitterID: string;
   State: string;
+  DaysInCommunity: string;
+  BusinessRole: string;
+  LastAccessDate: string
   Actions: string;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: DataTableItem[] = [
-  {TradingPartnerCheckBox: "123",Name: "Anthem Blue Cross - 88248", SubmitterID: '444', State: "KY", Actions:''},
-  {TradingPartnerCheckBox: "123",Name: "Pinnacle BSI - 30065", SubmitterID: '00234', State: "AR, LA, ML", Actions:''}, 
-  {TradingPartnerCheckBox: "123",Name: "Anthem Blue Cross - 88227", SubmitterID: '00160', State: "MI", Actions:''}, 
-  {TradingPartnerCheckBox: "123",Name: "Anthem Blue Cross - 88228", SubmitterID: '00161', State: "CA", Actions:''}, 
-  {TradingPartnerCheckBox: "123",Name: "Anthem Blue Cross - 88229", SubmitterID: '00162', State: "NY", Actions:''}, 
-  {TradingPartnerCheckBox: "123",Name: "Anthem Blue Cross - 88230", SubmitterID: '00163', State: "FL", Actions:''},
+  {TradingPartnerCheckBox: "123",Name: "Anthem Blue Cross - 88248", SubmitterID: '444', State: "Created",DaysInCommunity: "1001",BusinessRole: "Employer", LastAccessDate: "Nov-15-2023",  Actions:''},
+  {TradingPartnerCheckBox: "123",Name: "Pinnacle BSI - 30065", SubmitterID: '00234', State: "Pending", DaysInCommunity: "1001",BusinessRole: "Employer", LastAccessDate: "Nov-15-2023",Actions:''}, 
+  {TradingPartnerCheckBox: "123",Name: "Anthem Blue Cross - 88227", SubmitterID: '00160', State: "Waiting for Approval", DaysInCommunity: "1001",BusinessRole: "Employer", LastAccessDate: "Nov-15-2023",Actions:''}, 
+  {TradingPartnerCheckBox: "123",Name: "Anthem Blue Cross - 88228", SubmitterID: '00161', State: "New",DaysInCommunity: "1001",BusinessRole: "Employer", LastAccessDate: "Nov-15-2023", Actions:''}, 
+  {TradingPartnerCheckBox: "123",Name: "Anthem Blue Cross - 88229", SubmitterID: '00162', State: "Requested", DaysInCommunity: "1001",BusinessRole: "Employer", LastAccessDate: "Nov-15-2023",Actions:''}, 
+  {TradingPartnerCheckBox: "123",Name: "Anthem Blue Cross - 88230", SubmitterID: '00163', State: "In Process", DaysInCommunity: "1001",BusinessRole: "Employer", LastAccessDate: "Nov-15-2023",Actions:''},
 ];
 
 /**

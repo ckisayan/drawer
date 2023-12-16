@@ -1,42 +1,48 @@
-<h3>Search Purchase Order</h3>
-<table>
-    <tr>
-        <td >
-            Enter P.O
-        </td>
-        <td>
-            <input matInput [(ngModel)]="ponumber">
-        </td>
-        <td>
-            <button style="background-color: blue; color: white;"
-                [routerLink]="['/supply-chain/existing-po/grid']" (click)="SearchPO()">Search</button>
-        </td>
-        <td>            
-            <button style="background-color: blue; color: white;" (click)="nexttab()">Advance Search</button>            
-        </td>
-    </tr>
-    <tr>
-        <td>
+<div style="border-color: lightblue; padding: 10px; border: 2px solid lightblue;">   
+    <table style="width: 100%">
+        <tr>
+            <td colspan="4" style="text-align: center;"><h3>Search Purchase Order</h3></td>
+        </tr>
+        <tr>
+            
+            <td>
+                Enter P.O
+            </td>
+            <td>
+                <input matInput [(ngModel)]="ponumber">
+            </td>
+            <td>
+                <button style="background-color: blue; color: white;" [routerLink]="['/supply-chain/existing-po/grid']"
+                    (click)="SearchPO()">Search</button>
+            </td>
+            <td>
+                <button style="background-color: blue; color: white;" (click)="nexttab()">Advance
+                    Search</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
 
-        </td>
-        <td>
+            </td>
+            <td>
 
-        </td>
-        <td>(alt-s)</td>
-    </tr>
-    <tr>
-        <td colspan="4">&nbsp;</td>
-    </tr>
-    <tr >
-        <td colspan="4" >
-            <table>
-                <tr>
-                    <td>
-                        <!--<router-outlet></router-outlet>-->
-                        <app-sc-existing-po-grid (nexttab)="nexttab()"></app-sc-existing-po-grid>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
+            </td>
+            <td>(alt-s)</td>
+        </tr>
+        <tr>
+            <td colspan="4">&nbsp;</td>
+        </tr>
+        <tr >
+            <td colspan="4" style="width: 100%;">
+                <table style="border: 0px solid #ddd; text-align: center;display: table;margin: 0 auto;width: 100%;">
+                    <tr>
+                        <td style="width: 100%">
+                            <!--<router-outlet></router-outlet>-->
+                            <app-sc-existing-po-grid (nexttab)="nexttab()"></app-sc-existing-po-grid>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

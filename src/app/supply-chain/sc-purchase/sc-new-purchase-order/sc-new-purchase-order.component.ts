@@ -69,6 +69,11 @@ export class ScNewPurchaseOrderComponent implements OnInit {
     console.log('Shortcut ctlr+s triggered!');
   }
 
+  @HostListener('window:keydown.f9', ['$event'])
+  onF9KeyDown(event: KeyboardEvent) {    
+    console.log('F9 key pressed!');
+    this.addItem();
+  }
   itemSelected =
     { PONumber: "", PODate: new Date().toLocaleDateString(), OrderStatus: "New", UserIdOrdered: "", VendorNumber: "" };
 
@@ -79,6 +84,7 @@ export class ScNewPurchaseOrderComponent implements OnInit {
     
     ) {
     this.dataItemSource = this.dataItemSource.filter(item => item.ItemNumber !== '');
+    this.purchaseService.setPurchaseOrderNumber("");
   }
 
   ngOnInit() {

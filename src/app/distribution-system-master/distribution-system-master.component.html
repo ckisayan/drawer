@@ -1,7 +1,7 @@
 <table border="0" width="100%">
   <tr>
     <td colspan="4">
-      <table width="100%" border="0" style="background: lightgray;">
+      <table width="100%" border="0" style="background: #bdd6ff;">
         <tr>
           <td><img src="..//../assets/images/logo.svg"></td>
           <td align="center">
@@ -89,25 +89,33 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-nav-list routerLinkActive="active">
-              <a mat-list-item [routerLink]="['/supply-chain/purchase-order']" >Enter New
+              <a mat-list-item [routerLink]="['/supply-chain/purchase-order']">Enter New
                 Order</a>
-              <a mat-list-item> Change Existing P.O.</a>
+              <a mat-list-item>Change Existing P.O.</a>
               <a mat-list-item>Cancel P.O.</a>
               <a mat-list-item>Close P.O.</a>
-              <a mat-list-item [routerLink]="['/supply-chain/existing-po']" >View Existing P.O. </a>
+              <a mat-list-item [routerLink]="['/supply-chain/existing-po']">View Existing P.O. </a>
+              <a mat-list-item>Vendor Confirmation</a>
             </mat-nav-list>
           </mat-expansion-panel>
           <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
-                Inventroy
+                Inventory
               </mat-panel-title>
               <mat-panel-description>
                 *
                 <mat-icon>inventory</mat-icon>
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <a mat-list-item>Look for item</a>
+            <mat-nav-list routerLinkActive="active">
+              <a mat-list-item>Receiving Inventory</a>
+              <a mat-list-item>Pallet Loading</a>
+              <a mat-list-item>Stock Transfers</a>
+              <a mat-list-item>Demand Forecasting</a>
+              <a mat-list-item>Search product</a>
+              <a mat-list-item>Configure product</a>
+            </mat-nav-list>
           </mat-expansion-panel>
 
           <mat-expansion-panel>
@@ -134,6 +142,12 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-nav-list>
+              <a mat-list-item>Manage Loads</a>
+              <a mat-list-item>Ship Loads</a>
+              <a mat-list-item>Outbound Waves</a>
+              <a mat-list-item>Packing & Containerization</a>
+              <a mat-list-item>Cycle Counting</a>
+              <a mat-list-item>Replenishment</a>
               <a mat-list-item>Search an Item</a>
             </mat-nav-list>
           </mat-expansion-panel>
@@ -148,6 +162,10 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-nav-list>
+              <a mat-list-item>Load Planning</a>
+              <a mat-list-item>Dock Appt Scheduling</a>
+              <a mat-list-item>Manage Routes</a>
+              <a mat-list-item>Freight Bills & Invoices</a>
               <a mat-list-item>Trace Shipment</a>
             </mat-nav-list>
           </mat-expansion-panel>
@@ -162,8 +180,27 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-nav-list>
-              <a mat-list-item>AR</a>
-              <a mat-list-item>AP</a>
+              <a mat-list-item>Account Reconcilation</a>
+              <a mat-list-item>Inoices & Payments</a>
+              <a mat-list-item>Budgets & Forecasts </a>
+              <a mat-list-item>Revenue Management</a>
+              <a mat-list-item>Cash Flow Management</a>
+              <a mat-list-item>Tax Management</a>
+              <a mat-list-item>Multi-Site Configuration</a>
+            </mat-nav-list>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Work Planning
+              </mat-panel-title>
+              <mat-panel-description>
+                *
+                <mat-icon>people</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+              <a mat-list-item>Work Order Managment</a>
             </mat-nav-list>
           </mat-expansion-panel>
           <mat-expansion-panel>
@@ -201,7 +238,7 @@
       <!--<app-vendor-details></app-vendor-details>-->
       <router-outlet></router-outlet>
     </td>
-    <td align="right" width="20%">
+    <td align="right" width="10%">
       <app-sc-chat></app-sc-chat>
     </td>
   </tr>

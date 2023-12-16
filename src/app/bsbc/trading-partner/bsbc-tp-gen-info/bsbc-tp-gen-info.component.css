@@ -2,3 +2,31 @@
     width: 20%;
     ;
 }
+
+.table_format{
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid lightgray; 
+}
+.table_header_style{
+    font-weight: bold;
+    background-color: rgba(211, 211, 211, 0.747);
+
+}
+.column_format_lable{
+    width: 5%;
+}
+.column_format_value{
+    width: 35%;
+    text-align: right;
+}
+.column_format_value_long{
+    width: 55%;
+    text-align: right;
+}
+.table_outer {
+    width: 100%;
+    border-collapse: collapse;
+ 
+   
+}

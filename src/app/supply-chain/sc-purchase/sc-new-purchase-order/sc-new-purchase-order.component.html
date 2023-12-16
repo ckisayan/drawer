@@ -1,6 +1,9 @@
-<table bgColor="">
-    <tr>
-        <td>
+<table style="width: 100%; background: lightblue;">
+    <tr><td style="text-align: center;">
+        <h3> New Purchase Order Workflow</h3>
+    </td></tr>
+    <tr style="text-align: center; width: 100%;">
+        <td style=" width: 100%;">
             <mat-horizontal-stepper [linear]="isLinear" #stepper>
                 <mat-step [stepControl]="firstFormGroup">
                     <form [formGroup]="firstFormGroup">
@@ -15,19 +18,18 @@
                 <mat-step [stepControl]="thirdFormGroup">
                     <form [formGroup]="thirdFormGroup">
                         <ng-template matStepLabel>Send Purcashe Order</ng-template>
-
                     </form>
                 </mat-step>
                 <mat-step>
                     <ng-template matStepLabel>Done</ng-template>
-
                 </mat-step>
             </mat-horizontal-stepper>
         </td>
     </tr>
 </table>
 <div>
-    <table>
+    <table >
+        <tr><td>&nbsp;</td></tr>
         <tr>
             <td class="fromcolumn">
                 Vendor Name
@@ -81,7 +83,7 @@
             <td class="fromcolumn">
                 
             </td>
-            <td class="fromcolumn"><a (click)="showactiveOrders()">View Actuve Orders</a></td>
+            <td class="fromcolumn"><a (click)="showactiveOrders()" ><span style="color: blue; text-decoration: underline;cursor: pointer;">View Actuve Orders</span></a></td>
         </tr>
         <tr>
             <td>&nbsp;</td>
@@ -131,7 +133,7 @@
         <tr>
             <td colspan="1"><button  (click)="addItem()" class="demo-button">
                     Add Item
-                </button></td>
+                </button> (F9)</td>
             <td colspan="1"><button  [disabled]="!dataItemSource.length" (click)="removeItem()"
                     class="demo-button">
                     Remove data

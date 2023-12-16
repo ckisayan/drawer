@@ -141,6 +141,7 @@ const appRoutes: Routes = [
       { path: '', component: ScOverviewComponent },
       { path: 'overview', component: ScOverviewComponent },
       {
+
         path: 'purchase-order', component: ScNewPurchaseOrderComponent,
         children: [
           { path: 'grid', component: ScExistingPoGridComponent, },
@@ -148,6 +149,8 @@ const appRoutes: Routes = [
         ]
 
       },
+      {path: 'purchase-order/:id/:accestoken', component: ScNewPurchaseOrderComponent},
+      {path: 'purchase-order/:accestoken', component: ScNewPurchaseOrderComponent},
       { path: 'vendor-details', component: VendorDetailsComponent },
       {
         path: 'existing-po', component: ScVwExistingPoComponent,
@@ -207,7 +210,6 @@ const appRoutes: Routes = [
     JsonPipe,
     MatDialogModule,
     MatNativeDateModule, MatTooltipModule, CdkAccordionModule, RouterModule.forRoot(appRoutes)
-
   ],
   providers: [],
   bootstrap: [AppComponent]

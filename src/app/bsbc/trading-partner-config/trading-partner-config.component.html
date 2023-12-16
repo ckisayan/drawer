@@ -1,4 +1,40 @@
-<mat-drawer-container class="example-container">
+<table style="width: 100%; background: lightblue;">
+  <tr><td style="text-align: right;"><button style="background-color: blue; color: white; cursor: pointer;">+ Trading Partner</button></td></tr>
+  <tr>
+    <td style="text-align: center;">
+      <h3> Search Trading Partner</h3>
+  </td>
+  
+</tr>
+  
+</table>
+<table style="width: 100%; border: 2px solid lightblue;border-collapse: collapse;">
+  <tr><td>&nbsp;</td></tr>
+  <tr>
+    <td>Trading Partner Name</td>
+    <td><input type=text></td>
+    <td>Trading Partner ID</td>
+    <td><input type=text></td>
+  </tr>
+
+  <tr><td>&nbsp;</td>
+    <td style="font-size: 80%; vertical-align: top;">&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 
+      &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 
+      wild card search</td>
+  </tr>
+  <tr >
+    <td colspan="3"></td>
+    <td colspan="1" >
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      &nbsp; &nbsp; 
+        <button style="background-color: blue; color: white; "> Search </button> 
+        
+    </td>
+</tr> 
+<tr><td>&nbsp;</td></tr>
+</table>
+<mat-drawer-container class="example-container" >
   <mat-drawer #drawerdetail [mode]="'side'" position="end" [style.width.px]="drawerWidth" [opened]="isDrawerOpen"
     (openedChange)="drawerStateChanged($event)">
     <h3>Selected Trading partner details</h3>
@@ -19,11 +55,17 @@
     <hr>
     <app-tradingpartnerdetails></app-tradingpartnerdetails>
   </mat-drawer>
-  <mat-form-field>
+  <mat-form-field style="width: 80%;">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. trading partner name" #input>
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
+  <span>
+    &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <mat-icon matTooltip="export to CSV">download</mat-icon> &nbsp; &nbsp;
+    <!--<mat-icon matTooltip="add column">add</mat-icon> &nbsp; &nbsp;-->
+</span>
   <table mat-table class="full-width-table" matSort aria-label="Elements">
     <ng-container matColumnDef="TradingPartnerCheckBox">
       <th mat-header-cell *matHeaderCellDef>
@@ -50,9 +92,22 @@
       <td mat-cell *matCellDef="let row">{{row.Name}}</td>
     </ng-container>
     <ng-container matColumnDef="State">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
       <td mat-cell *matCellDef="let row">{{row.State}}</td>
     </ng-container>
+    <ng-container matColumnDef="DaysInCommunity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Days in Community</th>
+      <td mat-cell *matCellDef="let row">{{row.DaysInCommunity}}</td>
+    </ng-container>
+    <ng-container matColumnDef="BusinessRole">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Business Role</th>
+      <td mat-cell *matCellDef="let row">{{row.BusinessRole}}</td>
+    </ng-container>
+    <ng-container matColumnDef="LastAccessDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Access Date</th>
+      <td mat-cell *matCellDef="let row">{{row.LastAccessDate}}</td>
+    </ng-container>
+
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Action </th>
       <td mat-cell *matCellDef="let element">
@@ -65,7 +120,7 @@
   </table>
 
 
-  <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="5"
+  <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="7"
     [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
   </mat-paginator>
 </mat-drawer-container>

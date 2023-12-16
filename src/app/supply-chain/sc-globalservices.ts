@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ScGlobalService {
-    static as400endpoint = "http://pub400.com:9124/api/supplychain/" ;
+    static as400endpoint = "http://pub400.com:9123/api/supplychain/" ;
 
   // You can add other properties or methods as needed
 
