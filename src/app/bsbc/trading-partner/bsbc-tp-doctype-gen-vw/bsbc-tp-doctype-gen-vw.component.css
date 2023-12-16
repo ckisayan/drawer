@@ -5,8 +5,10 @@
 
 .table_format{
     width: 100%;
+    height: 300px;
     border-collapse: collapse;
     border: 1px solid lightgray; 
+
 }
 .table_header_style{
     font-weight: bold;
@@ -27,6 +29,7 @@
 .table_outer {
     width: 100%;
     border-collapse: collapse;
+    
  
    
 }

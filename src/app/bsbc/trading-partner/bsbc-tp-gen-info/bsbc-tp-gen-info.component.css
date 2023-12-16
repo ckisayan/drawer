@@ -27,6 +27,7 @@
 .table_outer {
     width: 100%;
     border-collapse: collapse;
- 
+    
+    border: 1px solid lightgray; 
    
 }

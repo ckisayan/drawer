@@ -13,7 +13,7 @@ const EXAMPLE_TP_DATA: DataTableItem[] = [
   {TradingPartnerCheckBox: "126",Name: "834 LA county", SubmitterID: '00161', State: "Deactivated",DaysInCommunity: "1469",BusinessRole: "TPA", LastAccessDate: "Jan-15-2023", Actions:''}, 
   {TradingPartnerCheckBox: "127",Name: "837 OB SA Direct_AC", SubmitterID: '00162', State: "Not Responding", DaysInCommunity: "2738",BusinessRole: "Employer", LastAccessDate: "Nov-15-2023",Actions:''}, 
   {TradingPartnerCheckBox: "129",Name: "PassportHTTPS", SubmitterID: '54560', State: "Active", DaysInCommunity: "2865",BusinessRole: "Clearinghouse", LastAccessDate: "Dec-15-2023",Actions:''}, 
-  {TradingPartnerCheckBox: "128",Name: "837 OB SA Health Group", SubmitterID: '00163', State: "No Activity", DaysInCommunity: "99",BusinessRole: "Provider", LastAccessDate: "Nov-15-2023",Actions:''},
+  {TradingPartnerCheckBox: "128",Name: "UCLA", SubmitterID: '00163', State: "No Activity", DaysInCommunity: "99",BusinessRole: "Provider", LastAccessDate: "Nov-15-2023",Actions:''},
 ];
 
 @Component({

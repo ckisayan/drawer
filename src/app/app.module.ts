@@ -126,7 +126,10 @@ const appRoutes: Routes = [
       { path: 'req-res-276-7', component: BsRr276277Component },
       {path: 'trading-partner', component: TradingPartnerConfigComponent},
       { path: 'trading-partner-details', component:  TradingPartnerDetailsComponent},
-      { path: 'tp-doctype-details', component:  BsbcTpDoctypeDetailsComponent},
+    //  { path: 'tp-doctype-details', component:  BsbcTpDoctypeDetailsComponent},
+    { path: 'tp-doctype-details', component:  BsbcTpDoctypeGenVwComponent},
+
+
     ]
   },
 

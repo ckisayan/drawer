@@ -23,8 +23,20 @@
                     <td class="column_format_value">PassportHTTPS</td>
                 </tr>    
                 <tr>
-                    <td class="column_format">Interchange REciever ID</td>
+                    <td class="column_format">Interchange Reciever ID</td>
                     <td class="column_format_value">276PASSPORT</td>
+                </tr>       
+                <tr>
+                    <td class="column_format">Relationship type</td>
+                    <td class="column_format_value">
+                        <select >
+                            <option>270 inbound</option>
+                            <option>271 outbound</option>
+                            <option>276 inbound</option>
+                            <option>276 outbound</option>
+                        </select>
+
+                    </td>
                 </tr>       
                 <tr>
                     <td>&nbsp;</td>
@@ -123,6 +135,16 @@
                         </select>
                     </td>
                 </tr>
+                <tr>
+                    <td class="column_format">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td class="column_format">
+                        &nbsp;
+                    </td>
+                </tr>
             </table>
         </td>
         <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -183,8 +205,14 @@
                     <td class="column_format">Last Updated</td>
                     <td class="column_format_value_long">Nov-23-2023 By Ravi Angara</td>
                 </tr>
+                <tr><td>&nbsp;</td></tr>
             </table>
 
         </td>
     </tr>
+
+    <tr>
+        <td colspan="6" style="text-align: right;"><a [routerLink]="['/bsbc/trading-partner-details']">back</a></td>
+    </tr>
 </table>
+
