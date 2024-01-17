@@ -81,7 +81,7 @@
           <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
-                Purchase
+                Procurement
               </mat-panel-title>
               <mat-panel-description>
                 *
@@ -203,6 +203,37 @@
               <a mat-list-item>Work Order Managment</a>
             </mat-nav-list>
           </mat-expansion-panel>
+         
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Administration
+              </mat-panel-title>
+              <mat-panel-description>
+                *
+                <mat-icon>settings</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-nav-list>              
+              
+              <a mat-list-item [routerLink]="['/supply-chain/configuration/warehouse']">Manage Locations</a>
+              <a mat-list-item [routerLink]="['/supply-chain/configuration/system-assets']">System Assets</a>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    User Management
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                  <a mat-list-item>Users</a>
+                  <a mat-list-item>Roles</a>
+                  <a mat-list-item>Groups</a>
+                  <a mat-list-item>Assign Permissions</a>
+                </mat-nav-list>
+
+              </mat-expansion-panel>
+            </mat-nav-list>
+          </mat-expansion-panel>
           <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
@@ -215,20 +246,6 @@
             </mat-expansion-panel-header>
             <mat-nav-list>
               <a mat-list-item [routerLink]="['/supply-chain/vendor-details']">Search PO Vendor</a>
-            </mat-nav-list>
-          </mat-expansion-panel>
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Administration
-              </mat-panel-title>
-              <mat-panel-description>
-                *
-                <mat-icon>settings</mat-icon>
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <mat-nav-list>
-              <a mat-list-item>Search Setup</a>
             </mat-nav-list>
           </mat-expansion-panel>
         </mat-accordion>

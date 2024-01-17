@@ -90,6 +90,9 @@ import { BsbcTpGenInfoComponent } from './bsbc/trading-partner/bsbc-tp-gen-info/
 import { BsbcTpDoctypeDetailsComponent } from './bsbc/trading-partner/bsbc-tp-doctype-details/bsbc-tp-doctype-details.component';
 import { BsbcTpDoctypeGenVwComponent } from './bsbc/trading-partner/bsbc-tp-doctype-gen-vw/bsbc-tp-doctype-gen-vw.component';
 import { BsbcTpDoctypeEdiInfoComponent } from './bsbc/trading-partner/bsbc-tp-doctype-edi-info/bsbc-tp-doctype-edi-info.component';
+import { WarehouseConfigComponent } from './supply-chain/configuration/warehouse-config/warehouse-config.component';
+import { SystemAssetsConfigComponent } from './supply-chain/configuration/system-assets-config/system-assets-config.component';
+import { SystemAssetsProcurementComponent } from './supply-chain/configuration/system-assets-procurement/system-assets-procurement.component';
 
 
 
@@ -124,10 +127,10 @@ const appRoutes: Routes = [
       },
       { path: 'response277', component: BsResponse277Component },
       { path: 'req-res-276-7', component: BsRr276277Component },
-      {path: 'trading-partner', component: TradingPartnerConfigComponent},
-      { path: 'trading-partner-details', component:  TradingPartnerDetailsComponent},
-    //  { path: 'tp-doctype-details', component:  BsbcTpDoctypeDetailsComponent},
-    { path: 'tp-doctype-details', component:  BsbcTpDoctypeGenVwComponent},
+      { path: 'trading-partner', component: TradingPartnerConfigComponent },
+      { path: 'trading-partner-details', component: TradingPartnerDetailsComponent },
+      //  { path: 'tp-doctype-details', component:  BsbcTpDoctypeDetailsComponent},
+      { path: 'tp-doctype-details', component: BsbcTpDoctypeGenVwComponent },
 
 
     ]
@@ -152,8 +155,10 @@ const appRoutes: Routes = [
         ]
 
       },
-      {path: 'purchase-order/:id/:accestoken', component: ScNewPurchaseOrderComponent},
-      {path: 'purchase-order/:accestoken', component: ScNewPurchaseOrderComponent},
+      { path: 'configuration/warehouse', component: WarehouseConfigComponent},
+      { path: 'configuration/system-assets', component: SystemAssetsConfigComponent},
+      { path: 'purchase-order/:id/:accestoken', component: ScNewPurchaseOrderComponent },
+      { path: 'purchase-order/:accestoken', component: ScNewPurchaseOrderComponent },
       { path: 'vendor-details', component: VendorDetailsComponent },
       {
         path: 'existing-po', component: ScVwExistingPoComponent,
@@ -185,7 +190,7 @@ const appRoutes: Routes = [
     NewPurchaseOrderComponent,
     ChatAssistComponent,
 
-    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent, BsCustomSearchEditComponent, BsOneErrorDetailsComponent, BsAddCustomColumnComponent, BsbcTpRelationshipComponent, BsbcTpGenInfoComponent, BsbcTpDoctypeDetailsComponent, BsbcTpDoctypeGenVwComponent, BsbcTpDoctypeEdiInfoComponent
+    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent, BsCustomSearchEditComponent, BsOneErrorDetailsComponent, BsAddCustomColumnComponent, BsbcTpRelationshipComponent, BsbcTpGenInfoComponent, BsbcTpDoctypeDetailsComponent, BsbcTpDoctypeGenVwComponent, BsbcTpDoctypeEdiInfoComponent, WarehouseConfigComponent, SystemAssetsConfigComponent, SystemAssetsProcurementComponent
   ],
   imports: [
     BrowserModule,

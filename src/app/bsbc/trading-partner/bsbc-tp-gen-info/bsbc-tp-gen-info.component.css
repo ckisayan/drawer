@@ -13,6 +13,12 @@
     background-color: rgba(211, 211, 211, 0.747);
 
 }
+.table_header_style_rt{
+    font-weight: bold;
+    background-color: rgba(211, 211, 211, 0.747);
+    text-align: right;
+
+}
 .column_format_lable{
     width: 5%;
 }

@@ -1,0 +1,40 @@
+<mat-tab-group [(selectedIndex)]="selectedIndex" (selectedTabChange)="tabChanged($event)">
+    <mat-tab label="procurement">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">account_circle</mat-icon>
+            Procurement
+        </ng-template>     
+        <app-system-assets-procurement></app-system-assets-procurement>   
+    </mat-tab>
+    <mat-tab label="Inventory">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">inventory</mat-icon>
+            Inventory
+        </ng-template>        
+    </mat-tab>
+    
+    <mat-tab label="Orders">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">add_task</mat-icon>
+            Orders
+        </ng-template>        
+    </mat-tab>
+    <mat-tab label="Warehouse">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">warehouse</mat-icon>
+            Warehouse
+        </ng-template>        
+    </mat-tab>
+    <mat-tab label="Transportation">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">local_shipping</mat-icon>
+            Transportation
+        </ng-template>        
+    </mat-tab>
+    <mat-tab label="Finance">
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">attach_money</mat-icon>
+            Finance
+        </ng-template>        
+    </mat-tab>
+</mat-tab-group>
