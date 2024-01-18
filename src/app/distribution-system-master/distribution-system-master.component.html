@@ -225,8 +225,8 @@
                   </mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
-                  <a mat-list-item>Users</a>
-                  <a mat-list-item>Roles</a>
+                  <a mat-list-item [routerLink]="['/supply-chain/configuration/system-users']">Users</a>
+                  <a mat-list-item [routerLink]="['/supply-chain/configuration/system-roles']">Roles</a>
                   <a mat-list-item>Groups</a>
                   <a mat-list-item>Assign Permissions</a>
                 </mat-nav-list>

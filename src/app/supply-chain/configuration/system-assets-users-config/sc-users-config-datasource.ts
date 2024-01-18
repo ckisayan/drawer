@@ -5,21 +5,21 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
-export interface DataTableProcurementConfig {    
-  SystemResourceID: string;
-  SystemResourceName: string;
-  SystemResourceDesc: string;
+export interface DataTableUsersConfig {    
+  UserID: string;
+  UserName: string;
+  UserEmail: string;
+  
 }
 
 // TODO: replace this with real data from your application
-export const EXAMPLE_PRO_CONFIG_DATA: DataTableProcurementConfig[] = [
+export const EXAMPLE_USERS_CONFIG_DATA: DataTableUsersConfig[] = [
   
-  {SystemResourceID: "1", SystemResourceName: 'Supplier_Management', SystemResourceDesc: 'Allows users to search, view, and manage supplier information, including contact details and performance metrics.'},   
-  {SystemResourceID: "2", SystemResourceName: 'New_Purchase_Order', SystemResourceDesc: 'Allows user to create new purchase order.'},
-  {SystemResourceID: "3", SystemResourceName: 'PO_Approval_Workflow ', SystemResourceDesc: 'Approvers can review order details, make comments, and approve or reject the purchase order.'},
-  {SystemResourceID: "4", SystemResourceName: 'PO_Tracking', SystemResourceDesc: 'Allows users to track the status of purchase orders in real-time.'},
-  {SystemResourceID: "5", SystemResourceName: 'Catalog_Management', SystemResourceDesc: 'Users can browse, search, and select items from approved catalogs.'},
-  {SystemResourceID: "6", SystemResourceName: 'Supplier_Performance_Evaluation ', SystemResourceDesc: 'Allows users to evaluate and track the performance of suppliers.'},
+  {UserID: 'cisayan', UserName: 'Chris Isayan', UserEmail: 'Chris.Isayan@prolifics.com'},   
+  {UserID: 'bgates', UserName: 'Bill Gates', UserEmail: 'Bill.Gates@prolifics.com'},   
+  {UserID: 'cdion', UserName: 'Celine Dion', UserEmail: 'Celine.Dion@prolifics.com'},   
+  {UserID: 'asmith', UserName: 'Adam Smith', UserEmail: 'Adam.Smith@prolifics.com'},   
+  {UserID: 'kmarx', UserName: 'Karl Marx', UserEmail: 'Karl.Marx@prolifics.com'},    
 
 ];
 
@@ -28,8 +28,8 @@ export const EXAMPLE_PRO_CONFIG_DATA: DataTableProcurementConfig[] = [
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class ScProcurementConfigDataSource extends DataSource<DataTableProcurementConfig> {
-  data: DataTableProcurementConfig[] = EXAMPLE_PRO_CONFIG_DATA;
+export class ScUsersConfigDataSource extends DataSource<DataTableUsersConfig> {
+  data: DataTableUsersConfig[] = EXAMPLE_USERS_CONFIG_DATA;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
@@ -42,7 +42,7 @@ export class ScProcurementConfigDataSource extends DataSource<DataTableProcureme
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<DataTableProcurementConfig[]> {
+  connect(): Observable<DataTableUsersConfig[]> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
@@ -65,7 +65,7 @@ export class ScProcurementConfigDataSource extends DataSource<DataTableProcureme
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: DataTableProcurementConfig[]): DataTableProcurementConfig[] {
+  private getPagedData(data: DataTableUsersConfig[]): DataTableUsersConfig[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -78,7 +78,7 @@ export class ScProcurementConfigDataSource extends DataSource<DataTableProcureme
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: DataTableProcurementConfig[]): DataTableProcurementConfig[] {
+  private getSortedData(data: DataTableUsersConfig[]): DataTableUsersConfig[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -86,9 +86,9 @@ export class ScProcurementConfigDataSource extends DataSource<DataTableProcureme
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'SystemResourceID': return compare(a.SystemResourceID, b.SystemResourceID, isAsc);
-        case 'SystemResourceName': return compare(a.SystemResourceName, b.SystemResourceName, isAsc);
-        case 'SystemResourceDesc': return compare(+a.SystemResourceDesc, +b.SystemResourceDesc, isAsc);        
+        case 'UserID': return compare(a.UserID, b.UserID, isAsc);
+        case 'UserName': return compare(a.UserName, b.UserName, isAsc);
+        case 'UserEmail': return compare(+a.UserEmail, +b.UserEmail, isAsc);        
         default: return 0;
       }
     });

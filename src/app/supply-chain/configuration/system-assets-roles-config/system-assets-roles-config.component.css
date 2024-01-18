@@ -1,16 +1,23 @@
 th {
     
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+    border: 1px solid #ccc;  
     font-weight: 550;
     font-size: 1em !important;    
     background-color:#f8f8f8 !important;
+    
   }
 td {
     border: 1px solid #ccc;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+    vertical-align: middle;
+
+    
     
 }
 table{
     border: 1px solid #ccc;   
+    
     
 }

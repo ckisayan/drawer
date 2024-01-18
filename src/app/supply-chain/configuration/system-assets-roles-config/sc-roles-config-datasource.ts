@@ -5,21 +5,26 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
-export interface DataTableProcurementConfig {    
-  SystemResourceID: string;
-  SystemResourceName: string;
-  SystemResourceDesc: string;
+export interface DataTableRolesConfig {    
+    RoleID: string;
+    RoleName: string;
+    RoleType: string;
+    RoleDesc: string;    
+    RoleOwnerUserID: string;  
 }
 
 // TODO: replace this with real data from your application
-export const EXAMPLE_PRO_CONFIG_DATA: DataTableProcurementConfig[] = [
+export const EXAMPLE_ROLES_CONFIG_DATA: DataTableRolesConfig[] = [
   
-  {SystemResourceID: "1", SystemResourceName: 'Supplier_Management', SystemResourceDesc: 'Allows users to search, view, and manage supplier information, including contact details and performance metrics.'},   
-  {SystemResourceID: "2", SystemResourceName: 'New_Purchase_Order', SystemResourceDesc: 'Allows user to create new purchase order.'},
-  {SystemResourceID: "3", SystemResourceName: 'PO_Approval_Workflow ', SystemResourceDesc: 'Approvers can review order details, make comments, and approve or reject the purchase order.'},
-  {SystemResourceID: "4", SystemResourceName: 'PO_Tracking', SystemResourceDesc: 'Allows users to track the status of purchase orders in real-time.'},
-  {SystemResourceID: "5", SystemResourceName: 'Catalog_Management', SystemResourceDesc: 'Users can browse, search, and select items from approved catalogs.'},
-  {SystemResourceID: "6", SystemResourceName: 'Supplier_Performance_Evaluation ', SystemResourceDesc: 'Allows users to evaluate and track the performance of suppliers.'},
+  {RoleID: '1', RoleName: 'Admin', RoleType: 'Basic', RoleOwnerUserID: "system", RoleDesc: 'Can do everything in the system, not recommended.  Usually, used for quick troubleshooting.'}, 
+  {RoleID: '2', RoleName: 'Edit', RoleType: 'Basic', RoleOwnerUserID: "system", RoleDesc: 'Can edit most transaction, not recommended.  Usually, used for testing environment.'}, 
+  {RoleID: '3', RoleName: 'View', RoleType: 'Basic', RoleOwnerUserID: "system", RoleDesc: 'Usually, provided for auditor role.'}, 
+  {RoleID: '4', RoleName: 'Pilot_Dock_Appotment_Scheduler', RoleType: 'CustomRole', RoleOwnerUserID: "cdion", RoleDesc: 'Orchestrate incoming & outgoing shipments. Schedule dock appointments, keep traffic flowing, maximize efficiency.'}, 
+  {RoleID: '5', RoleName: 'New_Purchase_Order', RoleType: 'CustomRole', RoleOwnerUserID: "kmarx", RoleDesc: 'I initiate, review, and approve purchase requests, ensuring timely ordering and budget compliance'},   
+  {RoleID: '6', RoleName: 'Warehouse_Operations_Manager', RoleType: 'Predifined', RoleOwnerUserID: "system", RoleDesc: 'Warehouse Operations Maestro. Oversees inventory, staff, and logistics. Ensures smooth flow, top efficiency'},
+  {RoleID: '7', RoleName: 'Purchasing_Manager', RoleType: 'Predifined', RoleOwnerUserID: "system", RoleDesc: ' Procurement mastermind. Negotiates contracts, manages vendors, secures best deals. Cost-cutting champion, keeps supply chain flowing.'},
+  {RoleID: '8', RoleName: 'Inventory_Planner', RoleType: 'Predifined', RoleOwnerUserID: "system", RoleDesc: 'Forecasts demand, optimizes stock, prevents stockouts. Balances cost & service.'}, 
+
 
 ];
 
@@ -28,8 +33,8 @@ export const EXAMPLE_PRO_CONFIG_DATA: DataTableProcurementConfig[] = [
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class ScProcurementConfigDataSource extends DataSource<DataTableProcurementConfig> {
-  data: DataTableProcurementConfig[] = EXAMPLE_PRO_CONFIG_DATA;
+export class ScRolesConfigDataSource extends DataSource<DataTableRolesConfig> {
+  data: DataTableRolesConfig[] = EXAMPLE_ROLES_CONFIG_DATA;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
@@ -42,7 +47,7 @@ export class ScProcurementConfigDataSource extends DataSource<DataTableProcureme
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<DataTableProcurementConfig[]> {
+  connect(): Observable<DataTableRolesConfig[]> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
@@ -65,7 +70,7 @@ export class ScProcurementConfigDataSource extends DataSource<DataTableProcureme
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: DataTableProcurementConfig[]): DataTableProcurementConfig[] {
+  private getPagedData(data: DataTableRolesConfig[]): DataTableRolesConfig[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -78,7 +83,7 @@ export class ScProcurementConfigDataSource extends DataSource<DataTableProcureme
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: DataTableProcurementConfig[]): DataTableProcurementConfig[] {
+  private getSortedData(data: DataTableRolesConfig[]): DataTableRolesConfig[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -86,9 +91,9 @@ export class ScProcurementConfigDataSource extends DataSource<DataTableProcureme
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'SystemResourceID': return compare(a.SystemResourceID, b.SystemResourceID, isAsc);
-        case 'SystemResourceName': return compare(a.SystemResourceName, b.SystemResourceName, isAsc);
-        case 'SystemResourceDesc': return compare(+a.SystemResourceDesc, +b.SystemResourceDesc, isAsc);        
+        case 'RoleID': return compare(a.RoleID, b.RoleID, isAsc);
+        case 'UserName': return compare(a.RoleName, b.RoleName, isAsc);
+        case 'UserEmail': return compare(+a.RoleOwnerUserID, +b.RoleOwnerUserID, isAsc);        
         default: return 0;
       }
     });
