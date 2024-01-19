@@ -1,1 +1,82 @@
-<p>system-assets-role-edit works!</p>
+<table style="width: 100%;">
+    <tr>
+        <td>
+            <div style="border-color: lightblue; padding: 10px; border: 2px solid lightblue;">
+                <table style="width: 100%">
+                    <tr>
+                        <td colspan="4" style="text-align: center;">
+                            <h3>Role Configuration</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fromcolumn">
+                            Role ID
+                        </td>
+                        <td class="fromcolumn"> <input matInput [(ngModel)]="rolesConfig.RoleID"> </td>
+                        <td class="fromcolumn">
+                            Role Name
+                        </td>
+                        <td class="fromcolumn"> <input matInput [(ngModel)]="rolesConfig.RoleName"> </td>
+
+
+                    </tr>
+                    <tr>
+                        <td class="fromcolumn">
+                            Role Owner Id
+                        </td>
+                        <td class="fromcolumn"> <input matInput [(ngModel)]="rolesConfig.RoleOwnerUserID"> </td>
+                        <td class="fromcolumn">
+                            Role Type
+                        </td>
+                        <td class="fromcolumn">
+
+                            <mat-select [(ngModel)]="rolesConfig.RoleType" placeholder="Select Role Type"
+                                class="selectformat">
+                                <mat-option [value]="'Basic'">Basic</mat-option>
+                                <mat-option [value]="'CustomRole'">CustomRole</mat-option>
+                                <mat-option [value]="'Predifined'">Predifined</mat-option>
+                            </mat-select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="fromcolumn">
+                            Role Desc
+                        </td>
+                        <td colspan="3" class="fromcolumn">
+                            <textarea matInput [(ngModel)]="rolesConfig.RoleDesc" cdkTextareaAutosize
+                                cdkAutosizeMinRows="3" cdkTextareaAutosize cols="70"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4">
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td>
+
+                        </td>
+                        <td><button class="primary-action-button mybutton" (click)="saveData()">Save
+
+                            </button> ctrl+s</td>
+                    </tr>
+                </table>
+
+            </div>
+        </td>
+    </tr>
+</table>

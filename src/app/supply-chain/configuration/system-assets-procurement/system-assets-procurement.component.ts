@@ -16,7 +16,7 @@ export class SystemAssetsProcurementComponent implements AfterViewInit,OnInit  {
 
   dataSource = new MatTableDataSource(EXAMPLE_PRO_CONFIG_DATA);
 
-  displayedColumns = ['SystemResourceID', 'SystemResourceName', 'SystemResourceDesc'];
+  displayedColumns = ['SystemResourceID', 'SystemResourceName', 'SystemResourceDesc', 'Action'];
 
 
   ngOnInit(): void {

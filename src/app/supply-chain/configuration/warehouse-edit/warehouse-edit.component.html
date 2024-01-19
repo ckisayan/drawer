@@ -1,0 +1,73 @@
+<table style="width: 100%;">
+    <tr>
+        <td>
+            <div style="border-color: lightblue; padding: 10px; border: 2px solid lightblue;">
+                <table style="width: 100%">
+                    <tr>
+                        <td colspan="4" style="text-align: center;">
+                            <h3>Warehouse Configuration</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fromcolumn" >
+                            Warehouse Name
+                        </td>
+                        <td class="fromcolumn"> <input matInput [(ngModel)]="warehouse.WarehouseName" > </td>
+                        <td class="fromcolumn">
+                            Region 
+                        </td>
+                        <td class="fromcolumn">                            
+
+                            <mat-select [(ngModel)]="warehouse.WarehouseRegion" placeholder="Select Region" class="selectformat">
+                                <mat-option [value]="'East'">East</mat-option>
+                                <mat-option [value]="'West'">West</mat-option>
+                                <mat-option [value]="'Central'">Central</mat-option>                                
+                            </mat-select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fromcolumn">
+                            Company 
+                        </td>
+                        <td class="fromcolumn"> <input matInput [(ngModel)]="warehouse.CompanyName" > </td>
+                        <td class="fromcolumn">
+                            Location / Site 
+                        </td>
+                        <td class="fromcolumn"> <input matInput [(ngModel)]="warehouse.WarehouseLocation"> </td>
+                    </tr>
+                    <tr>
+                        <td class="fromcolumn">
+                            Address Line 1
+                        </td>
+                        <td class="fromcolumn"> <input matInput [(ngModel)]="warehouse.WarehouseAddressLine1"> </td>
+                        <td class="fromcolumn">
+                            Address Line 2
+                        </td>
+                        <td class="fromcolumn"> <input matInput [(ngModel)]="warehouse.WarehouseAddressLine2"> </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>More fields</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td>
+
+                           </td>
+                        <td><button class="primary-action-button mybutton" (click)="saveData()">Save 
+
+                            </button> ctrl+s</td>
+                    </tr>
+                </table>
+
+            </div>
+        </td>
+    </tr>
+</table>

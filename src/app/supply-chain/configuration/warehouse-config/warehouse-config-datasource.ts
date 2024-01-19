@@ -3,28 +3,14 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-
-// TODO: Replace this with your own data model type
-export interface RolesConfig {    
-    RoleID: string;
-    RoleName: string;
-    RoleType: string;
-    RoleDesc: string;    
-    RoleOwnerUserID: string;  
-}
+import { WarehouseConfig } from './WarehouseConfig';
 
 // TODO: replace this with real data from your application
-export const EXAMPLE_ROLES_CONFIG_DATA: RolesConfig[] = [
+export const EXAMPLE_WAREHOUSE_CONFIG_DATA: WarehouseConfig[] = [ 
   
-  {RoleID: '1', RoleName: 'Admin', RoleType: 'Basic', RoleOwnerUserID: "system", RoleDesc: 'Can do everything in the system, not recommended.  Usually, used for quick troubleshooting.'}, 
-  {RoleID: '2', RoleName: 'Edit', RoleType: 'Basic', RoleOwnerUserID: "system", RoleDesc: 'Can edit most transaction, not recommended.  Usually, used for testing environment.'}, 
-  {RoleID: '3', RoleName: 'View', RoleType: 'Basic', RoleOwnerUserID: "system", RoleDesc: 'Usually, provided for auditor role.'}, 
-  {RoleID: '4', RoleName: 'Pilot_Dock_Appotment_Scheduler', RoleType: 'CustomRole', RoleOwnerUserID: "cdion", RoleDesc: 'Orchestrate incoming & outgoing shipments. Schedule dock appointments, keep traffic flowing, maximize efficiency.'}, 
-  {RoleID: '5', RoleName: 'New_Purchase_Order', RoleType: 'CustomRole', RoleOwnerUserID: "kmarx", RoleDesc: 'I initiate, review, and approve purchase requests, ensuring timely ordering and budget compliance'},   
-  {RoleID: '6', RoleName: 'Warehouse_Operations_Manager', RoleType: 'Predifined', RoleOwnerUserID: "system", RoleDesc: 'Warehouse Operations Maestro. Oversees inventory, staff, and logistics. Ensures smooth flow, top efficiency'},
-  {RoleID: '7', RoleName: 'Purchasing_Manager', RoleType: 'Predifined', RoleOwnerUserID: "system", RoleDesc: ' Procurement mastermind. Negotiates contracts, manages vendors, secures best deals. Cost-cutting champion, keeps supply chain flowing.'},
-  {RoleID: '8', RoleName: 'Inventory_Planner', RoleType: 'Predifined', RoleOwnerUserID: "system", RoleDesc: 'Forecasts demand, optimizes stock, prevents stockouts. Balances cost & service.'}, 
-
+  {WarehouseID: "1", WarehouseName: "Bunzl East", CompanyName: "Bunzl USA", WarehouseRegion: "East", WarehouseLocation: "Cityville", WarehouseAddressLine1: "123 Main Street", WarehouseAddressLine2: "Suite 456"},
+  {WarehouseID: "2", WarehouseName: "Bunzl West", CompanyName: "Bunzl USA", WarehouseRegion: "West", WarehouseLocation: "Townsville",WarehouseAddressLine1: "789 Oak Avenue", WarehouseAddressLine2: "Floor 2"},
+  {WarehouseID: "3", WarehouseName: "Bunzl Central", CompanyName: "Bunzl USA", WarehouseRegion: "Central", WarehouseLocation: "Metropolis", WarehouseAddressLine1: "456 Elm Street", WarehouseAddressLine2: "Unit 789"}
 
 ];
 
@@ -33,8 +19,8 @@ export const EXAMPLE_ROLES_CONFIG_DATA: RolesConfig[] = [
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class ScRolesConfigDataSource extends DataSource<RolesConfig> {
-  data: RolesConfig[] = EXAMPLE_ROLES_CONFIG_DATA;
+export class ScWarehouseConfigDataSource extends DataSource<WarehouseConfig> {
+  data: WarehouseConfig[] = EXAMPLE_WAREHOUSE_CONFIG_DATA;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
@@ -47,7 +33,7 @@ export class ScRolesConfigDataSource extends DataSource<RolesConfig> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<RolesConfig[]> {
+  connect(): Observable<WarehouseConfig[]> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
@@ -70,7 +56,7 @@ export class ScRolesConfigDataSource extends DataSource<RolesConfig> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: RolesConfig[]): RolesConfig[] {
+  private getPagedData(data: WarehouseConfig[]): WarehouseConfig[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -83,7 +69,7 @@ export class ScRolesConfigDataSource extends DataSource<RolesConfig> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: RolesConfig[]): RolesConfig[] {
+  private getSortedData(data: WarehouseConfig[]): WarehouseConfig[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -91,9 +77,11 @@ export class ScRolesConfigDataSource extends DataSource<RolesConfig> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'RoleID': return compare(a.RoleID, b.RoleID, isAsc);
-        case 'UserName': return compare(a.RoleName, b.RoleName, isAsc);
-        case 'UserEmail': return compare(+a.RoleOwnerUserID, +b.RoleOwnerUserID, isAsc);        
+        case 'WarehouseID': return compare(a.WarehouseID, b.WarehouseID, isAsc);
+        case 'UWarehouseNameserName': return compare(a.WarehouseName, b.WarehouseName, isAsc);
+        case 'WarehouseLocation': return compare(+a.WarehouseLocation, +b.WarehouseLocation, isAsc);
+        case 'WarehouseRegion': return compare(+a.WarehouseRegion, +b.WarehouseRegion, isAsc);
+        case 'CompanyName': return compare(+a.CompanyName, +b.CompanyName, isAsc);
         default: return 0;
       }
     });

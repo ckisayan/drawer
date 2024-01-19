@@ -96,6 +96,7 @@ import { SystemAssetsProcurementComponent } from './supply-chain/configuration/s
 import { SystemAssetsUsersConfigComponent } from './supply-chain/configuration/system-assets-users-config/system-assets-users-config.component';
 import { SystemAssetsRolesConfigComponent } from './supply-chain/configuration/system-assets-roles-config/system-assets-roles-config.component';
 import { SystemAssetsRoleEditComponent } from './supply-chain/configuration/system-assets-role-edit/system-assets-role-edit.component';
+import { WarehouseEditComponent } from './supply-chain/configuration/warehouse-edit/warehouse-edit.component';
 
 
 
@@ -158,9 +159,11 @@ const appRoutes: Routes = [
         ]
       },
       { path: 'configuration/warehouse', component: WarehouseConfigComponent},
+      { path: 'configuration/warehouse-edit', component: WarehouseEditComponent},
       { path: 'configuration/system-assets', component: SystemAssetsConfigComponent},
       { path: 'configuration/system-users', component: SystemAssetsUsersConfigComponent},
       { path: 'configuration/system-roles', component: SystemAssetsRolesConfigComponent},
+      { path: 'configuration/system-roles-edit', component: SystemAssetsRoleEditComponent},
       { path: 'purchase-order/:id/:accestoken', component: ScNewPurchaseOrderComponent },
       { path: 'purchase-order/:accestoken', component: ScNewPurchaseOrderComponent },
       { path: 'vendor-details', component: VendorDetailsComponent },
@@ -194,7 +197,7 @@ const appRoutes: Routes = [
     NewPurchaseOrderComponent,
     ChatAssistComponent,
 
-    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent, BsCustomSearchEditComponent, BsOneErrorDetailsComponent, BsAddCustomColumnComponent, BsbcTpRelationshipComponent, BsbcTpGenInfoComponent, BsbcTpDoctypeDetailsComponent, BsbcTpDoctypeGenVwComponent, BsbcTpDoctypeEdiInfoComponent, WarehouseConfigComponent, SystemAssetsConfigComponent, SystemAssetsProcurementComponent, SystemAssetsUsersConfigComponent, SystemAssetsRolesConfigComponent, SystemAssetsRoleEditComponent
+    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent, BsCustomSearchEditComponent, BsOneErrorDetailsComponent, BsAddCustomColumnComponent, BsbcTpRelationshipComponent, BsbcTpGenInfoComponent, BsbcTpDoctypeDetailsComponent, BsbcTpDoctypeGenVwComponent, BsbcTpDoctypeEdiInfoComponent, WarehouseConfigComponent, SystemAssetsConfigComponent, SystemAssetsProcurementComponent, SystemAssetsUsersConfigComponent, SystemAssetsRolesConfigComponent, SystemAssetsRoleEditComponent, WarehouseEditComponent
   ],
   imports: [
     BrowserModule,

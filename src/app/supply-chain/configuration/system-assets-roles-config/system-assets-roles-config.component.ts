@@ -2,7 +2,8 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { DataTableRolesConfig, EXAMPLE_ROLES_CONFIG_DATA } from './sc-roles-config-datasource';
+import { RolesConfig, EXAMPLE_ROLES_CONFIG_DATA } from './sc-roles-config-datasource';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-system-assets-roles-config',
@@ -12,13 +13,15 @@ import { DataTableRolesConfig, EXAMPLE_ROLES_CONFIG_DATA } from './sc-roles-conf
 export class SystemAssetsRolesConfigComponent implements AfterViewInit,OnInit  {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<DataTableRolesConfig>;
+  @ViewChild(MatTable) table!: MatTable<RolesConfig>;
 
   dataSource = new MatTableDataSource(EXAMPLE_ROLES_CONFIG_DATA);
 
   
   displayedColumns = ['RoleID', 'RoleName','RoleType', 'RoleOwnerUserID', 'RoleDesc', 'Action'];
-
+  
+  constructor( private router: Router){
+  }
 
   ngOnInit(): void {
     try{   
@@ -39,5 +42,9 @@ export class SystemAssetsRolesConfigComponent implements AfterViewInit,OnInit  {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  showEdit(row: RolesConfig){
+    //alert(row.RoleName);
+    this.router.navigate(['/supply-chain/configuration/system-roles-edit']);
 
+  }
 }

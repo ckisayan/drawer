@@ -1,68 +1,69 @@
-<table style="width: 100%;">
-    <tr>
-        <td>
-            <div style="border-color: lightblue; padding: 10px; border: 2px solid lightblue;">
-                <table style="width: 100%">
-                    <tr>
-                        <td colspan="4" style="text-align: center;">
-                            <h3>Warehouse Configuration</h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="fromcolumn">
-                            Warehouse Name
-                        </td>
-                        <td class="fromcolumn"> <input matInput> </td>
-                        <td class="fromcolumn">
-                            Region 
-                        </td>
-                        <td class="fromcolumn">
-                            <input matInput>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="fromcolumn">
-                            Company 
-                        </td>
-                        <td class="fromcolumn"> <input matInput> </td>
-                        <td class="fromcolumn">
-                            Location / Site 
-                        </td>
-                        <td class="fromcolumn"> <input matInput> </td>
-                    </tr>
-                    <tr>
-                        <td class="fromcolumn">
-                            Address Line 1
-                        </td>
-                        <td class="fromcolumn"> <input matInput> </td>
-                        <td class="fromcolumn">
-                            Address Line 2
-                        </td>
-                        <td class="fromcolumn"> <input matInput> </td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>More fields</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">
-                            <hr>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"></td>
-                        <td><button class="secondary-action-button">Save Draft
+<div style="text-align: center;">
+    <h3>Warehouse Configuration</h3>
+</div>
+<div style="width: 100%; text-align:end;">
+    <button class="primary-action-button mybutton">ADD</button> ctrl+a
+</div>
+<div>
+    <hr>
+</div>
+<div style="text-align: center;">
+    <mat-form-field style="width: 100%;">
+        <mat-label>Filter below table</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="search by anything" #input>
+        <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+</div>
 
-                            </button></td>
-                        <td><button class="primary-action-button mybutton">Save & Transmit
+<table mat-table class="full-width-table" matSort aria-label="Elements" style="width: 100%;">
+    <!-- Id Column -->
+    <ng-container matColumnDef="WarehouseID">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
+        <td mat-cell *matCellDef="let row">{{row.WarehouseID}}</td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="WarehouseName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+        <td mat-cell *matCellDef="let row">{{row.WarehouseName}}</td>
+    </ng-container>
+    <ng-container matColumnDef="CompanyName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Company</th>
+        <td mat-cell *matCellDef="let row" style="white-space: nowrap;">
+            {{row.CompanyName}}</td>
+    </ng-container>
+    <ng-container matColumnDef="WarehouseRegion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Region</th>
+        <td mat-cell *matCellDef="let row" style="white-space: nowrap;">
+            {{row.WarehouseRegion}}</td>
+    </ng-container>
+    <ng-container matColumnDef="WarehouseLocation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
+        <td mat-cell *matCellDef="let row" style="white-space: nowrap;">
+            {{row.WarehouseLocation}}</td>
+    </ng-container>
+    <ng-container matColumnDef="WarehouseAddressLine1">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Address Line 1</th>
+        <td mat-cell *matCellDef="let row" style="white-space: nowrap;">
+            {{row.WarehouseAddressLine1}}</td>
+    </ng-container>
+    <ng-container matColumnDef="WarehouseAddressLine2">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Address Line 2</th>
+        <td mat-cell *matCellDef="let row" style="white-space: nowrap;">
+            {{row.WarehouseAddressLine2}}</td>
+    </ng-container>
 
-                            </button> ctrl+s</td>
-                    </tr>
-                </table>
-
-            </div>
+    <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center;white-space: nowrap;">Actions</th>
+        <td mat-cell *matCellDef="let element" style="text-align: center;white-space: nowrap;">
+            <mat-icon class="example-tab-icon">edit</mat-icon>
         </td>
-    </tr>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showEdit(row)"></tr>
 </table>
+
+
+<mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
+</mat-paginator>
