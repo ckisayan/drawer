@@ -97,7 +97,9 @@ import { SystemAssetsUsersConfigComponent } from './supply-chain/configuration/s
 import { SystemAssetsRolesConfigComponent } from './supply-chain/configuration/system-assets-roles-config/system-assets-roles-config.component';
 import { SystemAssetsRoleEditComponent } from './supply-chain/configuration/system-assets-role-edit/system-assets-role-edit.component';
 import { WarehouseEditComponent } from './supply-chain/configuration/warehouse-edit/warehouse-edit.component';
-
+import { SystemAssetsRoleToObjectComponent } from './supply-chain/configuration/system-assets-role-to-object/system-assets-role-to-object.component';
+import { SystemAssetsRoleToObjectProcureComponent } from './supply-chain/configuration/system-assets-role-to-object-procure/system-assets-role-to-object-procure.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 
@@ -197,7 +199,7 @@ const appRoutes: Routes = [
     NewPurchaseOrderComponent,
     ChatAssistComponent,
 
-    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent, BsCustomSearchEditComponent, BsOneErrorDetailsComponent, BsAddCustomColumnComponent, BsbcTpRelationshipComponent, BsbcTpGenInfoComponent, BsbcTpDoctypeDetailsComponent, BsbcTpDoctypeGenVwComponent, BsbcTpDoctypeEdiInfoComponent, WarehouseConfigComponent, SystemAssetsConfigComponent, SystemAssetsProcurementComponent, SystemAssetsUsersConfigComponent, SystemAssetsRolesConfigComponent, SystemAssetsRoleEditComponent, WarehouseEditComponent
+    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent, BsCustomSearchEditComponent, BsOneErrorDetailsComponent, BsAddCustomColumnComponent, BsbcTpRelationshipComponent, BsbcTpGenInfoComponent, BsbcTpDoctypeDetailsComponent, BsbcTpDoctypeGenVwComponent, BsbcTpDoctypeEdiInfoComponent, WarehouseConfigComponent, SystemAssetsConfigComponent, SystemAssetsProcurementComponent, SystemAssetsUsersConfigComponent, SystemAssetsRolesConfigComponent, SystemAssetsRoleEditComponent, WarehouseEditComponent, SystemAssetsRoleToObjectComponent, SystemAssetsRoleToObjectProcureComponent
   ],
   imports: [
     BrowserModule,
@@ -220,7 +222,7 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatButtonModule, HttpClientModule,
+    MatButtonModule, HttpClientModule, MatSlideToggleModule,
     NgIf,
     JsonPipe,
     MatDialogModule,

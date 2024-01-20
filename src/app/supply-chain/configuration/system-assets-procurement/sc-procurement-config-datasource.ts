@@ -3,33 +3,17 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
+import { SystemResourceModel } from '../system-assets-role-to-object-procure/system-resource-model';
+import { EXAMPLE_PRO_CONFIG_DATA } from './example-pro-config-data';
 
-// TODO: Replace this with your own data model type
-export interface DataTableProcurementConfig {    
-  SystemResourceID: string;
-  SystemResourceName: string;
-  SystemResourceDesc: string;
-}
-
-// TODO: replace this with real data from your application
-export const EXAMPLE_PRO_CONFIG_DATA: DataTableProcurementConfig[] = [
-  
-  {SystemResourceID: "1", SystemResourceName: 'Supplier_Management', SystemResourceDesc: 'Allows users to search, view, and manage supplier information, including contact details and performance metrics.'},   
-  {SystemResourceID: "2", SystemResourceName: 'New_Purchase_Order', SystemResourceDesc: 'Allows user to create new purchase order.'},
-  {SystemResourceID: "3", SystemResourceName: 'PO_Approval_Workflow ', SystemResourceDesc: 'Approvers can review order details, make comments, and approve or reject the purchase order.'},
-  {SystemResourceID: "4", SystemResourceName: 'PO_Tracking', SystemResourceDesc: 'Allows users to track the status of purchase orders in real-time.'},
-  {SystemResourceID: "5", SystemResourceName: 'Catalog_Management', SystemResourceDesc: 'Users can browse, search, and select items from approved catalogs.'},
-  {SystemResourceID: "6", SystemResourceName: 'Supplier_Performance_Evaluation ', SystemResourceDesc: 'Allows users to evaluate and track the performance of suppliers.'},
-
-];
 
 /**
  * Data source for the DataTable view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class ScProcurementConfigDataSource extends DataSource<DataTableProcurementConfig> {
-  data: DataTableProcurementConfig[] = EXAMPLE_PRO_CONFIG_DATA;
+export class ScProcurementConfigDataSource extends DataSource<SystemResourceModel> {
+  data: SystemResourceModel[] = EXAMPLE_PRO_CONFIG_DATA;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
@@ -42,7 +26,7 @@ export class ScProcurementConfigDataSource extends DataSource<DataTableProcureme
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<DataTableProcurementConfig[]> {
+  connect(): Observable<SystemResourceModel[]> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
@@ -65,7 +49,7 @@ export class ScProcurementConfigDataSource extends DataSource<DataTableProcureme
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: DataTableProcurementConfig[]): DataTableProcurementConfig[] {
+  private getPagedData(data: SystemResourceModel[]): SystemResourceModel[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -78,7 +62,7 @@ export class ScProcurementConfigDataSource extends DataSource<DataTableProcureme
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: DataTableProcurementConfig[]): DataTableProcurementConfig[] {
+  private getSortedData(data: SystemResourceModel[]): SystemResourceModel[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }

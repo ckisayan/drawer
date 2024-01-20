@@ -17,13 +17,11 @@
                         <td class="fromcolumn">
                             Role ID
                         </td>
-                        <td class="fromcolumn"> <input matInput [(ngModel)]="rolesConfig.RoleID"> </td>
+                        <td class="fromcolumn"> <input matInput [(ngModel)]="rolesConfig.RoleID" [disabled]="true"> </td>
                         <td class="fromcolumn">
                             Role Name
                         </td>
                         <td class="fromcolumn"> <input matInput [(ngModel)]="rolesConfig.RoleName"> </td>
-
-
                     </tr>
                     <tr>
                         <td class="fromcolumn">
@@ -45,7 +43,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        
+
                     </tr>
                     <tr>
                         <td colspan="1" class="fromcolumn">
@@ -53,7 +51,7 @@
                         </td>
                         <td colspan="3" class="fromcolumn">
                             <textarea matInput [(ngModel)]="rolesConfig.RoleDesc" cdkTextareaAutosize
-                                cdkAutosizeMinRows="3" cdkTextareaAutosize cols="70"></textarea>
+                                cdkAutosizeMinRows="3" cdkTextareaAutosize cols="50"></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -67,12 +65,92 @@
                     </tr>
                     <tr>
                         <td colspan="2"></td>
-                        <td>
-
+                        <td></td>
+                        <td style="text-align: right;"><button class="primary-action-button mybutton" (click)="saveData()">Apply</button>
                         </td>
-                        <td><button class="primary-action-button mybutton" (click)="saveData()">Save
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            Permissions
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <mat-accordion class="headers-align" multi>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Warehouse
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <div style="width: 100%;">
+                                        <table >
+                                            <tr>
+                                                <td>
+                                                    <mat-select multiple [(ngModel)]="warehouses.WarehouseID"
+                                                        placeholder="Select a site" class="select-format-long"
+                                                        matTooltip="Some employees work in more than one warehouse.  So, it is important to specify
+                                                        what warehouses this Role applies to.">
+                                                        <mat-option *ngFor="let warehouse of warehouseData"
+                                                            [value]="warehouse.WarehouseID"                                                            >
+                                                            {{ warehouse.WarehouseName + '-' +
+                                                            warehouse.WarehouseLocation}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </td>
+                                                <td> &nbsp; &nbsp; &nbsp; </td>
+                                                <td>
+                                                    <mat-select multiple placeholder="Sysem Applicability"
+                                                        class="select-format-long"
+                                                        matTooltip="if i select Grant to Modern App and Grant to Legacy app, it means 
+                                                        user has access to modern screen and can navigate back and forth between legacy and new app.  
+                                                        If i Deny to Legacy app, it means user cannot navigate to legacy app.">
+                                                        <mat-option [value]="'1'">Grant to Modern App</mat-option>
+                                                        <mat-option [value]="'2'">Grant to Legacy App</mat-option>
+                                                        <mat-option [value]="'3'">Deny to Legacy App</mat-option>
+                                                    </mat-select>
+                                                </td>                                    
+                                    
+                                                <td style="text-align: right;"><button class="primary-action-button mybutton" (click)="saveData()">Apply</button>                                                
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">
+                                                    <hr>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </td>
 
-                            </button> ctrl+s</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <mat-accordion class="headers-align" multi>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            System Resources / Screens
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <div>
+                                        <app-system-assets-role-to-object></app-system-assets-role-to-object>
+                                    </div>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <hr>
+                        </td>
                     </tr>
                 </table>
 

@@ -3,15 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-
-// TODO: Replace this with your own data model type
-export interface RolesConfig {    
-    RoleID: string;
-    RoleName: string;
-    RoleType: string;
-    RoleDesc: string;    
-    RoleOwnerUserID: string;  
-}
+import { RolesConfig } from './RolesConfig';
 
 // TODO: replace this with real data from your application
 export const EXAMPLE_ROLES_CONFIG_DATA: RolesConfig[] = [
@@ -19,11 +11,11 @@ export const EXAMPLE_ROLES_CONFIG_DATA: RolesConfig[] = [
   {RoleID: '1', RoleName: 'Admin', RoleType: 'Basic', RoleOwnerUserID: "system", RoleDesc: 'Can do everything in the system, not recommended.  Usually, used for quick troubleshooting.'}, 
   {RoleID: '2', RoleName: 'Edit', RoleType: 'Basic', RoleOwnerUserID: "system", RoleDesc: 'Can edit most transaction, not recommended.  Usually, used for testing environment.'}, 
   {RoleID: '3', RoleName: 'View', RoleType: 'Basic', RoleOwnerUserID: "system", RoleDesc: 'Usually, provided for auditor role.'}, 
-  {RoleID: '4', RoleName: 'Pilot_Dock_Appotment_Scheduler', RoleType: 'CustomRole', RoleOwnerUserID: "cdion", RoleDesc: 'Orchestrate incoming & outgoing shipments. Schedule dock appointments, keep traffic flowing, maximize efficiency.'}, 
-  {RoleID: '5', RoleName: 'New_Purchase_Order', RoleType: 'CustomRole', RoleOwnerUserID: "kmarx", RoleDesc: 'I initiate, review, and approve purchase requests, ensuring timely ordering and budget compliance'},   
-  {RoleID: '6', RoleName: 'Warehouse_Operations_Manager', RoleType: 'Predifined', RoleOwnerUserID: "system", RoleDesc: 'Warehouse Operations Maestro. Oversees inventory, staff, and logistics. Ensures smooth flow, top efficiency'},
-  {RoleID: '7', RoleName: 'Purchasing_Manager', RoleType: 'Predifined', RoleOwnerUserID: "system", RoleDesc: ' Procurement mastermind. Negotiates contracts, manages vendors, secures best deals. Cost-cutting champion, keeps supply chain flowing.'},
-  {RoleID: '8', RoleName: 'Inventory_Planner', RoleType: 'Predifined', RoleOwnerUserID: "system", RoleDesc: 'Forecasts demand, optimizes stock, prevents stockouts. Balances cost & service.'}, 
+  {RoleID: '4', RoleName: 'Warehouse_Operations_Manager', RoleType: 'Predifined', RoleOwnerUserID: "system", RoleDesc: 'Warehouse Operations Maestro. Oversees inventory, staff, and logistics. Ensures smooth flow, top efficiency'},
+  {RoleID: '5', RoleName: 'Purchasing_Manager', RoleType: 'Predifined', RoleOwnerUserID: "system", RoleDesc: ' Procurement mastermind. Negotiates contracts, manages vendors, secures best deals. Cost-cutting champion, keeps supply chain flowing.'},
+  {RoleID: '6', RoleName: 'Inventory_Planner', RoleType: 'Predifined', RoleOwnerUserID: "system", RoleDesc: 'Forecasts demand, optimizes stock, prevents stockouts. Balances cost & service.'}, 
+  {RoleID: '7', RoleName: 'Pilot_Dock_Appotment_Scheduler', RoleType: 'CustomRole', RoleOwnerUserID: "cdion", RoleDesc: 'Orchestrate incoming & outgoing shipments. Schedule dock appointments, keep traffic flowing, maximize efficiency.'}, 
+  {RoleID: '8', RoleName: 'Procurement', RoleType: 'CustomRole', RoleOwnerUserID: "kmarx", RoleDesc: 'I initiate, review, and approve purchase requests, ensuring timely ordering and budget compliance'},   
 
 
 ];

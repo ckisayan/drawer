@@ -2,7 +2,8 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { DataTableProcurementConfig, EXAMPLE_PRO_CONFIG_DATA } from './sc-procurement-config-datasource';
+import { EXAMPLE_PRO_CONFIG_DATA } from './example-pro-config-data';
+import { SystemResourceModel } from '../system-assets-role-to-object-procure/system-resource-model';
 
 @Component({
   selector: 'app-system-assets-procurement',
@@ -12,7 +13,7 @@ import { DataTableProcurementConfig, EXAMPLE_PRO_CONFIG_DATA } from './sc-procur
 export class SystemAssetsProcurementComponent implements AfterViewInit,OnInit  {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<DataTableProcurementConfig>;
+  @ViewChild(MatTable) table!: MatTable<SystemResourceModel>;
 
   dataSource = new MatTableDataSource(EXAMPLE_PRO_CONFIG_DATA);
 

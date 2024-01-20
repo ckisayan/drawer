@@ -2,8 +2,10 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { RolesConfig, EXAMPLE_ROLES_CONFIG_DATA } from './sc-roles-config-datasource';
+import { EXAMPLE_ROLES_CONFIG_DATA } from './sc-roles-config-datasource';
+import { RoleToPermissionsModel, RolesConfig } from './RolesConfig';
 import { Router } from '@angular/router';
+import { RoleMaintenanceService } from '../system-assets-role-edit/role-maintenance-service';
 
 @Component({
   selector: 'app-system-assets-roles-config',
@@ -16,13 +18,13 @@ export class SystemAssetsRolesConfigComponent implements AfterViewInit,OnInit  {
   @ViewChild(MatTable) table!: MatTable<RolesConfig>;
 
   dataSource = new MatTableDataSource(EXAMPLE_ROLES_CONFIG_DATA);
-
+  
   
   displayedColumns = ['RoleID', 'RoleName','RoleType', 'RoleOwnerUserID', 'RoleDesc', 'Action'];
   
-  constructor( private router: Router){
+  constructor(private roleMaintenanceService:RoleMaintenanceService, private router: Router){
   }
-
+  
   ngOnInit(): void {
     try{   
           
@@ -43,7 +45,8 @@ export class SystemAssetsRolesConfigComponent implements AfterViewInit,OnInit  {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   showEdit(row: RolesConfig){
-    //alert(row.RoleName);
+    //alert(row.RoleName);    
+    this.roleMaintenanceService.setRoleConfig(row);
     this.router.navigate(['/supply-chain/configuration/system-roles-edit']);
 
   }
