@@ -2,24 +2,23 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { EXAMPLE_USERS_CONFIG_DATA } from './example-users-config-data';
-import { UsersConfig } from './UsersConfig';
-
+import { GroupsConfig } from '../system-assets-groups-config/GroupsConfig';
+import { EXAMPLE_GROUP_CONFIG_DATA } from '../system-assets-groups-config/sc-groups-config-sample';
 
 @Component({
-  selector: 'app-system-assets-users-config',
-  templateUrl: './system-assets-users-config.component.html',
-  styleUrls: ['./system-assets-users-config.component.css']
+  selector: 'app-system-assign-groups-to-role',
+  templateUrl: './system-assign-groups-to-role.component.html',
+  styleUrls: ['./system-assign-groups-to-role.component.css']
 })
-export class SystemAssetsUsersConfigComponent implements AfterViewInit,OnInit  {
+export class SystemAssignGroupsToRoleComponent implements AfterViewInit,OnInit  {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<UsersConfig>;
+  @ViewChild(MatTable) table!: MatTable<GroupsConfig>;
 
-  dataSource = new MatTableDataSource(EXAMPLE_USERS_CONFIG_DATA);
+  dataSource = new MatTableDataSource(EXAMPLE_GROUP_CONFIG_DATA);
 
   
-  displayedColumns = ['UserID', 'UserName', 'UserEmail', 'Action'];
+  displayedColumns = ['GroupID', 'GroupName', 'GroupDesc', 'Action'];
 
 
   ngOnInit(): void {

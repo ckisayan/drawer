@@ -1,0 +1,16 @@
+th {
+    
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-weight: 550;
+    font-size: 1em !important;    
+    background-color:#f8f8f8 !important;
+  }
+td {
+    border: 1px solid #ccc;
+    
+}
+table{
+    border: 1px solid #ccc;   
+    
+}

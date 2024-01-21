@@ -100,6 +100,9 @@ import { WarehouseEditComponent } from './supply-chain/configuration/warehouse-e
 import { SystemAssetsRoleToObjectComponent } from './supply-chain/configuration/system-assets-role-to-object/system-assets-role-to-object.component';
 import { SystemAssetsRoleToObjectProcureComponent } from './supply-chain/configuration/system-assets-role-to-object-procure/system-assets-role-to-object-procure.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { SystemAssignUsersToRoleComponent } from './supply-chain/configuration/system-assign-users-to-role/system-assign-users-to-role.component';
+import { SystemAssetsGroupsConfigComponent } from './supply-chain/configuration/system-assets-groups-config/system-assets-groups-config.component';
+import { SystemAssignGroupsToRoleComponent } from './supply-chain/configuration/system-assign-groups-to-role/system-assign-groups-to-role.component';
 
 
 
@@ -164,8 +167,9 @@ const appRoutes: Routes = [
       { path: 'configuration/warehouse-edit', component: WarehouseEditComponent},
       { path: 'configuration/system-assets', component: SystemAssetsConfigComponent},
       { path: 'configuration/system-users', component: SystemAssetsUsersConfigComponent},
+      { path: 'configuration/system-groups', component: SystemAssetsGroupsConfigComponent},
       { path: 'configuration/system-roles', component: SystemAssetsRolesConfigComponent},
-      { path: 'configuration/system-roles-edit', component: SystemAssetsRoleEditComponent},
+      { path: 'configuration/system-roles-edit', component: SystemAssetsRoleEditComponent},      
       { path: 'purchase-order/:id/:accestoken', component: ScNewPurchaseOrderComponent },
       { path: 'purchase-order/:accestoken', component: ScNewPurchaseOrderComponent },
       { path: 'vendor-details', component: VendorDetailsComponent },
@@ -198,8 +202,15 @@ const appRoutes: Routes = [
     VendorOrderHistoryComponent,
     NewPurchaseOrderComponent,
     ChatAssistComponent,
-
-    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent, ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent, BsCustomSearchEditComponent, BsOneErrorDetailsComponent, BsAddCustomColumnComponent, BsbcTpRelationshipComponent, BsbcTpGenInfoComponent, BsbcTpDoctypeDetailsComponent, BsbcTpDoctypeGenVwComponent, BsbcTpDoctypeEdiInfoComponent, WarehouseConfigComponent, SystemAssetsConfigComponent, SystemAssetsProcurementComponent, SystemAssetsUsersConfigComponent, SystemAssetsRolesConfigComponent, SystemAssetsRoleEditComponent, WarehouseEditComponent, SystemAssetsRoleToObjectComponent, SystemAssetsRoleToObjectProcureComponent
+    TradingPartnerConfigComponent, BsbcComponent, ScOverviewComponent, BsOverviewComponent, BsRequest276Component, BsResponse277Component, 
+    BsRr276277Component, BsAllTransactonsComponent, BsAdvanceSearchComponent, BsFilterOptionsComponent, BsFilterOptionsFlatComponent, BsGenericResGridComponent, ScChatComponent, BsBreadcrumbComponent, 
+    ScBreadcrumbComponent, ScVwExistingPoComponent, ScExistingPoSearchComponent, ScExistingPoGeneralviewComponent, ScExistingPoGridComponent,
+    ScNewPurchaseOrderComponent, ScVendorListComponent, ScItemListComponent, BsSearch276resultsGridComponent, BsTxnDetailsComponent, 
+    BsGeneralVwComponent, BsEdiVwComponent, BsRelatedVwComponent, BsAuditEventVwComponent, BsErrorVwComponent,
+    BsCustomSearchEditComponent, BsOneErrorDetailsComponent, BsAddCustomColumnComponent, BsbcTpRelationshipComponent, BsbcTpGenInfoComponent,
+    BsbcTpDoctypeDetailsComponent, BsbcTpDoctypeGenVwComponent, BsbcTpDoctypeEdiInfoComponent, WarehouseConfigComponent, SystemAssetsConfigComponent, 
+    SystemAssetsProcurementComponent, SystemAssetsUsersConfigComponent, SystemAssetsRolesConfigComponent, SystemAssetsRoleEditComponent, 
+    WarehouseEditComponent, SystemAssetsRoleToObjectComponent, SystemAssetsRoleToObjectProcureComponent, SystemAssignUsersToRoleComponent, SystemAssetsGroupsConfigComponent, SystemAssignGroupsToRoleComponent
   ],
   imports: [
     BrowserModule,

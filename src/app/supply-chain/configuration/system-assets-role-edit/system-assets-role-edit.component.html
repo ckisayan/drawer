@@ -114,8 +114,7 @@
                                                         <mat-option [value]="'2'">Grant to Legacy App</mat-option>
                                                         <mat-option [value]="'3'">Deny to Legacy App</mat-option>
                                                     </mat-select>
-                                                </td>                                    
-                                    
+                                                </td>
                                                 <td style="text-align: right;"><button class="primary-action-button mybutton" (click)="saveData()">Apply</button>                                                
                                                 </td>
                                             </tr>
@@ -129,7 +128,6 @@
                                 </mat-expansion-panel>
                             </mat-accordion>
                         </td>
-
                     </tr>
                     <tr>
                         <td colspan="4">
@@ -142,6 +140,38 @@
                                     </mat-expansion-panel-header>
                                     <div>
                                         <app-system-assets-role-to-object></app-system-assets-role-to-object>
+                                    </div>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <mat-accordion class="headers-align" multi>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Assign Users
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <div>
+                                        <app-system-assign-users-to-role></app-system-assign-users-to-role>
+                                    </div>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <mat-accordion class="headers-align" multi>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Assign Groups
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <div>
+                                        <app-system-assign-groups-to-role></app-system-assign-groups-to-role>
                                     </div>
                                 </mat-expansion-panel>
                             </mat-accordion>

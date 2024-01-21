@@ -2,16 +2,16 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { EXAMPLE_USERS_CONFIG_DATA } from './example-users-config-data';
-import { UsersConfig } from './UsersConfig';
 
+import { EXAMPLE_USERS_CONFIG_DATA } from '../system-assets-users-config/example-users-config-data';
+import { UsersConfig } from '../system-assets-users-config/UsersConfig';
 
 @Component({
-  selector: 'app-system-assets-users-config',
-  templateUrl: './system-assets-users-config.component.html',
-  styleUrls: ['./system-assets-users-config.component.css']
+  selector: 'app-system-assign-users-to-role',
+  templateUrl: './system-assign-users-to-role.component.html',
+  styleUrls: ['./system-assign-users-to-role.component.css']
 })
-export class SystemAssetsUsersConfigComponent implements AfterViewInit,OnInit  {
+export class SystemAssignUsersToRoleComponent implements AfterViewInit,OnInit  {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<UsersConfig>;

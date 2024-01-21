@@ -3,33 +3,16 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-
-// TODO: Replace this with your own data model type
-export interface DataTableUsersConfig {    
-  UserID: string;
-  UserName: string;
-  UserEmail: string;
-  
-}
-
-// TODO: replace this with real data from your application
-export const EXAMPLE_USERS_CONFIG_DATA: DataTableUsersConfig[] = [
-  
-  {UserID: 'cisayan', UserName: 'Chris Isayan', UserEmail: 'Chris.Isayan@prolifics.com'},   
-  {UserID: 'bgates', UserName: 'Bill Gates', UserEmail: 'Bill.Gates@prolifics.com'},   
-  {UserID: 'cdion', UserName: 'Celine Dion', UserEmail: 'Celine.Dion@prolifics.com'},   
-  {UserID: 'asmith', UserName: 'Adam Smith', UserEmail: 'Adam.Smith@prolifics.com'},   
-  {UserID: 'kmarx', UserName: 'Karl Marx', UserEmail: 'Karl.Marx@prolifics.com'},    
-
-];
+import { UsersConfig } from './UsersConfig';
+import { EXAMPLE_USERS_CONFIG_DATA } from './example-users-config-data';
 
 /**
  * Data source for the DataTable view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class ScUsersConfigDataSource extends DataSource<DataTableUsersConfig> {
-  data: DataTableUsersConfig[] = EXAMPLE_USERS_CONFIG_DATA;
+export class ScUsersConfigDataSource extends DataSource<UsersConfig> {
+  data: UsersConfig[] = EXAMPLE_USERS_CONFIG_DATA;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
@@ -42,7 +25,7 @@ export class ScUsersConfigDataSource extends DataSource<DataTableUsersConfig> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<DataTableUsersConfig[]> {
+  connect(): Observable<UsersConfig[]> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
@@ -65,7 +48,7 @@ export class ScUsersConfigDataSource extends DataSource<DataTableUsersConfig> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: DataTableUsersConfig[]): DataTableUsersConfig[] {
+  private getPagedData(data: UsersConfig[]): UsersConfig[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -78,7 +61,7 @@ export class ScUsersConfigDataSource extends DataSource<DataTableUsersConfig> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: DataTableUsersConfig[]): DataTableUsersConfig[] {
+  private getSortedData(data: UsersConfig[]): UsersConfig[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
