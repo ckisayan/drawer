@@ -66,7 +66,7 @@
                     <tr>
                         <td colspan="2"></td>
                         <td></td>
-                        <td style="text-align: right;"><button class="primary-action-button mybutton" (click)="saveData()">Apply</button>
+                        <td style="text-align: right;"><button class="primary-action-button mybutton" (click)="saveRoleMain()">Apply</button>
                         </td>
                     </tr>
                     <tr>
@@ -92,7 +92,7 @@
                                         <table >
                                             <tr>
                                                 <td>
-                                                    <mat-select multiple [(ngModel)]="warehouses.WarehouseID"
+                                                    <mat-select multiple [(ngModel)]="warehouseIds"
                                                         placeholder="Select a site" class="select-format-long"
                                                         matTooltip="Some employees work in more than one warehouse.  So, it is important to specify
                                                         what warehouses this Role applies to.">
@@ -105,7 +105,8 @@
                                                 </td>
                                                 <td> &nbsp; &nbsp; &nbsp; </td>
                                                 <td>
-                                                    <mat-select multiple placeholder="Sysem Applicability"
+                                                    <mat-select multiple [(ngModel)]="grantTypeIds"
+                                                    placeholder="Sysem Applicability"
                                                         class="select-format-long"
                                                         matTooltip="if i select Grant to Modern App and Grant to Legacy app, it means 
                                                         user has access to modern screen and can navigate back and forth between legacy and new app.  
@@ -115,7 +116,7 @@
                                                         <mat-option [value]="'3'">Deny to Legacy App</mat-option>
                                                     </mat-select>
                                                 </td>
-                                                <td style="text-align: right;"><button class="primary-action-button mybutton" (click)="saveData()">Apply</button>                                                
+                                                <td style="text-align: right;"><button class="primary-action-button mybutton" (click)="saveWarehouseSection()">Apply</button>                                                
                                                 </td>
                                             </tr>
                                             <tr>

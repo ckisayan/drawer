@@ -103,7 +103,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { SystemAssignUsersToRoleComponent } from './supply-chain/configuration/system-assign-users-to-role/system-assign-users-to-role.component';
 import { SystemAssetsGroupsConfigComponent } from './supply-chain/configuration/system-assets-groups-config/system-assets-groups-config.component';
 import { SystemAssignGroupsToRoleComponent } from './supply-chain/configuration/system-assign-groups-to-role/system-assign-groups-to-role.component';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 const appRoutes: Routes = [
@@ -223,7 +223,7 @@ const appRoutes: Routes = [
     MatFormFieldModule, MatSelectModule, MatButtonModule, MatIconModule, MatTabsModule,
     FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatExpansionModule, MatListModule,
     MatFormFieldModule, MatStepperModule,
-    MatTreeModule, MatButtonModule, MatIconModule, MatMenuModule,
+    MatTreeModule, MatButtonModule, MatIconModule, MatMenuModule,MatSnackBarModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
