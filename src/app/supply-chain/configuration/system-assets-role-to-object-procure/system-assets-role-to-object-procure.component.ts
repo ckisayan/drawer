@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -6,6 +6,10 @@ import { SystemResourceModel, SystemResourcePermissionModel } from './system-res
 import { EXAMPLE_PRO_CONFIG_DATA } from '../system-assets-procurement/example-pro-config-data';
 import { ThemePalette } from '@angular/material/core';
 import { RoleMaintenanceService } from '../system-assets-role-edit/role-maintenance-service';
+import { RolesConfig } from '../system-assets-roles-config/RolesConfig';
+import { ApiService } from '../../api-service';
+import { ScGlobalService } from '../../sc-globalservices';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const EXAMPLE_CONFIG_DATA: SystemResourcePermissionModel[] = [    
   { SystemResourceID: "", SystemResourceName: '', SystemResourceDesc: '', isPermittedView: false, isPermittedCreate:false,isPermittedEdit:false},
@@ -21,27 +25,47 @@ export class SystemAssetsRoleToObjectProcureComponent implements AfterViewInit,O
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<SystemResourcePermissionModel>;
   color: ThemePalette = 'accent';
+
+
   checked = false;
   disabled = false;
-  dataSource = new MatTableDataSource(EXAMPLE_CONFIG_DATA);
+  //dataSource = new MatTableDataSource(EXAMPLE_CONFIG_DATA);
+  dataSource = new MatTableDataSource<SystemResourcePermissionModel>;  
 
   displayedColumns = ['SystemResourceName', 'View', 'Edit', 'Create'];
-  constructor(private roleMaintenanceService:RoleMaintenanceService){
-    this.dataSource.data=this.dataSource.data.slice(1);
-    for (const item of EXAMPLE_PRO_CONFIG_DATA) {
-      this.dataSource.data.push({
-        ...item, // Spread existing properties
-        isPermittedView: false, // Set default value for isChecked
-        isPermittedEdit:false,
-        isPermittedCreate:false
-      });
-    }
+
+    
+  rolesConfig: RolesConfig = {
+    RoleID: '',
+    RoleName: '',
+    RoleType: '',
+    RoleOwnerUserID: '',
+    RoleDesc: ''
+  };
+
+
+  constructor(private roleMaintenanceService:RoleMaintenanceService,
+    private apiService: ApiService,private http: HttpClient,
+    private changeDetectorRefs: ChangeDetectorRef){
+    this.roleMaintenanceService.getRoleConfig.subscribe(rc => this.rolesConfig = rc);
+    //this.dataSource.data=this.dataSource.data; //.slice(1); //remove empty row
+    
   }
 
   ngOnInit(): void {
     try{   
           
-      console.group("init for procurement config called.")
+      console.log("init for procurement config called.")
+      // for (const item of EXAMPLE_PRO_CONFIG_DATA) {
+      //   this.dataSource.data.push({
+      //     ...item, // Spread existing properties
+      //     isPermittedView: false, // Set default value for isChecked
+      //     isPermittedEdit:false,
+      //     isPermittedCreate:false
+      //   });
+      //}
+      this.getPermissionData();
+  
     }catch(err){
       console.log ("error Loading from db, will display hard coded values");
       console.log(err);
@@ -65,6 +89,66 @@ export class SystemAssetsRoleToObjectProcureComponent implements AfterViewInit,O
         return; // Exit the forEach loop (similar to break)
       }
     });   
+  }
+  saveProcRolePersmissions(){    
+    const transformedData = {
+      rolePermissionSystemResources: this.dataSource.data.map(item => ({
+        roleId: this.rolesConfig.RoleID,
+        rolePermissionSystemResourceId: null,  // You can customize this based on your needs
+        systemResourceId: item.SystemResourceID,
+        systemResourceCategory: "Procurement",  // You can customize this based on your needs
+        isPermittedView: item.isPermittedView ?  "Y" : "N",
+        isPermittedCreate: item.isPermittedCreate ?  "Y" : "N",
+        isPermittedEdit: item.isPermittedEdit ?  "Y" : "N",
+      })),
+      source: "SystemAssetsRoleToObjectProcureComponent",
+    };
+    console.log (transformedData);    
+    this.apiService.postDataHttp(transformedData, "PutRolePermissionSystemResources");
+  }
+  getPermissionData(){
+    const reqdata = {
+      roleId: this.rolesConfig.RoleID,
+      systemResourceCategory: "Procurement"
+    }
+    console.log(JSON.stringify(reqdata))
+    const endpoint = ScGlobalService.EntitlementEndPoint + ScGlobalService.EntitlementConfig + "GetRolePermissionSystemResources";
+    console.log(endpoint);
+    let validExec = false;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    this.http.post<any>(endpoint,JSON.stringify(reqdata), {headers}).subscribe({
+      next: data => {
+        console.log ("respons code is : " +data.responseCode);
+        if (data.responseCode == "1" ) {                    
+          console.log (data.errorDesc)    
+          validExec=false;          
+        }else {
+          for (const item of data.rolePermissionSystemResourcesResponse) {            
+            this.dataSource.data.push({
+              isPermittedView: item.isPermittedView === 'Y',
+              isPermittedCreate: item.isPermittedCreate === 'Y',
+              isPermittedEdit: item.isPermittedEdit === 'Y',              
+              SystemResourceID: item.systemResourceId,
+              SystemResourceName: item.systemResourceName,
+              SystemResourceDesc: item.SystemResourceDesc,
+            });
+          } 
+          
+          //this.table.dataSource = this.dataSource;
+          this.dataSource.data = this.dataSource.data.filter(a => a);
+
+          //this.refresh();
+        }
+      },error: error=> {
+        console.log (error.errorDesc);      
+      }
+    })
+    return validExec;
+  }
+  refresh(){
+    this.changeDetectorRefs.detectChanges();
   }
 
 }

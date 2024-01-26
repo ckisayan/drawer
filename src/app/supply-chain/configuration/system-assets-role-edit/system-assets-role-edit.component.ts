@@ -8,6 +8,8 @@ import { WarehouseConfig } from '../warehouse-config/WarehouseConfig';
 import { RoleMaintenanceService } from './role-maintenance-service';
 import { ScGlobalService } from '../../sc-globalservices';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Observable, catchError, throwError, of } from 'rxjs';
 
 @Component({
   selector: 'app-system-assets-role-edit',
@@ -35,7 +37,7 @@ export class SystemAssetsRoleEditComponent implements OnInit {
   warehouseIds:string[] =[];
   grantTypeIds:string[] =[];
   constructor(private roleMaintenanceService: RoleMaintenanceService, private router: Router,
-    private _snackBar: MatSnackBar) {
+    private _snackBar: MatSnackBar, private http: HttpClient) {
     //rolesConfig= this.roleMaintenanceService.getWarehouseConfig;
     this.roleMaintenanceService.getRoleConfig.subscribe(rc => this.rolesConfig = rc);
   }
@@ -56,46 +58,31 @@ export class SystemAssetsRoleEditComponent implements OnInit {
       source: "SystemAssetsRoleEditComponent"
     }
     const endpoint = ScGlobalService.EntitlementEndPoint + ScGlobalService.EntitlementConfig + "putRole";
-    fetch(endpoint, {
-      method: 'POST',
-      body: JSON.stringify(postData),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        this.openSnackBar("Save Failed.", "Close")
-        throw new Error('Error fetching data');
-      }
-    }).then((results) => {      
-      console.log(results);      
-      if (results.responseCode == "1" ){
-        console.log (results.errorDesc);
-        this.openSnackBar("Save Failed.", "Close")
-      }
-      else
-        this.openSnackBar("Save Successfull.", "Close")
 
-    }).catch((error) => {
-      console.error(error);
-      this.openSnackBar("Save Failed.", "Close")
-    });
-
+    if (this.postData(postData, "putRole")) {
+      this.openSnackBar("Save Warehosue  Successful.", "Close")
+    }else{
+      this.openSnackBar("Save Warehouse Failed.", "Close")
+    }
   }
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {duration:5000});
   }
   saveWarehouseSection(){
-    
-    this.saveWarehouse();
-    this.saveGrantTypes();
-    
+    let validExec = this.saveWarehouse();    
+    console.log("valid exec: " + validExec );
+    if (validExec){
+      validExec = this.saveGrantTypes()
+    }    
+
+    if (validExec) 
+      this.openSnackBar("Save Successful.", "Close");
+    else
+      this.openSnackBar("Save Failed.", "Close");
   }
   saveWarehouse(){
     
-    console.log("printing warhouse object")
+    console.log("printing warhouse object")    
     const myWarehouseObj= {
       
       rolePermissionWarehouseRequest: this.warehouseIds.map((
@@ -105,11 +92,12 @@ export class SystemAssetsRoleEditComponent implements OnInit {
         })),
         source: "SystemAssetsRoleEditComponent"
     };
-    console.log(myWarehouseObj);
-
+    console.log(myWarehouseObj);    
+    return this.postData(myWarehouseObj, "PutRolePermissionWarehouse");
   }
-  saveGrantTypes(){
+  saveGrantTypes(): boolean{
     console.log("printing object")
+    let validExec = false;
     const myGrantObj= {
       
       rolePermissionGrantTypeRequest: this.grantTypeIds.map((
@@ -120,5 +108,82 @@ export class SystemAssetsRoleEditComponent implements OnInit {
         source: "SystemAssetsRoleEditComponent"
     };
     console.log(myGrantObj);
+    if (this.postData(myGrantObj, "PutRolePermissionGrantTypes")) {
+      validExec = true;
+    }
+
+    return validExec;
   }
+
+  postData(jsonData: any, methodName: string) : boolean{
+    const endpoint = ScGlobalService.EntitlementEndPoint + ScGlobalService.EntitlementConfig + methodName;
+    let validExec  =true;
+    console.log(JSON.stringify(jsonData));
+    fetch(endpoint, {
+      method: 'POST',
+      body: JSON.stringify(jsonData),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {        
+        throw new Error('Error fetching data');
+      }
+    }).then((results) => {           
+      console.log ("respons code is : " +results.responseCode);  
+      if (results.responseCode == "1" ){
+        console.log (results.errorDesc);        
+        validExec = false;
+      }      
+    }).catch((error) => {
+      validExec = false;
+      console.error(error);            
+    });   
+    return validExec;
+  }
+  postData2(jsonData: any, methodName: string) : Observable<boolean>{
+    const endpoint = ScGlobalService.EntitlementEndPoint + ScGlobalService.EntitlementConfig + methodName;
+    let validExec = false;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    this.http.post<any>(endpoint,JSON.stringify(jsonData), {headers}).subscribe({
+      next: data => {
+        console.log ("respons code is : " +data.responseCode);
+        if (data.responseCode == "1" ) {                    
+          console.log (data.errorDesc)    
+          validExec=false;
+          
+        }
+      },error: error=> {
+        console.log (error.errorDesc);  
+    
+      }
+    })
+    return of(validExec);
+  }
+  postData3(jsonData: any, methodName: string) : boolean{
+    const endpoint = ScGlobalService.EntitlementEndPoint + ScGlobalService.EntitlementConfig + methodName;
+    let validExec = false;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    this.http.post<any>(endpoint,JSON.stringify(jsonData), {headers}).subscribe({
+      next: data => {
+        console.log ("respons code is : " +data.responseCode);
+        if (data.responseCode == "1" ) {                    
+          console.log (data.errorDesc)    
+          validExec=false;
+          
+        }
+      },error: error=> {
+        console.log (error.errorDesc);  
+    
+      }
+    })
+    return validExec;
+  }
+  
 }

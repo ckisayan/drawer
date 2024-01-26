@@ -24,7 +24,7 @@ export class SystemAssignGroupsToRoleComponent implements AfterViewInit,OnInit  
   ngOnInit(): void {
     try{   
           
-      console.group("init for user config called.")
+      console.log("init for group config called.")
     }catch(err){
       console.log ("error Loading from db, will display hard coded values");
       console.log(err);

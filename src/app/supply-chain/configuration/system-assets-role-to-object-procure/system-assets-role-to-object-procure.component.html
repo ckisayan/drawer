@@ -1,8 +1,8 @@
 <div style="text-align: center;">
-    <h3>Procurement configuration</h3>
+    <h3 >Procurement configuration</h3>
 </div>
 
-<table mat-table class="full-width-table" matSort aria-label="Elements" style="width: 100%;">
+<table mat-table class="full-width-table" matSort aria-label="dataSource" style="width: 100%;">
     <!-- Id Column -->
     <ng-container matColumnDef="SystemResourceID">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Resource ID</th>
@@ -47,7 +47,7 @@
 </mat-paginator>
 <table>
     <tr>
-        <td style="text-align: right;"><button class="primary-action-button mybutton"
+        <td style="text-align: right;"><button class="primary-action-button mybutton" (click)="saveProcRolePersmissions()"
                 >Apply</button>
     </tr>
 </table>
