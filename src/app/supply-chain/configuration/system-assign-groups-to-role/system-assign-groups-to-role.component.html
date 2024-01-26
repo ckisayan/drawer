@@ -16,9 +16,9 @@
     </ng-container>
     <ng-container matColumnDef="Action">
         <th mat-header-cell *matHeaderCellDef style="text-align: center;white-space: nowrap;">Add</th>
-        <td mat-cell *matCellDef="let element" style="text-align: center;white-space: nowrap;">
-            <mat-slide-toggle  class="example-margin">          
-        </mat-slide-toggle>
+        <td mat-cell *matCellDef="let row" style="text-align: center;white-space: nowrap;">
+            <mat-slide-toggle  class="example-margin" [color]="color" [(ngModel)]="row.isAddedToRole"
+            (toggleChange)="displayData(row)"> </mat-slide-toggle>        
         </td>
     </ng-container>
 
@@ -30,4 +30,4 @@
 <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="5"
     [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
 </mat-paginator>
-<div style="text-align: right;"><button class="primary-action-button mybutton">Apply</button></div>
+<div style="text-align: right;"><button class="primary-action-button mybutton" (click)="saveRolePersmissions()">Apply</button></div>
