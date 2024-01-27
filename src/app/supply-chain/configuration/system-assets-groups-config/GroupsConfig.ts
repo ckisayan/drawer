@@ -1,10 +1,10 @@
-export interface GroupsConfig {    
-    GroupID: string;
-    GroupName: string;
-    GroupDesc: string;        
-    GroupOwnerUserID: string;
+// export interface GroupsConfig {    
+//     GroupID: string;
+//     GroupName: string;
+//     GroupDesc: string;        
+//     GroupOwnerUserID: string;
     
-  }
+//   }
 
   export interface GroupsConfigModel {    
     GroupID: string;

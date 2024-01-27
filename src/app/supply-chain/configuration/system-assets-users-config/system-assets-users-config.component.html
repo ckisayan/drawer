@@ -28,11 +28,10 @@
     </ng-container>
     <ng-container matColumnDef="Action">
         <th mat-header-cell *matHeaderCellDef style="text-align: center;white-space: nowrap;">Actions</th>
+ 
         <td mat-cell *matCellDef="let row" style="text-align: center;white-space: nowrap;">
-            <mat-slide-toggle  class="example-margin" [color]="color" [(ngModel)]="row.isAddedToRole"
-            (toggleChange)="displayData(row)"> </mat-slide-toggle>
+            <mat-icon class="example-tab-icon" (click)="showEdit(row)">edit</mat-icon>
         </td>
-        
         
     </ng-container>
 

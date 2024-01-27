@@ -1,8 +1,22 @@
-.primary-action-button {
+
+th {
+    box-sizing: border-box;
+    font-weight: 550;
+    font-size: 1em !important;    
+    background-color:#f8f8f8 !important;
+  }
+
+
+  .primary-action-button {
     background-color: blue;
     color: white;
-}
+  }
+  .mybutton {
+    cursor:pointer;  
+  }
+  
+  table {    
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+  }
 
-.mybutton {
-    cursor: pointer;
-}

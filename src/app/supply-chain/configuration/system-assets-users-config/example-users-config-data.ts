@@ -1,8 +1,8 @@
-import { UsersConfig } from './UsersConfig';
+import { UsersConfigModel } from './UsersConfig';
 
 // TODO: replace this with real data from your application
 
-export const EXAMPLE_USERS_CONFIG_DATA: UsersConfig[] = [
+export const EXAMPLE_USERS_CONFIG_DATA: UsersConfigModel[] = [
   { UserID: 'cisayan', UserName: 'Chris Isayan', UserEmail: 'Chris.Isayan@prolifics.com' },
   { UserID: 'bgates', UserName: 'Bill Gates', UserEmail: 'Bill.Gates@prolifics.com' },
   { UserID: 'cdion', UserName: 'Celine Dion', UserEmail: 'Celine.Dion@prolifics.com' },

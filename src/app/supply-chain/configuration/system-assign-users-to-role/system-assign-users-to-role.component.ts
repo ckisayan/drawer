@@ -2,9 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-
-import { EXAMPLE_USERS_CONFIG_DATA } from '../system-assets-users-config/example-users-config-data';
-import { UsersConfig, UsersPermissionModel } from '../system-assets-users-config/UsersConfig';
+import { UsersPermissionModel } from '../system-assets-users-config/UsersConfig';
 import { RolesConfig } from '../system-assets-roles-config/RolesConfig';
 import { ScGlobalService } from '../../sc-globalservices';
 import { HttpClient, HttpHeaders } from '@angular/common/http';

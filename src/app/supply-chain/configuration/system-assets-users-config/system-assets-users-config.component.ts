@@ -2,8 +2,8 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { EXAMPLE_USERS_CONFIG_DATA } from './example-users-config-data';
-import { UsersConfig, UsersPermissionModel } from './UsersConfig';
+//import { EXAMPLE_USERS_CONFIG_DATA } from './example-users-config-data';
+import { UsersConfigModel } from './UsersConfig';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RoleMaintenanceService } from '../system-assets-role-edit/role-maintenance-service';
 import { RolesConfig } from '../system-assets-roles-config/RolesConfig';
@@ -19,9 +19,9 @@ import { ThemePalette } from '@angular/material/core';
 export class SystemAssetsUsersConfigComponent implements AfterViewInit,OnInit  {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<UsersPermissionModel>;
+  @ViewChild(MatTable) table!: MatTable<UsersConfigModel>;
   color: ThemePalette = 'accent';
-  dataSource = new MatTableDataSource<UsersPermissionModel>;  
+  dataSource = new MatTableDataSource<UsersConfigModel>;  
   displayedColumns = ['UserID', 'UserName', 'UserEmail', 'Action'];
   rolesConfig: RolesConfig = {
     RoleID: '',
@@ -34,8 +34,7 @@ export class SystemAssetsUsersConfigComponent implements AfterViewInit,OnInit  {
     private http: HttpClient
     ){
     this.roleMaintenanceService.getRoleConfig.subscribe(rc => this.rolesConfig = rc);
-    //this.dataSource.data=this.dataSource.data; //.slice(1); //remove empty row    
-    
+    //this.dataSource.data=this.dataSource.data; //.slice(1); //remove empty row       
   }
 
   ngOnInit(): void {
@@ -57,7 +56,13 @@ export class SystemAssetsUsersConfigComponent implements AfterViewInit,OnInit  {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  displayData(row:UsersConfig){   
+  showEdit(row: RolesConfig){
+    //alert(row.RoleName);    
+    //this.roleMaintenanceService.setRoleConfig(row);
+    //this.router.navigate(['/supply-chain/configuration/system-roles-edit']);
+
+  }
+  displayData(row:UsersConfigModel){   
     // this.dataSource.data.forEach(item => {
     //   if (item.SystemResourceID === row.SystemResourceID) {
     //     item.isPermittedView = row.isPermittedView;
@@ -70,7 +75,7 @@ export class SystemAssetsUsersConfigComponent implements AfterViewInit,OnInit  {
 
   getPermissionData(){
     const reqdata = {
-      roleId: this.rolesConfig.RoleID      
+      roleId: ""
     }
     console.log(JSON.stringify(reqdata))
     const endpoint = ScGlobalService.EntitlementEndPoint + ScGlobalService.EntitlementConfig + "GetRolePermissionUsers";
@@ -90,9 +95,7 @@ export class SystemAssetsUsersConfigComponent implements AfterViewInit,OnInit  {
             this.dataSource.data.push({
               UserID: item.userId,
               UserName: item.userName,
-              UserEmail: item.userEmail,
-              isAddedToRole: item.isAddedToRole === 'Y',
-             
+              UserEmail: item.userEmail
             });
           }           
           //this.table.dataSource = this.dataSource;
