@@ -15,8 +15,8 @@ export interface GrantTypes{
     GrantName: string;
 }
 export interface RoleToPermissionsModel extends RolesConfig{    
-    WarehouseList: WarehouseConfig[];
-    GrantTypesList: GrantTypes[];
-    SystemProcurementResourcePermissionList: SystemResourcePermissionModel[]
+    //WarehouseList: WarehouseConfig[];
+    //GrantTypesList: GrantTypes[];
+    //SystemProcurementResourcePermissionList: SystemResourcePermissionModel[]
 
 }

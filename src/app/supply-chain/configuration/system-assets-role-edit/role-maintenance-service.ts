@@ -10,9 +10,9 @@ const grantTypeList: GrantTypes[] = [
 const warehouseList: WarehouseConfig[] = [  
     {WarehouseID: "", WarehouseName: "", CompanyName: "", WarehouseRegion: "", WarehouseLocation: "", WarehouseAddressLine1: "", WarehouseAddressLine2: ""},  
 ]
-const systemProcurementResourcePermissionList: SystemResourcePermissionModel[] = [
-  {SystemResourceID: '', SystemResourceName:'', SystemResourceDesc:'', isPermittedView: false, isPermittedEdit: false,isPermittedCreate: false}
-]
+// const systemProcurementResourcePermissionList: SystemResourcePermissionModel[] = [
+//   {SystemResourceID: '', SystemResourceName:'', SystemResourceDesc:'', SystemResourceCategory:'', isPermittedView: false, isPermittedEdit: false,isPermittedCreate: false}
+// ]
 
 const initialConfig: RoleToPermissionsModel = {
   RoleID: '',
@@ -20,9 +20,9 @@ const initialConfig: RoleToPermissionsModel = {
   RoleType: '',
   RoleDesc: '',
   RoleOwnerUserID: '',
-  GrantTypesList: grantTypeList,
-  WarehouseList: warehouseList,
-  SystemProcurementResourcePermissionList: systemProcurementResourcePermissionList
+  // GrantTypesList: grantTypeList,
+  // WarehouseList: warehouseList,
+  //SystemProcurementResourcePermissionList: systemProcurementResourcePermissionList
 
 };
 

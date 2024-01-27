@@ -2,6 +2,7 @@ export interface SystemResourceModel {
     SystemResourceID: string;
     SystemResourceName: string;
     SystemResourceDesc: string;
+    SystemResourceCategory: string;
   }
 
   export interface SystemResourcePermissionModel extends SystemResourceModel {

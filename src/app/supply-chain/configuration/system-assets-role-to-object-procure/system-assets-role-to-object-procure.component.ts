@@ -11,9 +11,7 @@ import { ApiService } from '../../api-service';
 import { ScGlobalService } from '../../sc-globalservices';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-const EXAMPLE_CONFIG_DATA: SystemResourcePermissionModel[] = [    
-  { SystemResourceID: "", SystemResourceName: '', SystemResourceDesc: '', isPermittedView: false, isPermittedCreate:false,isPermittedEdit:false},
-];
+
 
 @Component({
   selector: 'app-system-assets-role-to-object-procure',
@@ -129,7 +127,8 @@ export class SystemAssetsRoleToObjectProcureComponent implements AfterViewInit,O
             this.dataSource.data.push({
               isPermittedView: item.isPermittedView === 'Y',
               isPermittedCreate: item.isPermittedCreate === 'Y',
-              isPermittedEdit: item.isPermittedEdit === 'Y',              
+              isPermittedEdit: item.isPermittedEdit === 'Y',
+              SystemResourceCategory: item.systemResourceCategory,              
               SystemResourceID: item.systemResourceId,
               SystemResourceName: item.systemResourceName,
               SystemResourceDesc: item.SystemResourceDesc,
