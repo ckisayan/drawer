@@ -21,4 +21,12 @@ export interface WarehouseConfigModel {
     WarehouseAddressLine2: string;
 
 }
+export interface WarehousePermissionModel extends WarehouseConfigModel {
+    isAddedToRole: boolean;
+    RolePermissionWarehouseId: string;
+    RoleId: string;
+}
+
+
+
 

@@ -20,3 +20,14 @@ export interface RoleToPermissionsModel extends RolesConfig{
     //SystemProcurementResourcePermissionList: SystemResourcePermissionModel[]
 
 }
+
+export interface GrantTypeConfigModel{
+    GrantTypeId: string;
+    GrantTypeName: string;
+}
+
+export interface GrantTypesPermissionModel extends GrantTypeConfigModel {
+    RolePermissionGrantTypeId: string, 
+    RoleId: string,
+    isAddedToRole: boolean; 
+  }

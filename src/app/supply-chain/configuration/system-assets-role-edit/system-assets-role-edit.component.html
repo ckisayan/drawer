@@ -96,10 +96,10 @@
                                                         placeholder="Select a site" class="select-format-long"
                                                         matTooltip="Some employees work in more than one warehouse.  So, it is important to specify
                                                         what warehouses this Role applies to.">
-                                                        <mat-option *ngFor="let warehouse of warehouseData"
-                                                            [value]="warehouse.WarehouseID"                                                            >
-                                                            {{ warehouse.WarehouseName + '-' +
-                                                            warehouse.WarehouseLocation}}
+                                                        <mat-option *ngFor="let warehouse of warehouseData"                                                            
+                                                            [value]="warehouse.WarehouseID">
+                                                            {{ warehouse.WarehouseName + '-' + warehouse.WarehouseLocation}} 
+                                                            
                                                         </mat-option>
                                                     </mat-select>
                                                 </td>
@@ -111,9 +111,10 @@
                                                         matTooltip="if i select Grant to Modern App and Grant to Legacy app, it means 
                                                         user has access to modern screen and can navigate back and forth between legacy and new app.  
                                                         If i Deny to Legacy app, it means user cannot navigate to legacy app.">
-                                                        <mat-option [value]="'1'">Grant to Modern App</mat-option>
-                                                        <mat-option [value]="'2'">Grant to Legacy App</mat-option>
-                                                        <mat-option [value]="'3'">Deny to Legacy App</mat-option>
+                                                        <mat-option *ngFor="let grantType of grantTypeData"                                                            
+                                                            [value]="grantType.GrantTypeId">
+                                                            {{ grantType.GrantTypeName }} 
+                                                        </mat-option>
                                                     </mat-select>
                                                 </td>
                                                 <td style="text-align: right;"><button class="primary-action-button mybutton" (click)="saveWarehouseSection()">Apply</button>                                                

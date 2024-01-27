@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RolesConfig } from '../system-assets-roles-config/RolesConfig';
-import { CdkAccordionModule } from '@angular/cdk/accordion';
-import { FormControl } from '@angular/forms';
+import { GrantTypesPermissionModel, RolesConfig } from '../system-assets-roles-config/RolesConfig';
+//import { CdkAccordionModule } from '@angular/cdk/accordion';
+//import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EXAMPLE_WAREHOUSE_CONFIG_DATA } from '../warehouse-config/warehouse-config-datasource';
-import { WarehouseConfig } from '../warehouse-config/WarehouseConfig';
+//import { EXAMPLE_WAREHOUSE_CONFIG_DATA } from '../warehouse-config/warehouse-config-datasource';
+import { WarehouseConfig, WarehouseConfigModel, WarehousePermissionModel } from '../warehouse-config/WarehouseConfig';
 import { RoleMaintenanceService } from './role-maintenance-service';
 import { ScGlobalService } from '../../sc-globalservices';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -33,13 +33,17 @@ export class SystemAssetsRoleEditComponent implements OnInit {
     RoleOwnerUserID: '',
     RoleDesc: ''
   };
-  warehouseData: WarehouseConfig[] = EXAMPLE_WAREHOUSE_CONFIG_DATA;
+  warehouseData:  WarehousePermissionModel[] = [];  
   warehouseIds:string[] =[];
+  grantTypeData:  GrantTypesPermissionModel[] = [];  
   grantTypeIds:string[] =[];
   constructor(private roleMaintenanceService: RoleMaintenanceService, private router: Router,
     private _snackBar: MatSnackBar, private http: HttpClient) {
     //rolesConfig= this.roleMaintenanceService.getWarehouseConfig;
     this.roleMaintenanceService.getRoleConfig.subscribe(rc => this.rolesConfig = rc);
+    
+    this.getWarehousePermissionData();
+    this.getGrantTypePermissionData();
   }
 
   ngOnInit(): void {
@@ -108,7 +112,7 @@ export class SystemAssetsRoleEditComponent implements OnInit {
         source: "SystemAssetsRoleEditComponent"
     };
     console.log(myGrantObj);
-    if (this.postData(myGrantObj, "PutRolePermissionGrantTypes")) {
+    if (this.postData3(myGrantObj, "PutRolePermissionGrantTypes")) {
       validExec = true;
     }
 
@@ -185,5 +189,85 @@ export class SystemAssetsRoleEditComponent implements OnInit {
     })
     return validExec;
   }
-  
+  getWarehousePermissionData(){
+    const reqdata = {
+      roleId: this.rolesConfig.RoleID      
+    }
+    console.log(JSON.stringify(reqdata))
+    const endpoint = ScGlobalService.EntitlementEndPoint + ScGlobalService.EntitlementConfig + "getRolePermissionWarehouse";
+    console.log(endpoint);
+    let validExec = false;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    this.http.post<any>(endpoint,JSON.stringify(reqdata), {headers}).subscribe({
+      next: data => {
+        console.log ("respons code is : " +data.responseCode);
+        if (data.responseCode == "1" ) {                    
+          console.log (data.errorDesc)    
+          validExec=false;          
+        }else {
+          for (const item of data.rolePermissionWarehouseResponse) {            
+            this.warehouseData.push({
+              WarehouseID: item.warehouseId,
+              WarehouseName: item.warehouseName,
+              WarehouseLocation: item.warehouseLocation,
+              isAddedToRole: item.rolePermissionWarehouseId ? true : false,
+              CompanyName: '',
+              WarehouseRegion: '',
+              WarehouseAddressLine1: '',
+              WarehouseAddressLine2: '',
+              RolePermissionWarehouseId: '',
+              RoleId: item.roleId
+            });
+            this.warehouseIds = [];
+            this.warehouseIds.push(...this.warehouseData
+              .filter(warehouse => warehouse.isAddedToRole)
+              .map(warehouse => warehouse.WarehouseID))
+          }           
+        }
+      },error: error=> {
+        console.log (error.errorDesc);      
+      }
+    })
+    return validExec;
+  }
+  getGrantTypePermissionData(){
+    const reqdata = {
+      roleId: this.rolesConfig.RoleID      
+    }
+    console.log(JSON.stringify(reqdata))
+    const endpoint = ScGlobalService.EntitlementEndPoint + ScGlobalService.EntitlementConfig + "getRolePermissionGrantTypes";
+    console.log(endpoint);
+    let validExec = false;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    this.http.post<any>(endpoint,JSON.stringify(reqdata), {headers}).subscribe({
+      next: data1 => {
+        console.log ("respons code is : " +data1.responseCode);
+        if (data1.responseCode == "1" ) {                    
+          console.log (data1.errorDesc)    
+          validExec=false;          
+        }else {
+          for (const item of data1.rolePermissionGrantTypesResponse) {            
+            this.grantTypeData.push({
+              GrantTypeId: item.grantTypeId,
+              GrantTypeName: item.grantTypeName,
+              RolePermissionGrantTypeId: item.rolePermissionGrantTypeId,
+              isAddedToRole: item.rolePermissionGrantTypeId ? true : false,
+              RoleId: item.roleId 
+            });
+            this.grantTypeIds = [];
+            this.grantTypeIds.push(...this.grantTypeData
+              .filter(grantTypes => grantTypes.isAddedToRole)
+              .map(grantTypes => grantTypes.GrantTypeId))
+          }           
+        }
+      },error: error=> {
+        console.log (error.errorDesc);      
+      }
+    })
+    return validExec;
+  }
 }
