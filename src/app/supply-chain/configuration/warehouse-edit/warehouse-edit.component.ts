@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { WarehouseConfigService } from '../warehouse-config/warehouse-config-service';
-import { WarehouseConfig } from '../warehouse-config/WarehouseConfig';
+import { WarehouseConfigModel } from '../warehouse-config/WarehouseConfig';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./warehouse-edit.component.css']
 })
 export class WarehouseEditComponent {
-  warehouse:WarehouseConfig = {
+  warehouse:WarehouseConfigModel = {
     WarehouseID: '',
     WarehouseName: '',
     CompanyName: '',

@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { WarehouseConfig } from './WarehouseConfig';
+import { WarehouseConfigModel } from './WarehouseConfig';
 
-const initialConfig: WarehouseConfig = {
+const initialConfig: WarehouseConfigModel = {
     WarehouseID: '',
     WarehouseName: '',
     CompanyName: '',
@@ -16,12 +16,12 @@ const initialConfig: WarehouseConfig = {
     providedIn: 'root',
   })
 export class WarehouseConfigService {    
-    private warehouseConfigSubject = new BehaviorSubject<WarehouseConfig>(initialConfig);
+    private warehouseConfigSubject = new BehaviorSubject<WarehouseConfigModel>(initialConfig);
     getWarehouseConfig = this.warehouseConfigSubject.asObservable();
 
     constructor() { }
 
-    setWarehouseConfig(newWarehouse: WarehouseConfig) {
+    setWarehouseConfig(newWarehouse: WarehouseConfigModel) {
         this.warehouseConfigSubject.next(newWarehouse);
     }
 }

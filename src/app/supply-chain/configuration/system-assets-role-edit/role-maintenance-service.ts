@@ -1,13 +1,13 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { GrantTypes, RoleToPermissionsModel, RolesConfig } from '../system-assets-roles-config/RolesConfig';
-import { WarehouseConfig } from "../warehouse-config/WarehouseConfig";
-import { SystemResourcePermissionModel } from "../system-assets-role-to-object-procure/system-resource-model";
+import { RoleToPermissionsModel, RolesConfig } from '../system-assets-roles-config/RolesConfig';
+import { WarehouseConfigModel } from "../warehouse-config/WarehouseConfig";
+//import { SystemResourcePermissionModel } from "../system-assets-role-to-object-procure/system-resource-model";
 
-const grantTypeList: GrantTypes[] = [
-  {GrantId: '',  GrantName: ''}
-]
-const warehouseList: WarehouseConfig[] = [  
+// const grantTypeList: GrantTypes[] = [
+//   {GrantId: '',  GrantName: ''}
+// ]
+const warehouseList: WarehouseConfigModel[] = [  
     {WarehouseID: "", WarehouseName: "", CompanyName: "", WarehouseRegion: "", WarehouseLocation: "", WarehouseAddressLine1: "", WarehouseAddressLine2: ""},  
 ]
 // const systemProcurementResourcePermissionList: SystemResourcePermissionModel[] = [

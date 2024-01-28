@@ -3,7 +3,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { EXAMPLE_WAREHOUSE_CONFIG_DATA } from './warehouse-config-datasource';
-import { WarehouseConfig } from './WarehouseConfig';
+import { WarehouseConfigModel } from './WarehouseConfig';
 import { WarehouseConfigService } from './warehouse-config-service';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 export class WarehouseConfigComponent implements AfterViewInit,OnInit  {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<WarehouseConfig>;
+  @ViewChild(MatTable) table!: MatTable<WarehouseConfigModel>;
   @HostListener('document:keydown.control.a', ['$event'])
   onShortcut3(event: KeyboardEvent) {
     event.preventDefault();
@@ -48,7 +48,7 @@ export class WarehouseConfigComponent implements AfterViewInit,OnInit  {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  showEdit(row: WarehouseConfig) {
+  showEdit(row: WarehouseConfigModel) {
     //alert(row.WarehouseID);
     this.warehouseConfigService.setWarehouseConfig(row);
     this.router.navigate(['/supply-chain/configuration/warehouse-edit']);

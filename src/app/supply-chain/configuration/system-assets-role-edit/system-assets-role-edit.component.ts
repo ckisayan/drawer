@@ -4,7 +4,7 @@ import { GrantTypesPermissionModel, RolesConfig } from '../system-assets-roles-c
 //import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 //import { EXAMPLE_WAREHOUSE_CONFIG_DATA } from '../warehouse-config/warehouse-config-datasource';
-import { WarehouseConfig, WarehouseConfigModel, WarehousePermissionModel } from '../warehouse-config/WarehouseConfig';
+import { WarehouseConfigModel, WarehousePermissionModel } from '../warehouse-config/WarehouseConfig';
 import { RoleMaintenanceService } from './role-maintenance-service';
 import { ScGlobalService } from '../../sc-globalservices';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -17,15 +17,16 @@ import { Observable, catchError, throwError, of } from 'rxjs';
   styleUrls: ['./system-assets-role-edit.component.css']
 })
 export class SystemAssetsRoleEditComponent implements OnInit {
-  warehouses: WarehouseConfig = {
-    WarehouseID: '',
-    WarehouseName: '',
-    CompanyName: '',
-    WarehouseRegion: '',
-    WarehouseLocation: '',
-    WarehouseAddressLine1: '',
-    WarehouseAddressLine2: '',
-  };
+  
+  // warehouses: WarehouseConfigModel = {
+  //   WarehouseID: '',
+  //   WarehouseName: '',
+  //   CompanyName: '',
+  //   WarehouseRegion: '',
+  //   WarehouseLocation: '',
+  //   WarehouseAddressLine1: '',
+  //   WarehouseAddressLine2: '',
+  // };
   rolesConfig: RolesConfig = {
     RoleID: '',
     RoleName: '',
